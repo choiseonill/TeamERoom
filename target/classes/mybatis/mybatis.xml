@@ -2,7 +2,19 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
 <configuration>
+
+	<typeAliases>
+		
+		<typeAlias type="com.TeamERoom.member.vo.TestVO" alias="TestVO" />
 	
-	
+		
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="/com/TeamERoom/member/dao/sql/TestDao.xml" />
+
+		
+	</mappers>
 </configuration>

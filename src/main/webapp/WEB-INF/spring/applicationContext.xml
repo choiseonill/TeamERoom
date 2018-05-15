@@ -16,6 +16,9 @@
 	</bean>
 	
 	
-	<bean id="testController" class="com.TeamERoom.test.web.TestController"></bean>
+	
+	
+	
+	<import resource="controllerContext.xml"/>
 	
 </beans>
