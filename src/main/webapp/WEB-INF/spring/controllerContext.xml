@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	
+	
+	<bean id="testController" class="com.TeamERoom.test.web.TestController"></bean>
+	
+	<bean id="testDBController" class="com.TeamERoom.member.web.TestDBController">
+		<property name="testService" ref="testService"></property>
+	</bean>
+
+
+
+
+</beans>
