@@ -6,6 +6,7 @@
   <mapper namespace="MemberDao"><!-- 인터페이스 이름 적어줌 -->
   
   
+<<<<<<< HEAD
   
   
   <insert id="insertMember" parameterType="MemberVO">
@@ -30,8 +31,28 @@
   		,#{img}
   	)
   
+=======
+  	<select id="doLogin" parameterType="MemberVO" resultType="MemberVO">
+  	
+  		SELECT	MEMBER_EMAIL		email
+  				, MEMBER_STATUS		status
+  				, MEMBER_NAME		name
+  				, MEMBER_PHONE		phone
+  				, PASSWORD			password
+  				, SALT				salt
+  				, BIZ_NAME			bizName
+  				, BIZ_NUMBER		bizNumber
+  				, MEMBER_IMAGE 		img
+  		FROM	MEMBER
+  		WHERE	MEMBER_EMAIL = #{email}
+  		AND		PASSWORD = #{password}
+  	
+  	
+  	
+  	</select>
+>>>>>>> 948448ce2a8169941178de583638b2b70e80d9fd
   
-  </insert>
+ 
  
   
   </mapper>
