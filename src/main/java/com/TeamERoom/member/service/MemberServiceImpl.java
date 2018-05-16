@@ -14,14 +14,12 @@ public class MemberServiceImpl implements MemberService {
 	
 
 	@Override
-<<<<<<< HEAD
 	public boolean createMember(MemberVO memberVO) {
 		return memberDao.insertMember(memberVO) >0;
 	}
 
 	
 	
-=======
 	public MemberVO doLogin(MemberVO member) {
 
 		return memberDao.doLogin(member);
@@ -31,5 +29,4 @@ public class MemberServiceImpl implements MemberService {
 
 	
 
->>>>>>> 948448ce2a8169941178de583638b2b70e80d9fd
 }

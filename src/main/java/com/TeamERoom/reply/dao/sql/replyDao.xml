@@ -5,12 +5,8 @@
   
   <mapper namespace="ReplyDao"><!-- 인터페이스 이름 적어줌 -->
   
-<<<<<<< HEAD
-	</mapper>
-=======
+</mapper>
  
  
   
-  </mapper>
   
->>>>>>> 948448ce2a8169941178de583638b2b70e80d9fd

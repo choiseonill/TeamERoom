@@ -1,11 +1,7 @@
 package com.TeamERoom.member.vo;
 
-<<<<<<< HEAD
 import java.io.File;
 import java.io.IOException;
-
-=======
->>>>>>> 948448ce2a8169941178de583638b2b70e80d9fd
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Getter;
@@ -22,7 +18,6 @@ public class MemberVO {
 	private String salt;
 	private String bizName;
 	private String bizNumber;
-<<<<<<< HEAD
 	
 	//DB 저장 할때
 	private String img;
@@ -140,11 +135,8 @@ public class MemberVO {
 		}
 		return null;
 	}
-=======
-	private String img;
-	private MultipartFile profile;
 	
->>>>>>> 948448ce2a8169941178de583638b2b70e80d9fd
+	
 	
 
 }

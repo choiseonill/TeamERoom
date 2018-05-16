@@ -1,6 +1,5 @@
 package com.TeamERoom.member.web;
 
-<<<<<<< HEAD
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-=======
 
 import javax.servlet.http.HttpSession;
 
@@ -19,7 +17,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
->>>>>>> 948448ce2a8169941178de583638b2b70e80d9fd
 
 import com.TeamERoom.member.service.MemberService;
 import com.TeamERoom.member.vo.MemberVO;
@@ -32,7 +29,6 @@ public class MemberController {
 	@Setter
 	private MemberService memberService;
 
-<<<<<<< HEAD
 	
 	@RequestMapping(value="/signUp" , method = RequestMethod.POST)
 	public ModelAndView join(@ModelAttribute("registForm") @Valid MemberVO memberVO, Errors errors, 
@@ -49,8 +45,7 @@ public class MemberController {
 		}
 		
 		return new ModelAndView("member/join");
-=======
-
+	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String doLogin(@ModelAttribute MemberVO member, HttpSession session ) {
@@ -75,16 +70,12 @@ public class MemberController {
 		
 		
 		return "redirect:/main";
->>>>>>> 948448ce2a8169941178de583638b2b70e80d9fd
 		
 		
 	}
 	
 	
 	
-<<<<<<< HEAD
 	
 	
-=======
->>>>>>> 948448ce2a8169941178de583638b2b70e80d9fd
 }

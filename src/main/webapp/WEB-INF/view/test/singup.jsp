@@ -12,7 +12,6 @@
 <script src="static/vendor/jquery/jquery.min.js"></script>
 
 <script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
-<<<<<<< HEAD
 <script type="text/javascript">
 	$().ready(function() {
 		
@@ -42,18 +41,15 @@
 </script>
 
  
-=======
-<!-- <scirpt type="text/javascript" src=""></scirpt> -->
->>>>>>> 948448ce2a8169941178de583638b2b70e80d9fd
 <title>Insert title here</title>
 <style>
 
 .card-container.card {
-   display:inline-block;
+	display:inline-block;
     width:50%;
 }
 .card {
-   display : inline-block;
+	display : inline-block;
 }
 
 .btn {
@@ -69,7 +65,7 @@
  * Card component
  */
 .signupcard {
-   display:inline-block;
+	display:inline-block;
     background-color: #F7F7F7;
     /* just in case there no content*/
     padding: 20px 25px 30px;
@@ -184,14 +180,9 @@
 </style>
 </head>
 <body>
-<<<<<<< HEAD
-=======
-
->>>>>>> 948448ce2a8169941178de583638b2b70e80d9fd
     <div class="container" style=" margin-bottom: 200px; width:400px; display:inline-block;">
-       
+    	
         <div class="card card-container" style="width:400px;">
-<<<<<<< HEAD
 		  <div>	
 			<div class="nbutton" style="display:inline-block; margin-left:10%;">
 			    <label for="nomal">일반</label>
@@ -202,22 +193,9 @@
 			    <input type="radio" id="host" name="select" />
 			</div>    
 		</div>
-=======
-        <div>   
-         <div class="nbutton" style="display:inline-block; margin-left:10%;">
-             <label for="nomal">일반</label>
-             <input type="radio" id="nomal" name="select" />
-         </div>
-         <div class="rbutton" style="display:inline-block; verticl-align:top; margin-left:30%;" >   
-             <label for="host">사업자</label>
-             <input type="radio" id="host" name="select" />
-         </div>    
-      </div>
->>>>>>> 948448ce2a8169941178de583638b2b70e80d9fd
             <p id="profile-name" class="profile-name-card"></p>
             <form:form class="form-signin" modelAttribute="registForm">
                 <span id="reauth-email" class="reauth-email"></span>
-<<<<<<< HEAD
                 <input type="text" id="RinputEmail" class="form-control" name="email" placeholder="Email address" required autofocus/>
                 <input type="password" id="RinputPassword" class="form-control" name="password" placeholder="Password" required/>
                	<hr>
@@ -230,18 +208,6 @@
                 
                 <button id="registBtn" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
             </form:form><!-- /form -->
-=======
-                <input type="email" id="RinputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <input type="password" id="RinputPassword" class="form-control" placeholder="Password" required>
-                  <hr>
-                <input type="text" id="inputName" class="form-control" placeholder="name" required>
-                <input type="text" id="inputPhone" class="form-control" placeholder="phone" required>
-                <hr>
-                <input type="file" id="profilePhoto" class="form-control" title="프로필 사진" placeholder="profile">
-                <hr>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
-            </form><!-- /form -->
->>>>>>> 948448ce2a8169941178de583638b2b70e80d9fd
         </div><!-- /card-container -->
     </div><!-- /container -->
 </body>

@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<<<<<<< HEAD
-=======
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
->>>>>>> 948448ce2a8169941178de583638b2b70e80d9fd
 <!DOCTYPE html>
 <html>
 <head>
@@ -197,7 +194,6 @@
 </script>
 </head>
 <body>
-<<<<<<< HEAD
 	<jsp:include page="/WEB-INF/view/test/template/topMenuBar.jsp" />
 	<jsp:include page="/WEB-INF/view/test/template/myPage.jsp" />
 
@@ -211,16 +207,24 @@
 					<img id="profile-img" class="profile-img-card"
 						src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
 					<p id="profile-name" class="profile-name-card"></p>
-					<form class="form-signin">
-						<span id="reauth-email" class="reauth-email"></span> <input
-							type="email" id="inputEmail" class="form-control"
-							placeholder="Email address" required autofocus> <input
-							type="password" id="inputPassword" class="form-control"
-							placeholder="Password" required>
+					
+					
+					 <form:form modelAttribute="loginForm"  class="form-signin">
+               
+               
+                  <span id="reauth-email" class="reauth-email"></span> 
+                  
+                  <input type="email" id="inputEmail" name="email" class="form-control"
+                     placeholder="Email address" required autofocus> 
+                  <input type="password" id="inputPassword" name="password" class="form-control"
+                     placeholder="Password" required>
 
-						<button class="btn btn-lg btn-primary btn-block btn-signin"
-							type="submit">log in</button>
-					</form>
+                  <button id="loginBtn" class="btn btn-lg btn-primary btn-block btn-signin"
+                     type="submit">log in</button>
+                     
+                     
+               </form:form>
+
 					<!-- /form -->
 					<a href="<c:url value="/singup" />" class="forgot-password">
 						Forgot the password? </a>
@@ -240,7 +244,6 @@
 			Website 2018</p>
 	</div>
 	<!-- /.container --> </footer>
-=======
    <jsp:include page="/WEB-INF/view/test/template/topMenuBar.jsp" />
    <jsp:include page="/WEB-INF/view/test/template/myPage.jsp" />
 
@@ -290,6 +293,5 @@
          Website 2018</p>
    </div>
    <!-- /.container --> </footer>
->>>>>>> 948448ce2a8169941178de583638b2b70e80d9fd
 </body>
 </html>

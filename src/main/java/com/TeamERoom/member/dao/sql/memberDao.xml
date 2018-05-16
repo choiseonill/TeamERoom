@@ -6,7 +6,6 @@
   <mapper namespace="MemberDao"><!-- 인터페이스 이름 적어줌 -->
   
   
-<<<<<<< HEAD
   
   
   <insert id="insertMember" parameterType="MemberVO">
@@ -30,8 +29,8 @@
   		,#{password}
   		,#{img}
   	)
+  </insert>
   
-=======
   	<select id="doLogin" parameterType="MemberVO" resultType="MemberVO">
   	
   		SELECT	MEMBER_EMAIL		email
@@ -50,7 +49,6 @@
   	
   	
   	</select>
->>>>>>> 948448ce2a8169941178de583638b2b70e80d9fd
   
  
  
