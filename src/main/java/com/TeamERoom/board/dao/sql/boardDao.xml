@@ -6,7 +6,6 @@
   <mapper namespace="BoardDao"><!-- 인터페이스 이름 적어줌 -->
   
  
- 
   
   </mapper>
   

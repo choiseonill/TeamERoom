@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,16 +12,16 @@
 <script src="static/vendor/jquery/jquery.min.js"></script>
 
 <script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
-
+<!-- <scirpt type="text/javascript" src=""></scirpt> -->
 <title>Insert title here</title>
 <style>
 
 .card-container.card {
-	display:inline-block;
+   display:inline-block;
     width:50%;
 }
 .card {
-	display : inline-block;
+   display : inline-block;
 }
 
 .btn {
@@ -36,7 +37,7 @@
  * Card component
  */
 .signupcard {
-	display:inline-block;
+   display:inline-block;
     background-color: #F7F7F7;
     /* just in case there no content*/
     padding: 20px 25px 30px;
@@ -152,23 +153,30 @@
 </head>
 <body>
 
-	<jsp:include page="/WEB-INF/view/test/template/topMenuBar.jsp" />
-	<jsp:include page="/WEB-INF/view/test/template/myPage.jsp" />
-
     <div class="container" style=" margin-bottom: 200px; width:400px; display:inline-block;">
-    	
+       
         <div class="card card-container" style="width:400px;">
-            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+        <div>   
+         <div class="nbutton" style="display:inline-block; margin-left:10%;">
+             <label for="nomal">일반</label>
+             <input type="radio" id="nomal" name="select" />
+         </div>
+         <div class="rbutton" style="display:inline-block; verticl-align:top; margin-left:30%;" >   
+             <label for="host">사업자</label>
+             <input type="radio" id="host" name="select" />
+         </div>    
+      </div>
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-               	<hr>
-                <input type="password" id="inputPassword" class="form-control" placeholder="name" required>
-                <input type="password" id="inputPassword" class="form-control" placeholder="phone" required>
-                
-                
+                <input type="email" id="RinputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="password" id="RinputPassword" class="form-control" placeholder="Password" required>
+                  <hr>
+                <input type="text" id="inputName" class="form-control" placeholder="name" required>
+                <input type="text" id="inputPhone" class="form-control" placeholder="phone" required>
+                <hr>
+                <input type="file" id="profilePhoto" class="form-control" title="프로필 사진" placeholder="profile">
+                <hr>
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
             </form><!-- /form -->
         </div><!-- /card-container -->

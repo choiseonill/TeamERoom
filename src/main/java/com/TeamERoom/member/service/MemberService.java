@@ -4,6 +4,6 @@ import com.TeamERoom.member.vo.MemberVO;
 
 public interface MemberService {
 	
-	int testDB(MemberVO testVO);
+	public MemberVO doLogin(MemberVO member);
 
 }
