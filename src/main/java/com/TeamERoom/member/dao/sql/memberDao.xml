@@ -6,21 +6,29 @@
   <mapper namespace="MemberDao"><!-- 인터페이스 이름 적어줌 -->
   
   
-  <insert id="testDB" parameterType="MemberVO">
+  
+  
+  <insert id="insertMember" parameterType="MemberVO">
   	
-  	INSERT INTO TEST (
-  		ID
-  		,TEST	
+  	INSERT INTO MEMBER (
+  		MEMBER_ID
+  		, MEMBER_EMAIL
+  		, MEMBER_STATUS
+  		, MEMBER_NAME
+  		, MEMBER_PHONE
+  		, PASSWORD
+  		, MEMBER_IMAGE
   	
   	)
   	VALUES (
-  		
-  		#{id}
-  		,#{test}
-  	
+  		MEMBER_SEQ.NEXTVAL
+  		,#{email}
+  		,#{status}
+  		,#{name}
+  		,#{phone}
+  		,#{password}
+  		,#{img}
   	)
-  	
-  	
   
   
   </insert>

@@ -4,6 +4,7 @@ import com.TeamERoom.member.vo.MemberVO;
 
 public interface MemberService {
 	
-	int testDB(MemberVO testVO);
-
+	public boolean createMember(MemberVO testVO);
+	
+	
 }

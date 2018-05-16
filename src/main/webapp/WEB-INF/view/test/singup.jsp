@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,7 +12,35 @@
 <script src="static/vendor/jquery/jquery.min.js"></script>
 
 <script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$().ready(function() {
+		
+		$("#nomal").click(function() {
+			$("#status").val(0);
+		});
+		$("#host").click(function() {
+			$("#status").val(1);
+		});   
+		
+		$("#registBtn").click(function() {
+			
+			$("#registForm").attr({
+				"method" : "post",
+				"action" : "<c:url value="/signUp"/>"
+			}).submit();
+			
+			
+			
+		});
+		
+		
+		
+		
+		
+	});
+</script>
 
+ 
 <title>Insert title here</title>
 <style>
 
@@ -151,28 +180,35 @@
 </style>
 </head>
 <body>
-
-	<jsp:include page="/WEB-INF/view/test/template/topMenuBar.jsp" />
-	<jsp:include page="/WEB-INF/view/test/template/myPage.jsp" />
-
     <div class="container" style=" margin-bottom: 200px; width:400px; display:inline-block;">
     	
         <div class="card card-container" style="width:400px;">
-            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+		  <div>	
+			<div class="nbutton" style="display:inline-block; margin-left:10%;">
+			    <label for="nomal">일반</label>
+			    <input type="radio" id="nomal" name="select" />
+			</div>
+			<div class="rbutton" style="display:inline-block; verticl-align:top; margin-left:30%;" >   
+			    <label for="host">사업자</label>
+			    <input type="radio" id="host" name="select" />
+			</div>    
+		</div>
             <p id="profile-name" class="profile-name-card"></p>
-            <form class="form-signin">
+            <form:form class="form-signin" modelAttribute="registForm">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="text" id="RinputEmail" class="form-control" name="email" placeholder="Email address" required autofocus/>
+                <input type="password" id="RinputPassword" class="form-control" name="password" placeholder="Password" required/>
                	<hr>
-                <input type="password" id="inputPassword" class="form-control" placeholder="name" required>
-                <input type="password" id="inputPassword" class="form-control" placeholder="phone" required>
+                <input type="text" id="inputName" class="form-control" name="name" placeholder="name" required/>
+                <input type="text" id="inputPhone" class="form-control" name="phone" placeholder="phone" required/>
+                <hr>
+                <input type="file" id="profilePhoto" class="form-control" title="프로필 사진" name="img" placeholder="profile"/>
+                <hr>
+                <input type="hidden" id="status" name="status" value="0"  />
                 
-                
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
-            </form><!-- /form -->
+                <button id="registBtn" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+            </form:form><!-- /form -->
         </div><!-- /card-container -->
     </div><!-- /container -->
-    
 </body>
 </html>

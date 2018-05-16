@@ -14,9 +14,10 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
-	public int testDB(MemberVO testVO) {
-		memberDao.testDB(testVO);
-		return 0;
+	public boolean createMember(MemberVO memberVO) {
+		return memberDao.insertMember(memberVO) >0;
 	}
 
+	
+	
 }

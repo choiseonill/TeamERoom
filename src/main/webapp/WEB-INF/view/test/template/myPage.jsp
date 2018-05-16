@@ -62,7 +62,7 @@ A:hover {
 	text-align: right;
 	background-color: #FFFFFF;
 	position: fixed;
-	z-index: 1;
+	z-index: 1031;
 	height: 100%;
 	right: 0px;
 	

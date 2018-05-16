@@ -23,6 +23,7 @@
 	$().ready(function() {
 
 		$("#tt").click(function() {
+			console.log("tt");
 			$(".hide").toggle();
 		});
 
