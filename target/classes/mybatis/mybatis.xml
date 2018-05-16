@@ -27,8 +27,12 @@
 	</typeAliases>
 
 	<mappers>
+	
 		<mapper resource="/com/TeamERoom/member/dao/sql/memberDao.xml" />
-
+		<mapper resource="/com/TeamERoom/room/dao/sql/roomDao.xml" />
+		<mapper resource="/com/TeamERoom/reply/dao/sql/replyDao.xml" />
+		<mapper resource="/com/TeamERoom/Image/dao/sql/imageDao.xml" />
+		<mapper resource="/com/TeamERoom/board/dao/sql/boardDao.xml" />
 		
 	</mappers>
 </configuration>

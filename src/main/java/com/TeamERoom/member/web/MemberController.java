@@ -6,17 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.TeamERoom.member.service.MemberService;
 import com.TeamERoom.member.vo.MemberVO;
 
+import lombok.Setter;
+
 @Controller
 public class MemberController {
 
+	@Setter
 	private MemberService memberService;
-
-	
-
-	public void setMemberService(MemberService memberService) {
-		this.memberService = memberService;
-	}
-
 
 
 	@RequestMapping("/testdb")

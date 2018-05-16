@@ -39,5 +39,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="ojdbc6.jar"/>
+	<classpathentry kind="lib" path="lombok-1.16.20.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
