@@ -11,9 +11,14 @@
 		<typeAlias type="com.TeamERoom.board.vo.BoardVO" alias="BoardVO" />
 		<typeAlias type="com.TeamERoom.Image.vo.ImageVO" alias="ImageVO" />
 		<typeAlias type="com.TeamERoom.member.vo.MemberVO" alias="MemberVO" />
-		<typeAlias type="com.TeamERoom.member.vo.BookingVO" alias="BookingVO" />
-		<typeAlias type="com.TeamERoom.member.vo.BookingOptionVO" alias="BookingOptionVO" />
+		
+		
 		<typeAlias type="com.TeamERoom.reply.vo.replyVO" alias="replyVO" />
+		
+		
+		
+		
+		<!-- Room -->
 		<typeAlias type="com.TeamERoom.room.vo.RoomVO" alias="RoomVO" />
 		<typeAlias type="com.TeamERoom.room.vo.RoomOptionVO" alias="RoomOptionVO" />
 		<typeAlias type="com.TeamERoom.room.vo.RoomInfoVO" alias="RoomInfoVO" />

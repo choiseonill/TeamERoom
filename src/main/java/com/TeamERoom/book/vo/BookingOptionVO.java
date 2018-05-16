@@ -1,4 +1,4 @@
-package com.TeamERoom.member.vo;
+package com.TeamERoom.book.vo;
 
 public class BookingOptionVO {
 
