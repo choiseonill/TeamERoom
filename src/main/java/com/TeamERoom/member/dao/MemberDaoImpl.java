@@ -16,6 +16,12 @@ public class MemberDaoImpl extends SqlSessionDaoSupport implements MemberDao {
 		return getSqlSession().selectOne("MemberDao.doLogin", member);
 	}
 
+	//회원 가입할때 email check
+	@Override
+	public int selectCountMemberEmail(String email) {
+		return getSqlSession().selectOne("MemberDao.selectCountMemberEmail", email);
+	}
+
 
 
 }

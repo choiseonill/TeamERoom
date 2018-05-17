@@ -1,6 +1,8 @@
 package com.TeamERoom.member.web;
 
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.TeamERoom.member.service.MemberService;
@@ -81,5 +85,21 @@ public class MemberController {
 		}
 
 	}
+	
+	//validation check(email)
+	@RequestMapping("/api/exists/email")
+	@ResponseBody
+	public Map<String, Boolean> apiIsExistsEmail(@RequestParam String email){
+		
+		boolean isExists = memberService.readCountMemberEmail(email);
+		
+		Map<String, Boolean> response = new HashMap<String, Boolean>();
+		response.put("response", isExists);
+		return response;
+	}
+	
+	
+	
+	
 
 }

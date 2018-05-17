@@ -8,6 +8,7 @@ public interface MemberDao {
 
 	public MemberVO doLogin(MemberVO member);
 
-
+	//회원 가입할때 email check
+	public int selectCountMemberEmail(String email);
 	
 }

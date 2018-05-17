@@ -12,10 +12,10 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public boolean createMember(MemberVO memberVO) {
-		  if( memberVO.getFile() != null && !memberVO.getFile().isEmpty() ) {
-		         memberVO.setImg(memberVO.getFile().getOriginalFilename());
-		      }
-		
+		if (memberVO.getFile() != null && !memberVO.getFile().isEmpty()) {
+			memberVO.setImg(memberVO.getFile().getOriginalFilename());
+		}
+
 		return memberDao.insertMember(memberVO) > 0;
 	}
 
@@ -23,6 +23,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.doLogin(member);
 	}
 
-
+	//회원 가입할때 email check
+	@Override
+	public boolean readCountMemberEmail(String email) {
+		return memberDao.selectCountMemberEmail(email) > 0;
+	}
 
 }

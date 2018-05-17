@@ -55,6 +55,13 @@
   		AND		PASSWORD = #{password}
   	</select>
   
+  	<!-- 회원가입 할때 Email Check -->
+  	<select id="selectCountMemberEmail" parameterType="string" resultType="_int">
+  		SELECT	COUNT(MEMBER_ID)
+		FROM	MEMBER
+		WHERE	MEMBER_EMAIL = #{email}
+  	</select>
+  
 
   
   </mapper>
