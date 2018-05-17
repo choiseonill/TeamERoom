@@ -32,7 +32,6 @@
   </insert>
   
   	<select id="doLogin" parameterType="MemberVO" resultType="MemberVO">
-  	
   		SELECT	MEMBER_EMAIL		email
   				, MEMBER_STATUS		status
   				, MEMBER_NAME		name
@@ -45,13 +44,9 @@
   		FROM	MEMBER
   		WHERE	MEMBER_EMAIL = #{email}
   		AND		PASSWORD = #{password}
-  	
-  	
-  	
   	</select>
   
- 
- 
+
   
   </mapper>
   

@@ -9,6 +9,9 @@ public class TestController {
 	
 	@RequestMapping("/main")
 	public String testmainPage() {
+		
+		
+		
 		return "test/main";
 	}
 	

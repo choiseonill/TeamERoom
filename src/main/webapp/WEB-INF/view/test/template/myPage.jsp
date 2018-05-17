@@ -117,13 +117,15 @@ A:hover {
 
 		<div class="imgDiv">
 			<!-- TODO 세션체크 -->
-			<img id="userImg" alt="default Img" src="<c:url value="/static/img/defaultUser.png"/>">
-
-			<%-- <c:if test="${not empty sessionScope.__USER__ }">
-				 	<img alt="User's Img" src="" style="width:100px; height:100px">
-			     </c:if> --%>
+			
+			<c:if test="${empty sessionScope.__USER__ }">
+					<img id="userImg"  src="<c:url value="/static/img/defaultUser.png"/>" alt="default Img"/>
+			</c:if>
+			
+			 <c:if test="${not empty sessionScope.__USER__}">
+				 	<img src="<c:url value="/getPic/${sessionScope.__USER__.id}" />" alt="User's Img" style="width:100px; height:100px"/>
+			</c:if>  
 		</div>
-
 
 		<div class="imgDiv" style="margin-top:10px">
 			<!-- TODO 세션체크 -->

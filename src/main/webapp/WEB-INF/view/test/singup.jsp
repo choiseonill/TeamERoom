@@ -194,7 +194,7 @@
 			</div>    
 		</div>
             <p id="profile-name" class="profile-name-card"></p>
-            <form:form class="form-signin" modelAttribute="registForm">
+            <form:form class="form-signin" modelAttribute="registForm" enctype="multipart/form-data">
                 <span id="reauth-email" class="reauth-email"></span>
                 <input type="text" id="RinputEmail" class="form-control" name="email" placeholder="Email address" required autofocus/>
                 <input type="password" id="RinputPassword" class="form-control" name="password" placeholder="Password" required/>
@@ -202,9 +202,18 @@
                 <input type="text" id="inputName" class="form-control" name="name" placeholder="name" required/>
                 <input type="text" id="inputPhone" class="form-control" name="phone" placeholder="phone" required/>
                 <hr>
-                <input type="file" id="profilePhoto" class="form-control" title="프로필 사진" name="img" placeholder="profile"/>
+                <input type="file" id="profilePhoto" class="form-control" title="프로필 사진" name="file" placeholder="profile"/>
                 <hr>
                 <input type="hidden" id="status" name="status" value="0"  />
+                
+                
+                <hr>
+                
+                
+                
+                
+                
+                
                 
                 <button id="registBtn" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
             </form:form><!-- /form -->
