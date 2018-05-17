@@ -9,9 +9,6 @@ public class TestController {
 	
 	@RequestMapping("/main")
 	public String testmainPage() {
-		
-		
-		
 		return "test/main";
 	}
 	
@@ -33,7 +30,7 @@ public class TestController {
 	
 	}
 	
-	@RequestMapping("/singup")
+	@RequestMapping(value = "/singup", method = RequestMethod.POST)
 	public String testsingupPage() {
 		return "test/singup";
 	

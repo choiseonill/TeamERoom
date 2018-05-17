@@ -28,60 +28,58 @@ public class MemberController {
 	@Setter
 	private MemberService memberService;
 
-	
-	
-	
-	
-	
-	@RequestMapping(value="/signUp" , method = RequestMethod.POST)
-	public ModelAndView join(@ModelAttribute("registForm") @Valid MemberVO memberVO, Errors errors, 
-						HttpServletRequest request, Model model) {
-		
+	@RequestMapping(value = "/signUp", method = RequestMethod.POST)
+	public ModelAndView join(@ModelAttribute("registForm") @Valid MemberVO memberVO, Errors errors,
+			HttpServletRequest request, Model model) {
+
 		memberVO.profileSave();
-		System.out.println(memberVO.getEmail()+"~~~!!!");
+		System.out.println(memberVO.getEmail() + "~~~!!!");
+
 		if (errors.hasErrors()) {
 			return new ModelAndView("member/join");
 		}
-		
+
 		if (memberService.createMember(memberVO)) {
 			return new ModelAndView("redirect:/main");
 		}
-		
+
 		return new ModelAndView("redirect:/main");
 	}
-	
+
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String doLogin(@ModelAttribute MemberVO member, HttpSession session ) {
-		
+	public String doLogin(@ModelAttribute MemberVO member, HttpSession session) {
+
 		MemberVO memberVO = memberService.doLogin(member);
-		
-		if ( memberVO == null ) {
+
+		if (memberVO == null) {
 			return "redirect:/login";
 		}
-		
-		session.setAttribute("__USER__", memberVO );
+
+		session.setAttribute("__USER__", memberVO);
 		return "test/main";
-		
-		
+
 	}
 
-	
-	   @RequestMapping("/getPic/{id}")
-	   public void download(@PathVariable int id, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-	      
-		  MemberVO member = (MemberVO)  session.getAttribute("__USER__");
-		  String pImage = member.getImg();
-	      
-		  System.out.println(pImage);
+	@RequestMapping("/getPic/{id}")
+	public void download(@PathVariable int id, HttpServletRequest request, HttpServletResponse response,
+			HttpSession session) {
+
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + id);
+		
+		
+		MemberVO member = (MemberVO) session.getAttribute("__USER__");
+		String pImage = member.getImg();
+
+		System.out.println(pImage);
 
 		DownloadUtil download = new DownloadUtil("C:\\Users\\YongGwan\\Desktop\\TeamERoom\\profile\\" + pImage);
 
 		try {
-	                download.download(request, response, pImage);
-	             } catch (UnsupportedEncodingException e) {
-	                throw new RuntimeException(e.getMessage(), e);
-	             }
-	      
-	   }
-	
+			download.download(request, response, pImage);
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+
+	}
+
 }

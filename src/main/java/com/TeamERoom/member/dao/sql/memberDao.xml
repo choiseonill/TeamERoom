@@ -32,7 +32,8 @@
   </insert>
   
   	<select id="doLogin" parameterType="MemberVO" resultType="MemberVO">
-  		SELECT	MEMBER_EMAIL		email
+  		SELECT	MEMBER_ID			id
+  				, MEMBER_EMAIL		email
   				, MEMBER_STATUS		status
   				, MEMBER_NAME		name
   				, MEMBER_PHONE		phone

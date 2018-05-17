@@ -27,7 +27,7 @@
 		});
 
 		$("#back").click(function() {
-			$(".hide").toggle();
+			$(".hide").animate({width:'toggle'},350);
 		});
 
 	});
@@ -80,7 +80,7 @@ A:hover {
 	font-size: 18px;
 }
 
-#userImg {
+.userImg {
 	width: 100px;
 	height: 100px;
 	border-radius: 50%;
@@ -119,23 +119,26 @@ A:hover {
 			<!-- TODO 세션체크 -->
 			
 			<c:if test="${empty sessionScope.__USER__ }">
-					<img id="userImg"  src="<c:url value="/static/img/defaultUser.png"/>" alt="default Img"/>
+					<img class="userImg"  src="<c:url value="/static/img/defaultUser.png"/>" alt="default Img"/>
 			</c:if>
 			
 			 <c:if test="${not empty sessionScope.__USER__}">
-				 	<img src="<c:url value="/getPic/${sessionScope.__USER__.id}" />" alt="User's Img" style="width:100px; height:100px"/>
+				 	<img class="userImg" src="<c:url value="/getPic/${sessionScope.__USER__.id}" />" alt="User's Img" />
 			</c:if>  
 		</div>
 
 		<div class="imgDiv" style="margin-top:10px">
-			<!-- TODO 세션체크 -->
+			
+			<c:if test="${empty sessionScope.__USER__ }">
 			<a href="<c:url value="/login"/>">
 				<button>로그인</button>
 			</a>
+			</c:if>
 
-			<%-- <c:if test="${empty sessionScope.__USER__} }">
-				<a>로그아웃</a>
-			</c:if> --%>
+
+			<c:if test="${not empty sessionScope.__USER__}">
+				<button>로그아웃 </button>
+			</c:if> 
 
 		</div>
 

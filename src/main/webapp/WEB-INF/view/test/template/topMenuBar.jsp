@@ -24,7 +24,7 @@
 
 		$("#tt").click(function() {
 			console.log("tt");
-			$(".hide").toggle();
+			$(".hide").animate({width:'toggle'},350);
 		});
 
 	})
