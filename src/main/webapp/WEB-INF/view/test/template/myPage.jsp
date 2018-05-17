@@ -137,7 +137,9 @@ A:hover {
 
 
 			<c:if test="${not empty sessionScope.__USER__}">
-				<button>로그아웃 </button>
+				<a href="<c:url value="/logout"/>">
+					<button>로그아웃 </button>
+				</a>
 			</c:if> 
 
 		</div>

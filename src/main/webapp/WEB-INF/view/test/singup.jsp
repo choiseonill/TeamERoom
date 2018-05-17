@@ -17,9 +17,13 @@
 		
 		$("#nomal").click(function() {
 			$("#status").val(0);
+			$("#BizName").css("display", "none");
+			$("#BizNumber").css("display", "none");
 		});
 		$("#host").click(function() {
 			$("#status").val(1);
+			$("#BizName").css("display", "inline-block");
+			$("#BizNumber").css("display", "inline-block");
 		});   
 		
 		$("#registBtn").click(function() {
@@ -177,6 +181,15 @@
 .forgot-password:focus{
     color: rgb(12, 97, 33);
 }
+
+#BizName{
+	display:none;
+}
+#BizNumber{
+	display:none;
+}
+
+
 </style>
 </head>
 <body>
@@ -209,9 +222,8 @@
                 <input type="file" id="profilePhoto" class="form-control" title="프로필 사진" name="file" placeholder="profile"/>
                 <hr>
                 <input type="hidden" id="status" name="status" value="0"  />
-                
-                
-                <hr>
+                <input type="text" id="BizName" class="form-control" name="bizName" placeholder="사업장 명"/>
+                <input type="text" id="BizNumber" class="form-control" name="bizNumber" placeholder="사업자 번호 "/>
                 
                 
                 <button id="registBtn" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>

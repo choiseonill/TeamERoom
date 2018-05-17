@@ -22,8 +22,7 @@
 <script type="text/javascript">
 	$().ready(function() {
 
-		$("#tt").click(function() {
-			console.log("tt");
+		$("#menuBtn").click(function() {
 			$(".hide").animate({width:'toggle'},350);
 		});
 
@@ -71,7 +70,7 @@
 				</li>
 
 				<li>
-				   <img id="tt" alt="myButton" src="<c:url value="/static/img/menu.png"/>" 
+				   <img id="menuBtn" alt="myButton" src="<c:url value="/static/img/menu.png"/>" 
 				   style="height:20px; width:20px; margin-top:8px"/>
 				</li>
 

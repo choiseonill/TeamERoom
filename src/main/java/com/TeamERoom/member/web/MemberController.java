@@ -33,7 +33,8 @@ public class MemberController {
 			HttpServletRequest request, Model model) {
 
 		memberVO.profileSave();
-		System.out.println(memberVO.getEmail() + "~~~!!!");
+		System.out.println(memberVO.getBizName() + "bizname~~~!!!");
+		System.out.println(memberVO.getBizNumber() + "number~~~!!!");
 
 		if (errors.hasErrors()) {
 			return new ModelAndView("member/join");
@@ -60,6 +61,15 @@ public class MemberController {
 
 	}
 
+	@RequestMapping("/logout")
+	public String doLogout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/main";
+	}
+	
+	
+	
+	
 	@RequestMapping("/getPic/{id}")
 	public void download(@PathVariable int id, HttpServletRequest request, HttpServletResponse response,
 			HttpSession session) {

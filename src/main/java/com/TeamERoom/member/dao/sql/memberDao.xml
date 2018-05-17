@@ -18,7 +18,8 @@
   		, MEMBER_PHONE
   		, PASSWORD
   		, MEMBER_IMAGE
-  	
+  		, BIZ_NAME
+  		, BIZ_NUMBER
   	)
   	VALUES (
   		MEMBER_SEQ.NEXTVAL
@@ -28,6 +29,10 @@
   		,#{phone}
   		,#{password}
   		,#{img}
+  		,#{bizName}
+  		,#{bizNumber}
+  		
+  		
   	)
   </insert>
   
