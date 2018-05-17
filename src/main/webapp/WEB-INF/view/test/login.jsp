@@ -198,50 +198,46 @@
 	<jsp:include page="/WEB-INF/view/test/template/myPage.jsp" />
 
 	<div>
-		<div class="container"
-			style="margin: 200px; display: inline-block;">
+		<div class="container" style="margin: 200px; display: inline-block;">
 			<div class="Login" style="display: inline-block;">
-				<div class="card1 card-container"
-					style="display: inline-block; width: 400px; margin-bottom: 200px; margin-left: 200px;">
+				<div class="card1 card-container" style="display: inline-block; width: 400px; margin-bottom: 200px; margin-left: 200px;">
 					<!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-					<img id="profile-img" class="profile-img-card"
-						src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+					<img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
 					<p id="profile-name" class="profile-name-card"></p>
 					
 					
-					 <form:form modelAttribute="loginForm"  class="form-signin">
-               
-               
-                  <span id="reauth-email" class="reauth-email"></span> 
-                  
-                  <input type="email" id="inputEmail" name="email" class="form-control"
-                     placeholder="Email address" required autofocus> 
-                  <input type="password" id="inputPassword" name="password" class="form-control"
-                     placeholder="Password" required>
-
-                  <button id="loginBtn" class="btn btn-lg btn-primary btn-block btn-signin"
-                     type="submit">log in</button>
-                     
-                     
-               </form:form>
+					<form:form modelAttribute="loginForm"  class="form-signin">
+                  			<span id="reauth-email" class="reauth-email"></span> 
+                  			<input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus> 
+                  			<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+                  			<button id="loginBtn" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">log in</button>
+              		</form:form>
 
 					<!-- /form -->
-					<a href="<c:url value="/singup" />" class="forgot-password">
-						Forgot the password? </a>
+					<a href="<c:url value="/singup" />" class="forgot-password"> 
+						Forgot the password? 
+					</a>
 				</div>
 				<!-- /card-container -->
 			</div>
+			
 			<div class="Regist">
-				<jsp:include page="singup.jsp" />
+					<jsp:include page="singup.jsp" />
 			</div>
 		</div>
 		<!-- /container -->
 	</div>
+	
+	
+	
+	
+	
 	<!-- Footer -->
 	<footer class="py-5 bg-dark">
 	<div class="container">
-		<p class="m-0 text-center text-white">Copyright &copy; Your
-			Website 2018</p>
+		<p class="m-0 text-center text-white">
+			Copyright &copy; Your Website 2018
+		</p>
 	</div>
 	<!-- /.container --> </footer>
    

@@ -15,6 +15,21 @@
 <script type="text/javascript">
 	$().ready(function() {
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//회원 가입에 대한 jQuery(status)
 		$("#nomal").click(function() {
 			$("#status").val(0);
 			$("#BizName").css("display", "none");
@@ -26,15 +41,15 @@
 			$("#BizNumber").css("display", "inline-block");
 		});   
 		
+		
+		
+		
+		//회원가입 등록Btn
 		$("#registBtn").click(function() {
-			
 			$("#registForm").attr({
 				"method" : "post",
 				"action" : "<c:url value="/signUp"/>"
 			}).submit();
-			
-			
-			
 		});
 		
 		
@@ -215,15 +230,27 @@
                 <span id="reauth-email" class="reauth-email"></span>
                 <input type="text" id="RinputEmail" class="form-control" name="email" placeholder="Email address" required autofocus/>
                 <input type="password" id="RinputPassword" class="form-control" name="password" placeholder="Password" required/>
+                <input type="password" id="RinputPassword-confirm" class="form-control" name="password-confirm" placeholder="Password-Confirm" required/>
                	<hr>
                 <input type="text" id="inputName" class="form-control" name="name" placeholder="name" required/>
                 <input type="text" id="inputPhone" class="form-control" name="phone" placeholder="phone" required/>
                 <hr>
-                <input type="file" id="profilePhoto" class="form-control" title="프로필 사진" name="file" placeholder="profile"/>
+                
+                <select id="question" class="form-control" name="question">
+							<option>아이디/비번 찾기 질문</option>
+							<option>자주 가는 곳은?</option>
+							<option>내 보물 1호는?</option>
+							<option>가장 친한 친구 이름은?</option>
+							<option>내가 나온 초등학교는?</option>
+							<option>영빈이가 지금까지 마신 소주병의 갯수는?</option>
+				</select>
                 <hr>
+                <input type="text" id="answer" class="form-control" title="answer" name="answer" placeholder="Answer" />
                 <input type="hidden" id="status" name="status" value="0"  />
                 <input type="text" id="BizName" class="form-control" name="bizName" placeholder="사업장 명"/>
                 <input type="text" id="BizNumber" class="form-control" name="bizNumber" placeholder="사업자 번호 "/>
+                <hr>
+                <input type="file" id="profilePhoto" class="form-control" title="프로필 사진" name="file"/>
                 
                 
                 <button id="registBtn" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>

@@ -33,8 +33,6 @@ public class MemberController {
 			HttpServletRequest request, Model model) {
 
 		memberVO.profileSave();
-		System.out.println(memberVO.getBizName() + "bizname~~~!!!");
-		System.out.println(memberVO.getBizNumber() + "number~~~!!!");
 
 		if (errors.hasErrors()) {
 			return new ModelAndView("member/join");
@@ -57,7 +55,7 @@ public class MemberController {
 		}
 
 		session.setAttribute("__USER__", memberVO);
-		return "test/main";
+		return "redirect:/main";
 
 	}
 
@@ -66,21 +64,13 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/main";
 	}
-	
-	
-	
-	
+
 	@RequestMapping("/getPic/{id}")
 	public void download(@PathVariable int id, HttpServletRequest request, HttpServletResponse response,
 			HttpSession session) {
 
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + id);
-		
-		
 		MemberVO member = (MemberVO) session.getAttribute("__USER__");
 		String pImage = member.getImg();
-
-		System.out.println(pImage);
 
 		DownloadUtil download = new DownloadUtil("C:\\Users\\YongGwan\\Desktop\\TeamERoom\\profile\\" + pImage);
 

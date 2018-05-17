@@ -20,6 +20,8 @@
   		, MEMBER_IMAGE
   		, BIZ_NAME
   		, BIZ_NUMBER
+  		, QUESTION
+  		, ANSWER
   	)
   	VALUES (
   		MEMBER_SEQ.NEXTVAL
@@ -31,7 +33,8 @@
   		,#{img}
   		,#{bizName}
   		,#{bizNumber}
-  		
+  		,#{question}
+  		,#{answer}
   		
   	)
   </insert>
