@@ -1,17 +1,17 @@
 @charset "UTF-8";
 
-@media (max-width:1200px ) {
-.Regist {
-    display:none;    
-    margin:auto;
-  }
-.Login{
-	margin-left:20%;
+@media ( max-width :1200px ) {
+	.Regist {
+		display: none;
+		margin: auto;
+	}
+	.Login {
+		margin-left: 20%;
 	}
 }
-@media (min-width: 1200px) {
-.Regist {
-    display:inline-block;
-  }
-  
-}  
+
+@media ( min-width : 1200px) {
+	.Regist {
+		display: inline-block;
+	}
+}

@@ -20,7 +20,7 @@
 
 <script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"
 	type="text/javascript"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $().ready(function() {
 
 	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
@@ -42,6 +42,15 @@ $().ready(function() {
 
 	}).scroll();
 
+});
+</script> -->
+
+<script>
+$(function(){  
+	$(window).scroll(function( ){  //스크롤이 움직일때마다 이벤트 발생 
+	      var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
+	      $( id ).stop().animate({top:position+"px"}, 1); //해당 오브젝트 위치값 재설정
+	 });
 });
 </script>
 
@@ -256,15 +265,19 @@ $().ready(function() {
         </div>
 
         <!-- Sidebar Widgets Column -->
+        
         <div class="col-md-4">
           <!-- Side Widget -->
-          <div class="card my-4" id="card">
-            <h5 class="card-header">세부공간 선택</h5>
-            <div class="card-body">
-              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
-            </div>
-          </div>
+      
+         <div id="scroll" style="position:absolute;right:0;top:0;"> 
+<table> 
+<tr><td>■■■■■■■■■■■</td> </tr>
+<tr><td>■■■■b1ix■■■■</td> </tr>
+<tr><td>■■■■■■■■■■■</td> </tr> 
+</table> 
+</div>
 
+       
         </div>
 
       </div>

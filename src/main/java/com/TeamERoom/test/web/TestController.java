@@ -9,42 +9,52 @@ public class TestController {
 	
 	@RequestMapping("/main")
 	public String testmainPage() {
-		return "test/main";
+		return "/main";
 	}
 	
 	@RequestMapping("/roomdetail")
 	public String testroomdetailPage() {
-		return "test/roomdetail";
+		return "/roomdetail";
 	
 	}
 	
 	@RequestMapping("/roomComments")
 	public String testroomCommentsPage() {
-		return "test/roomComments";
+		return "/roomComments";
 	
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String testloginPage() {
-		return "test/login";
+		return "member/login";
 	
 	}
 	
 	@RequestMapping(value = "/singup", method = RequestMethod.POST)
 	public String testsingupPage() {
-		return "test/singup";
+		return "member/singup";
 	
 	}
 	
 	@RequestMapping("/test")
 	public String testtestPage() {
-		return "test/test";
+		return "/test";
 	
 	}
 	
 	@RequestMapping("/reservation")
 	public String testreservationPage() {
-		return "test/reservation";
+		return "board/reservation";
 	
 	}
+	
+	@RequestMapping("/ss")
+	public String userR() {
+		return "admin/AdminReservationManagement";
+	
+	}
+	
+
+	
+	
 }
