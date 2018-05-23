@@ -14,7 +14,7 @@ public class TestController {
 	
 	@RequestMapping("/roomdetail")
 	public String testroomdetailPage() {
-		return "/roomdetail";
+		return "room/roomdetail";
 	
 	}
 	
@@ -48,9 +48,33 @@ public class TestController {
 	
 	}
 	
-	@RequestMapping("/ss")
-	public String userR() {
-		return "admin/AdminReservationManagement";
+	@RequestMapping("/like")
+	public String like() {
+		return "member/like";
+	
+	}
+	
+	@RequestMapping("/notice")
+	public String notice() {
+		return "board/notice";
+	
+	}
+	
+	@RequestMapping("/event")
+	public String event() {
+		return "board/event";
+	
+	}
+	
+	@RequestMapping("/onetoone")
+	public String onetoone() {
+		return "board/onetoone";
+	
+	}
+	
+	@RequestMapping("/registRoom")
+	public String regist() {
+		return "room/registRoom";
 	
 	}
 	

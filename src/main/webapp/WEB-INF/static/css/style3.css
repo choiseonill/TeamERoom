@@ -3,6 +3,12 @@
 */
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
+.userImg {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	margin-bottom: 15px;
+}
 
 
 p {
@@ -48,7 +54,7 @@ a, a:hover, a:focus {
     width: 250px;
     position: fixed;
     top: 0;
-    left: -250px;
+    right: -250px;
     height: 100vh;
     z-index: 1301;
     background: #7386D5;
@@ -59,7 +65,7 @@ a, a:hover, a:focus {
 }
 
 #sidebar.active {
-    left: 0;
+    right: 0;
 }
 
 #dismiss {

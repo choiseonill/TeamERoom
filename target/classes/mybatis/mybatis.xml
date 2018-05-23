@@ -26,6 +26,10 @@
 		<typeAlias type="com.TeamERoom.room.vo.LikesVO" alias="LikesVO" />
 		<typeAlias type="com.TeamERoom.room.vo.DetailRoomVO" alias="DetailRoomVO" />
 		<typeAlias type="com.TeamERoom.room.vo.CategoryVO" alias="CategoryVO" />
+		<typeAlias type="com.TeamERoom.room.vo.CategoryVO" alias="CategoryVO" />
+		
+		<typeAlias type="com.TeamERoom.book.vo.BookingVO" alias="BookingVO" />
+		<typeAlias type="com.TeamERoom.book.vo.BookingOptionVO" alias="BookingOptionVO" />
 		
 	
 		
@@ -34,6 +38,8 @@
 	<mappers>
 	
 		<mapper resource="/com/TeamERoom/member/dao/sql/memberDao.xml" />
+		<mapper resource="/com/TeamERoom/book/dao/sql/bookDao.xml" />
+		
 		<mapper resource="/com/TeamERoom/room/dao/sql/roomDao.xml" />
 		<mapper resource="/com/TeamERoom/reply/dao/sql/replyDao.xml" />
 		<mapper resource="/com/TeamERoom/Image/dao/sql/imageDao.xml" />

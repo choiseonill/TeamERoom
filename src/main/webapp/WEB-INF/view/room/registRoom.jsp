@@ -23,31 +23,30 @@
 <script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"
    type="text/javascript"></script>
 <script type="text/javascript">
-   $().ready(function() {
-      /*    var floatPosition = parseInt($("#card").css('top')); */
-      var scrollTop = $(window).scrollTop();
-      if (scrollTop < 625) {
-         $("#card").css('top', 0);
-      } else {
-         $("#card").css('top', (scrollTop - 625) + 'px');
+$().ready(function() {
+   var scrollTop = $(window).scrollTop();
+   if (scrollTop < 500) {
+      $("#card").css('top', 0);
+   } else {
+      $("#card").css('top', (scrollTop - 500) + 'px');
+   }
+
+   $(window).scroll(function() {
+      scrollTop = $(window).scrollTop();
+      if (scrollTop < 500) {
+
+         $("#card").stop().animate({
+            "top" : 0
+         }, 500);
       }
 
-      $(window).scroll(function() {
-         scrollTop = $(window).scrollTop();
-         if (scrollTop < 625) {
-
-            $("#card").stop().animate({
-               "top" : 0
-            }, 500);
-         }
-
-         else {
-            $("#card").stop().animate({
-               "top" : (scrollTop - 625) + 'px'
-            }, 500);
-         }
-      });
+      else {
+         $("#card").stop().animate({
+            "top" : (scrollTop - 500) + 'px'
+         }, 500);
+      }
    });
+});
 </script>
 
 

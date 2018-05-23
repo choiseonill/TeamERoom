@@ -10,6 +10,10 @@
 	<bean id="memberController" class="com.TeamERoom.member.web.MemberController">
 		<property name="memberService" ref="memberService"></property>
 	</bean>
+	
+	<bean id="bookController" class="com.TeamERoom.book.web.BookController">
+		<property name="bookService" ref="bookService"></property>
+	</bean>
 
 
 

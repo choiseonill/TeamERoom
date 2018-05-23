@@ -9,12 +9,12 @@
 
 <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="static/css/style3.css">
-<link rel="stylesheet" 
-	href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
 <script src="static/js/jquery-3.3.1.min.js"></script>
 <script src="<c:url value="/static/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -36,10 +36,8 @@
 	});
 </script>
  <style>
-.userImg {
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
+#sidebarCollapse{
+	background-color: #3DDAD7;
 }
 </style>	
    
@@ -54,30 +52,24 @@
 			</div>
 
 			<div class="sidebar-header">
-				<h3>Bootstrap Sidebar</h3>
+				<h3>My Page</h3>
 			</div>
 
 			<ul class="list-unstyled components">
-
-				<!-- TODO 세션체크 -->
-
 				<c:if test="${empty sessionScope.__USER__ }">
-					<img class="userImg"
-						src="<c:url value="/static/img/defaultUser.png"/>"
-						alt="default Img" />
+					<img class="userImg" src="<c:url value="/static/img/defaultUser.png"/>" alt="default Img" />
 				</c:if>
 
 				<c:if test="${not empty sessionScope.__USER__}">
-					<img class="userImg"
-						src="<c:url value="/getPic/${sessionScope.__USER__.id}" />"
-						alt="User's Img" />
+					<img class="userImg" src="<c:url value="/getPic/${sessionScope.__USER__.id}" />" alt="User's Img" />
 				</c:if>
 
-				<li class="active"><a href="#">예약내역 리스트</a></li>
-				<li><a href="#">내가 가고 싶은 공간</a></li>
-				<li><a href="#">공지사항</a></li>
-				<li><a href="#">이벤트</a></li>
-				<li><a href="">1:1문의사항</a></li>
+				<li class="active">
+					<a href="<c:url value="/"/>">예약내역 리스트</a></li>
+				<li><a href="<c:url value="/like"/>">내가 가고 싶은 공간</a></li>
+				<li><a href="<c:url value="/notice"/>">공지사항</a></li>
+				<li><a href="<c:url value="/event"/>">이벤트</a></li>
+				<li><a href="<c:url value="/onetoone"/>">1:1문의사항</a></li>
 			</ul>
 
 			<ul class="list-unstyled CTAs">
@@ -93,6 +85,11 @@
 						로그아웃
 					</a></li>
 				</c:if>
+
+
+				<button>
+					<a href="<c:url value="/registRoom"/>">roomdetail</a>
+				</button>
 
 
 			</ul>
@@ -124,16 +121,16 @@
 						<ul class="navbar-nav ml-auto">
 							<li class="nav-item"><a class="nav-link" href="about.html">추천장소</a>
 							</li>
-							<li class="nav-item"><a class="nav-link"
-								href="<c:url value="/roomComments"/>">써 본 사람</a></li>
+			
+							<li class="nav-item"><a class="nav-link" href="<c:url value="/roomComments"/>"> 써 본 사람 </a>
+							</li>
 
 							<li class="nav-item"><a class="nav-link" href="contact.html">공간등록하기</a>
 							</li>
-
+  
 							<li>
-								<button type="button" id="sidebarCollapse"
-									class="btn btn-info navbar-btn">
-									<i class="glyphicon glyphicon-align-left"></i> <span>OpenSidebar</span>
+								<button id="sidebarCollapse" class="btn btn-info navbar-btn" style="margin-top:1px; margin-left:-4px">
+									<i class="fa fa-bars"></i>
 								</button>
 							</li>
 						</ul>
