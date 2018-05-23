@@ -14,13 +14,13 @@ public class TestController {
 	
 	@RequestMapping("/roomdetail")
 	public String testroomdetailPage() {
-		return "/roomdetail";
+		return "room/roomdetail";
 	
 	}
 	
 	@RequestMapping("/roomComments")
 	public String testroomCommentsPage() {
-		return "/roomComments";
+		return "board/roomComments";
 	
 	}
 	
@@ -42,11 +42,6 @@ public class TestController {
 	
 	}
 	
-	@RequestMapping("/reservation")
-	public String testreservationPage() {
-		return "board/reservation";
-	
-	}
 	
 	@RequestMapping("/ss")
 	public String userR() {
