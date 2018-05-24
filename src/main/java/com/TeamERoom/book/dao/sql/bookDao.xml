@@ -4,8 +4,66 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="BookDao"><!-- 인터페이스 이름 적어줌 -->
+  <resultMap type="BookingVO" id="BookingVOMap">
+  	
+  	<id column="BOOK_ID" property="id"/>
+  	<result column="DETAIL_ID" property="detailId"/>
+  	<result column="MEMBER_ID" property="mId"/>
+  	<result column="BOOK_NAME" property="bookName"/>
+  	<result column="BOOK_PHONE" property="bookPhone"/>
+  	<result column="BOOK_EMAIL" property="bookEmail"/>
+  	<result column="REQUEST" property="bookRequest"/>
+  	<result column="BOOK_DATE" property="bookDate"/>
+  	<result column="BOOK_START_TIME" property="bookStartTime"/>
+  	<result column="BOOK_END_TIME" property="bookEndTime"/>
+  	<result column="BOOK_PEOPLE" property="bookPeople"/>
+  	<result column="BOOK_STATUS" property="bookStatus"/>
+  	
+  	<association property="memberVO" javaType="MemberVO">
+  	
+  		<id column="MEMBER_ID" property="id"/>
+  		<result column="MEMBER_EMAIL" property="email"/>
+  		<result column="MEMBER_STATUS" property="status"/>
+  		<result column="MEMBER_NAME" property="name"/>
+  		<result column="MEMBER_PHONE" property="phone"/>
+  		<result column="PASSWORD" property="password"/>
+  		<result column="SALT" property="salt"/>
+  		<result column="BIZ_NAME" property="bizName"/>
+  		<result column="BIZ_NUMBER" property="bizNumber"/>
+  		<result column="MEMBER_IMAGE" property="img"/>
+  		<result column="QUESTION" property="question"/>
+  		<result column="ANSWER" property="answer"/>
+  		
+  	</association>
+  	
+  	<association property="bookingOptionVO" javaType="BookingOptionVO">
+  		
+  		<id column="B_OPTION_ID" property="id"/>
+  		<result column="BOOK_ID" property="bookId"/>
+  		<result column="D_OPTION_ID" property="dOptionId"/>
+  		<result column="B_OPTION_PRICE" property="bOptionPrice"/>
+  		<result column="B_OPTION_QUANTITY" property="bOptionQuantity"/>
+  	
+  	</association>
+  	
+  	<association property="detailRoomVO" javaType="DetailRoomVO">
+  		
+  		<id column="DETAIL_ID" property=""/>
+  		<result column="ROOM_ID" property=""/>
+  		<result column="DETAIL_TITLE" property=""/>
+  		<result column="DETAIL_INFO" property=""/>
+  		<result column="DETAIL_TYPE" property=""/>
+  		<result column="DETAIL_IMAGE" property=""/>
+  		<result column="MIN_TIME" property=""/>
+  		<result column="MIN_PEOPLE" property=""/>
+  		<result column="MAX_PEOPLE" property=""/>
+  		<result column="PRICE_PER_TIME" property=""/>
+  		<result column="PRICE_PER_TIME_WEEKEND" property=""/>
+  	
+  	</association>
   
- 
-  
+  </resultMap>	
+ 	
+  	
   </mapper>
   
