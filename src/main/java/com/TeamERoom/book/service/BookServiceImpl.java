@@ -9,7 +9,7 @@ public class BookServiceImpl implements BookService{
 	@Setter
 	private BookDao bookDao;
 	
-	
+	이용관
 	@Override
 	public boolean testService() {
 		// TODO Auto-generated method stub
