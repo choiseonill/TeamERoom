@@ -2,11 +2,135 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="RoomDao"><!-- 인터페이스 이름 적어줌 -->
-  
- 
- 
-  
-  </mapper>
+
+<mapper namespace="RoomDao"><!-- 인터페이스 이름 적어줌 -->
+	<resultMap type="RoomVO" id="RoomVOMap">
+		
+		<id column="ROOM_ID" property="id"/>
+		<result column="MEMBER_ID" property="mId"/>
+		<result column="ROOM_TITLE" property="roomTitle"/>
+		<result column="INTRO" property="intro"/>
+		<result column="INFO" property="info"/>
+		<result column="ROOM_START_TIME" property="roomStartTime"/>
+		<result column="ROOM_END_TIME" property="roomEndTime"/>
+		<result column="URL" property="url"/>
+		<result column="ROOM_STATUS" property="roomStatus"/>
+		<result column="HOLIDAY" property="holiday"/>
+		<result column="ROOM_EMAIL" property="roomEmail"/>
+		<result column="ROOM_PHONE" property="roomPhone"/>
+		<result column="ADDRESS" property="address"/>
+		<result column="BANK" property="bank"/>
+		<result column="DEPOSITOR" property="depositor"/>
+		<result column="ACCOUNT_NUMBER" property="accountNumber"/>
+		<result column="ROOM_IMAGE" property="roomImage"/>
+
+		<association property="roomInfoVO" javaType="RoomInfoVO">
+			
+			<id column="R_INFO_ID" property="id"/>
+			<result column="ROOM_ID" property="roomId"/>
+			<result column="R_INFO_TYPE" property="infoType"/>
+			<result column="R_INFO_BODY" property="body"/>
+		
+		</association>
+
+
+		<association property="detailRoomVO" javaType="DetailRoomVO">
+	
+			<id column="DETAIL_ID" property="id"/>
+			<result column="ROOM_ID" property="roomId"/>
+			<result column="DETAIL_TITLE" property="title"/>
+			<result column="DETAIL_INFO" property="info"/>
+			<result column="DETAIL_TYPE" property="type"/>
+			<result column="DETAIL_IMAGE" property="image"/>
+			<result column="MIN_TIME" property="minTime"/>
+			<result column="MIN_PEOPLE" property="minPeople"/>
+			<result column="MAX_PEOPLE" property="maxPeople"/>
+			<result column="PRICE_PER_TIME" property="pricePerTime"/>
+			<result column="PRICE_PER_TIME_WEEKEND" property="pricePerTimeWeekend"/>
+
+		</association>
+
+
+		<association property="detailOptionVO" javaType="DetailOptionVO">
+			
+			<id column="D_OPTION_ID" property="id"/>
+			<result column="DETAIL_ID" property="detailId"/>
+			<result column="D_OPTION_NAME" property="name"/>
+			<result column="D_OPTION_BODY" property="body"/>
+			<result column="D_OPTION_QUANTITY" property="quantity"/>
+			<result column="D_OPTION_PRICE" property="price"/>
+			<result column="D_OPTION_IMAGE" property="image"/>
+			
+		</association>
+
+
+		<association property="memberVO" javaType="MemberVO">
+
+			<id column="MEMBER_ID" property="id"/>
+			<result column="MEMBER_EMAIL" property="email"/>
+			<result column="MEMBER_STATUS" property="status"/>
+			<result column="MEMBER_NAME" property="name"/>
+			<result column="MEMBER_PHONE" property="phone"/>
+			<result column="PASSWORD" property="password"/>
+			<result column="SALT" property="salt"/>
+			<result column="BIZ_NAME" property="bizName"/>
+			<result column="BIZ_NUMBER" property="bizNumber"/>
+			<result column="MEMBER_IMAGE" property="img"/>
+			<result column="QUESTION" property="question"/>
+			<result column="ANSWER" property="answer"/>
+
+		</association>
+
+
+		<association property="likesVO" javaType="LikesVO">
+			<id column="LIKE_ID" property="id"/>
+			<result column="ROOM_ID" property="roomId"/>
+			<result column="MEMBER_ID" property="mId"/>
+			
+		</association>
+
+	
+		<association property="replyVO" javaType="RelplyVO">
+		
+			<id column="REPLY_ID" property="id"/>
+			<result column="ROOM_ID" property="roomId"/>
+			<result column="BODY" property="body"/>
+			<result column="WRITE_DATE" property="date"/>
+			
+		</association>
+	
+	
+		<association property="imageVO" javaType="ImageVO">
+		
+			<id column="IMG_ID" property="id"/>
+			<result column="ROOM_ID" property="roomId"/>
+			<result column="BOARD_ID" property="boardId"/>
+			<result column="DETAIL_ID" property="detailId"/>
+			<result column="IMAGE" property="image"/>
+			
+		</association>
+
+
+		<association property="optionsVO" javaType="OptionsVO">
+		
+			<id column="OPTION_ID" property="id"/>
+			<result column="ROOM_ID" property="roomId"/>
+			<result column="OPTION_NAME" property="optionName"/>
+			
+		</association>
+	
+		
+		<association property="categoryVO" javaType="CategoryVO">
+		
+			<id column="CATEGORY_ID" property="id"/>
+			<result column="ROOM_ID" property="roomId"/>
+			<result column="CATEGORY_NAME" property="name"/>
+			
+		</association>
+		
+	</resultMap>
+
+
+
+</mapper>
   

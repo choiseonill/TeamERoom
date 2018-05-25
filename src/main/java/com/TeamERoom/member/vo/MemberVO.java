@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 public class MemberVO {
 
-	private String id;
+	private int id;
 	private String email;
 	private int status;
 	private String name;

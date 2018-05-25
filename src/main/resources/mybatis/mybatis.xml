@@ -20,7 +20,7 @@
 		
 		<!-- Room -->
 		<typeAlias type="com.TeamERoom.room.vo.RoomVO" alias="RoomVO" />
-		<typeAlias type="com.TeamERoom.room.vo.RoomOptionVO" alias="RoomOptionVO" />
+		<typeAlias type="com.TeamERoom.room.vo.DetailOptionVO" alias="DetailOptionVO" />
 		<typeAlias type="com.TeamERoom.room.vo.RoomInfoVO" alias="RoomInfoVO" />
 		<typeAlias type="com.TeamERoom.room.vo.OptionsVO" alias="OptionsVO" />
 		<typeAlias type="com.TeamERoom.room.vo.LikesVO" alias="LikesVO" />

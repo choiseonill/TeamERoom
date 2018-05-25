@@ -48,17 +48,17 @@
   	
   	<association property="detailRoomVO" javaType="DetailRoomVO">
   		
-  		<id column="DETAIL_ID" property=""/>
-  		<result column="ROOM_ID" property=""/>
-  		<result column="DETAIL_TITLE" property=""/>
-  		<result column="DETAIL_INFO" property=""/>
-  		<result column="DETAIL_TYPE" property=""/>
-  		<result column="DETAIL_IMAGE" property=""/>
-  		<result column="MIN_TIME" property=""/>
-  		<result column="MIN_PEOPLE" property=""/>
-  		<result column="MAX_PEOPLE" property=""/>
-  		<result column="PRICE_PER_TIME" property=""/>
-  		<result column="PRICE_PER_TIME_WEEKEND" property=""/>
+  		<id column="DETAIL_ID" property="id"/>
+  		<result column="ROOM_ID" property="roomId"/>
+  		<result column="DETAIL_TITLE" property="title"/>
+  		<result column="DETAIL_INFO" property="info"/>
+  		<result column="DETAIL_TYPE" property="type"/>
+  		<result column="DETAIL_IMAGE" property="image"/>
+  		<result column="MIN_TIME" property="minTime"/>
+  		<result column="MIN_PEOPLE" property="minPeople"/>
+  		<result column="MAX_PEOPLE" property="maxPeople"/>
+  		<result column="PRICE_PER_TIME" property="pricePerTime"/>
+  		<result column="PRICE_PER_TIME_WEEKEND" property="pricePerTimeWeekend"/>
   	
   	</association>
   
