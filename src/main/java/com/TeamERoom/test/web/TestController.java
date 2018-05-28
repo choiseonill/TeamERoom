@@ -77,22 +77,6 @@ public class TestController {
 		
 	}
 	
-	@RequestMapping(value = "/board/boardWrite", method = RequestMethod.GET)
-	public String viewWritePage() {
-		return "/board/boardWrite"; 
-	}
-	
-	@RequestMapping(value = "/board/boardWrite", method = RequestMethod.POST)
-	public ModelAndView doWrite(@ModelAttribute("writeForm") 
-								 @Valid BoardVO boardVO) {
-			
-		boolean isSuccess = boardService.writeBoard(boardVO);
-		if ( isSuccess ) {
-			return new ModelAndView("redirect:/main");
-		}
-		return new ModelAndView("redirect:/board/boardWrite");
-	}
-	
 
 	
 	

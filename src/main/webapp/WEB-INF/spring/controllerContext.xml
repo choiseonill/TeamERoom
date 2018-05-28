@@ -6,6 +6,9 @@
 	
 	
 	<bean id="testController" class="com.TeamERoom.test.web.TestController"></bean>
+	<bean id="BoardController" class="com.TeamERoom.board.web.BoardController">
+		<property name="boardService" ref="boardService"></property>
+	</bean>
 	
 	<bean id="memberController" class="com.TeamERoom.member.web.MemberController">
 		<property name="memberService" ref="memberService"></property>
