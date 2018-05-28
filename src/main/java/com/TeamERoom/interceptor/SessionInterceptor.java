@@ -14,11 +14,11 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 	
 	private final Logger logger = LoggerFactory.getLogger(SessionInterceptor.class);
 	
-	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return super.preHandle(request, response, handler);
-	}
+//	@Override
+//	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+//			throws Exception {
+//		// TODO Auto-generated method stub
+//		return super.preHandle(request, response, handler);
+//	}
 
 }

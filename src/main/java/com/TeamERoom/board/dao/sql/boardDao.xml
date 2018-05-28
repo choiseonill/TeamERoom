@@ -5,7 +5,34 @@
   
   <mapper namespace="BoardDao"><!-- 인터페이스 이름 적어줌 -->
   
- 
+ 	<insert id="insertBoard" parameterType="BoardVO">
+		INSERT	INTO ARTICLELIST
+				(
+				ID
+				, TYPE
+				, TITLE
+				, BODY
+				, STATUS
+				, WRITE_DATE
+				, VIEW_COUNT
+				<if test="B_file != null">
+				, FILE
+				</if>
+				)
+				VALUES
+				(
+				BOARD_SEQ.NEXTVAL
+				, #{type}
+				, #{B_title}
+				, #{B_body}
+				, #{B_status}
+				, SYSDATE
+				, 0
+				<if test="B_file != null">
+				, #{B_file}
+				</if>
+				)
+	</insert>
   
   </mapper>
   
