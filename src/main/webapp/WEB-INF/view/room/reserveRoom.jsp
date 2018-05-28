@@ -1,30 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Bootstrap core CSS -->
-<link href="static/vendor/bootstrap/css/bootstrap.min.css"
+
+
+
+<link href=<c:url value="static/vendor/bootstrap/css/bootstrap.min.css"/>
 	rel="stylesheet">
-<link href="static/css/business-frontpage.css" rel="stylesheet">
+<link href=<c:url value="static/css/business-frontpage.css"/> rel="stylesheet">
 
 
 <!-- Custom styles for this template -->
-<link href="static/css/modern-business.css" rel="stylesheet">
+<link href="<c:url value="static/css/modern-business.css"/>" rel="stylesheet">
 
 <!-- Bootstrap core JavaScript -->
-<script src="static/vendor/jquery/jquery.min.js"></script>
-<script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<c:url value="static/vendor/jquery/jquery.min.js"/>"></script>
+<script src="<c:url value="static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>" ></script>
 
 <title>Insert title here</title>
 
-<script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"
-	type="text/javascript"></script>
+<script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>" type="text/javascript"></script>
 <script type="text/javascript">
 	$().ready(function() {
 		var scrollTop = $(window).scrollTop();
@@ -76,14 +77,14 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-8">
-			<h5 class="card-header">Title</h5>
+			<h5 class="card-header">${dRoom.title}</h5>
 			<div class="card-body">
 				<div class="form-group">
 					<span> <strong>돈</strong> <em>시간</em>
 				</div>
 				<div>
 					<h4>하우스카페 너디블루 그지같네</h4>
-					<span> <img alt="세부이미지" src="소스">
+					<span> 
 					</span>
 					<p>내용 설명</p>
 				</div>

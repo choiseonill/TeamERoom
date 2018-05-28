@@ -24,14 +24,7 @@
 		<result column="ACCOUNT_NUMBER" property="accountNumber"/>
 		<result column="ROOM_IMAGE" property="roomImage"/>
 
-		<association property="roomInfoVO" javaType="RoomInfoVO">
-			
-			<id column="R_INFO_ID" property="id"/>
-			<result column="ROOM_ID" property="roomId"/>
-			<result column="R_INFO_TYPE" property="infoType"/>
-			<result column="R_INFO_BODY" property="body"/>
-		
-		</association>
+	
 
 
 		<association property="detailRoomVO" javaType="DetailRoomVO">
@@ -90,7 +83,7 @@
 		</association>
 
 	
-		<association property="replyVO" javaType="RelplyVO">
+		<association property="replyVO" javaType="ReplyVO">
 		
 			<id column="REPLY_ID" property="id"/>
 			<result column="ROOM_ID" property="roomId"/>
@@ -129,6 +122,77 @@
 		</association>
 		
 	</resultMap>
+
+
+
+	<select id="selectRoom" parameterType="_int" resultMap="RoomVOMap">
+
+		SELECT	R.ROOM_ID
+				, M.MEMBER_ID
+				, ROOM_TITLE
+				, INTRO
+				, INFO
+				, ROOM_START_TIME
+				, ROOM_END_TIME
+				, URL
+				, ROOM_STATUS
+				, HOLIDAY
+				, ROOM_EMAIL
+				, ROOM_PHONE
+				, ADDRESS
+				, BANK
+				, DEPOSITOR
+				, ACCOUNT_NUMBER
+				, ROOM_IMAGE
+		FROM	ROOM R, MEMBER M
+		WHERE	R.MEMBER_ID = M.MEMBER_ID
+		AND		R.ROOM_ID = #{id}
+		
+	</select>
+	
+	<select id="selectRoomInfo" parameterType="_int" resultType="RoomInfoVO">
+	
+		SELECT	R_INFO_ID		id
+				, ROOM_ID		roomId
+				, R_INFO_TYPE	infoType	
+				, R_INFO_BODY	body
+		FROM	ROOM_INFO
+		WHERE	ROOM_ID = #{id}
+	
+	</select>
+	
+	<select id="selectDetailRoom" parameterType="_int" resultType="DetailRoomVO">
+		
+		SELECT	DETAIL_ID 					id
+				, ROOM_ID 					roomId
+				, DETAIL_TITLE 				title
+				, DETAIL_INFO 				info
+				, DETAIL_TYPE 				type
+				, DETAIL_IMAGE 				image
+				, MIN_TIME 					minTime
+				, MIN_PEOPLE 				minPeople
+				, MAX_PEOPLE 				maxPeople
+				, PRICE_PER_TIME 			pricePerTime
+				, PRICE_PER_TIME_WEEKEND	pricePerTimeWeekend
+		FROM	DETAIL_ROOM
+		WHERE	ROOM_ID = #{id}	
+	</select>
+
+	<select id="selectOneDetailRoom" parameterType="_int" resultType="DetailRoomVO">
+		SELECT	DETAIL_ID 					id
+				, ROOM_ID 					roomId
+				, DETAIL_TITLE 				title
+				, DETAIL_INFO 				info
+				, DETAIL_TYPE 				type
+				, DETAIL_IMAGE 				image
+				, MIN_TIME 					minTime
+				, MIN_PEOPLE 				minPeople
+				, MAX_PEOPLE 				maxPeople
+				, PRICE_PER_TIME 			pricePerTime
+				, PRICE_PER_TIME_WEEKEND	pricePerTimeWeekend
+		FROM	DETAIL_ROOM D, ROOM R
+		WHERE	DETAIL_ID = #{id}
+	</select>
 
 
 

@@ -7,14 +7,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 로그인 CSS -->
-<link href="static/vendor/bootstrap/css/login.css" rel="stylesheet">
+<link href="<c:url value="static/vendor/bootstrap/css/login.css"/>" rel="stylesheet">
 <!-- Bootstrap core CSS -->
-<link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<c:url value="static/vendor/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
 
 <!-- Bootstrap core JavaScript -->
-<script src="static/vendor/jquery/jquery.min.js"></script>
+<script src="<c:url value="static/vendor/jquery/jquery.min.js"/>"></script>
 
-<script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="<c:url value="static/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
 
 <title>Insert title here</title>
 <style>

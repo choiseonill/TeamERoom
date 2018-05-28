@@ -7,11 +7,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="static/css/style3.css">
+<link href="<c:url value="static/vendor/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
+<link rel="stylesheet" href="<c:url value="static/css/style3.css" />">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
-<script src="static/js/jquery-3.3.1.min.js"></script>
+<script src=" <c:url value="static/js/jquery-3.3.1.min.js" />"></script>
 <script src="<c:url value="/static/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -88,12 +88,15 @@
 
 
 				<button>
-					<a href="<c:url value="/registRoom"/>">roomdetail</a>
+					<a href="<c:url value="/reserveRoom"/>">reserveRoom</a>
 				</button>
 
+				<button>
+					<a href="<c:url value="/roomdetail"/>">roomdetail</a>
+				</button>
 
 			</ul>
-
+   
 
 
 

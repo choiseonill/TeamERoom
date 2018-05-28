@@ -1,5 +1,10 @@
 package com.TeamERoom.room.vo;
 
+import com.TeamERoom.Image.vo.ImageVO;
+import com.TeamERoom.member.vo.MemberVO;
+import com.TeamERoom.reply.dao.ReplyDao;
+import com.TeamERoom.reply.vo.ReplyVO;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,6 +29,16 @@ public class RoomVO {
 	private String depositor;
 	private String accountNumber;
 	private String roomImage;
-
-	// private int category;
+	
+	private DetailRoomVO detailRoomVO;
+	private DetailOptionVO detailOptionVO;
+	private MemberVO memberVO;
+	private LikesVO likesVO;
+	private ImageVO imageVO;
+	private ReplyVO replyVO;
+	private OptionsVO optionsVO;
+	private CategoryVO categoryVO;
+	
+	
+	
 }

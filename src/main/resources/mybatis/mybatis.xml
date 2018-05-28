@@ -13,7 +13,7 @@
 		<typeAlias type="com.TeamERoom.member.vo.MemberVO" alias="MemberVO" />
 		
 		
-		<typeAlias type="com.TeamERoom.reply.vo.replyVO" alias="replyVO" />
+		<typeAlias type="com.TeamERoom.reply.vo.ReplyVO" alias="ReplyVO" />
 		
 		
 		
@@ -25,7 +25,6 @@
 		<typeAlias type="com.TeamERoom.room.vo.OptionsVO" alias="OptionsVO" />
 		<typeAlias type="com.TeamERoom.room.vo.LikesVO" alias="LikesVO" />
 		<typeAlias type="com.TeamERoom.room.vo.DetailRoomVO" alias="DetailRoomVO" />
-		<typeAlias type="com.TeamERoom.room.vo.CategoryVO" alias="CategoryVO" />
 		<typeAlias type="com.TeamERoom.room.vo.CategoryVO" alias="CategoryVO" />
 		
 		

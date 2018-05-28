@@ -12,28 +12,19 @@ public class TestController {
 		return "/main";
 	}
 	
-	@RequestMapping("/roomdetail")
-	public String testroomdetailPage() {
-		return "room/roomdetail";
-	
-	}
-	
 	@RequestMapping("/roomComments")
 	public String testroomCommentsPage() {
 		return "/roomComments";
-	
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String testloginPage() {
 		return "member/login";
-	
 	}
 	
 	@RequestMapping(value = "/singup", method = RequestMethod.POST)
 	public String testsingupPage() {
 		return "member/singup";
-	
 	}
 	
 	@RequestMapping("/test")
@@ -72,11 +63,7 @@ public class TestController {
 	
 	}
 	
-	@RequestMapping("/registRoom")
-	public String regist() {
-		return "room/registRoom";
-	
-	}
+
 	
 
 	

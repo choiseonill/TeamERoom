@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,55 +8,76 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Bootstrap core CSS -->
-<link href="static/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="static/css/business-frontpage.css" rel="stylesheet">
+<link href="<c:url value="static/vendor/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
+<link href="<c:url value="static/css/business-frontpage.css"/>" rel="stylesheet">
+
 
 
 <!-- Custom styles for this template -->
-<link href="static/css/modern-business.css" rel="stylesheet">
+<link href="<c:url value="static/css/modern-business.css"/>" rel="stylesheet">
 
 <!-- Bootstrap core JavaScript -->
-<script src="static/vendor/jquery/jquery.min.js"></script>
-<script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<c:url value="static/vendor/jquery/jquery.min.js"/>"></script>
+<script src="<c:url value="static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
 
 <title>Insert title here</title>
 
 <script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"
 	type="text/javascript"></script>
-<!-- <script type="text/javascript">
-$().ready(function() {
 
-	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
-	var floatPosition = parseInt($("#card").css('top'));
-	// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+<style>
+#card {
+	position: relative;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	/* -webkit-box-orient: vertical; */
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #fff;
+	background-clip: border-box;
+	border: 1px solid rgba(0, 0, 0, .125);
+	border-radius: .25rem;
+}
 
-	$(window).scroll(function() {
-		// 현재 스크롤 위치를 가져온다.
-		var scrollTop = $(window).scrollTop();
-		var newPosition = scrollTop + floatPosition + "px";
-
-		/* 애니메이션 없이 바로 따라감
-		 $("#floatMenu").css('top', newPosition);
-		 */
-
-		$("#card").stop().animate({
-			"top" : newPosition
-		}, 500);
-
-	}).scroll();
-
-});
-</script> -->
+.link {
+	display: inline-block;
+	width: 49%;
+}
+</style>
 
 <script>
+	
+	function reserveClick (id) {
+		$("#reserve").prop("href", "<c:url value="/reserveRoom/?id="/>" + id );
+	} 
+
 	$(function() {
-		$(window).scroll(function() { //스크롤이 움직일때마다 이벤트 발생 
-			var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
-			$(id).stop().animate({
-				top : position + "px"
-			}, 1); //해당 오브젝트 위치값 재설정
+		var scrollTop = $(window).scrollTop();
+		if (scrollTop < 500) {
+			$("#card").css('top', 0);
+		} else {
+			$("#card").css('top', (scrollTop - 500) + 'px');
+		}
+
+		$(window).scroll(function() {
+			scrollTop = $(window).scrollTop();
+			if (scrollTop < 500) {
+
+				$("#card").stop().animate({
+					"top" : 0
+				}, 500);
+			}
+
+			else {
+				$("#card").stop().animate({
+					"top" : (scrollTop - 500) + 'px'
+				}, 500);
+			}
 		});
+		
 	});
 </script>
 
@@ -70,13 +90,15 @@ $().ready(function() {
 
 <!-- Header with Background Image -->
 <header class="business-header">
-<div class="container">
-	<div class="row">
-		<div class="col-lg-12">
-			<h1 class="display-3 text-center text-white mt-4">main img</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="display-3 text-center text-white mt-4">
+					<%-- <img src="<c:url value="/getRoomImg/${room.roomImage}" />" alt="User's Img" /> --%>
+				</h1>
+			</div>
 		</div>
 	</div>
-</div>
 </header>
 
 
@@ -85,14 +107,10 @@ $().ready(function() {
 <div class="container">
 
 	<!-- Page Heading/Breadcrumbs -->
-	<h1 class="mt-4 mb-3">
-		Post Title <small>by <a href="#">Start Bootstrap</a>
-		</small>
-	</h1>
+	<h1 class="mt-4 mb-3">${room.roomTitle}</h1>
 
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-		<li class="breadcrumb-item active">Blog Home 2</li>
+		<li class="breadcrumb-item">${room.intro}</li>
 	</ol>
 
 	<div class="row">
@@ -101,56 +119,15 @@ $().ready(function() {
 		<div class="col-lg-8">
 
 			<!-- Preview Image -->
-			<img class="img-fluid rounded" src="http://placehold.it/900x300"
-				alt="">
-
-			<hr>
-
-			<!-- Date/Time -->
-			<p>Posted on January 1, 2017 at 12:00 PM</p>
-
-			<hr>
-
-			<!-- Post Content -->
-			<p class="lead">Lorem ipsum dolor sit amet, consectetur
-				adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente
-				nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos
-				magni recusandae laborum minus inventore?</p>
-
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut,
-				tenetur natus doloremque laborum quos iste ipsum rerum obcaecati
-				impedit odit illo dolorum ab tempora nihil dicta earum fugiat.
-				Temporibus, voluptatibus.</p>
-
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
-				doloribus, dolorem iusto blanditiis unde eius illum consequuntur
-				neque dicta incidunt ullam ea hic porro optio ratione repellat
-				perspiciatis. Enim, iure!</p>
-
-			<blockquote class="blockquote">
-				<p class="mb-0">Lorem ipsum dolor sit amet, consectetur
-					adipiscing elit. Integer posuere erat a ante.</p>
-				<footer class="blockquote-footer">Someone famous in <cite
-					title="Source Title">Source Title</cite> </footer>
-			</blockquote>
-
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-				Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora
-				commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem
-				obcaecati?</p>
-
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-				Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione
-				tempore quidem voluptates cupiditate voluptas illo saepe quaerat
-				numquam recusandae? Qui, necessitatibus, est!</p>
-
-			<hr>
+			<img class="img-fluid rounded"
+				src="<c:url value="/getRoomImg/${room.roomImage}" />" alt="">
 
 			<!-- Comments Form -->
 			<div class="card my-4">
 				<h5 class="card-header">공간소개</h5>
+
 				<div class="card-body">
-					<div class="form-group">공간확보</div>
+					<div class="form-group">${room.info}</div>
 				</div>
 			</div>
 
@@ -158,7 +135,13 @@ $().ready(function() {
 			<div class="card my-4">
 				<h5 class="card-header">시설안내</h5>
 				<div class="card-body">
-					<div class="form-group">공간확보</div>
+					<c:forEach items="${info}" var="info">
+						<li>${info}</li>
+
+					</c:forEach>
+
+
+
 				</div>
 			</div>
 
@@ -166,7 +149,12 @@ $().ready(function() {
 			<div class="card my-4">
 				<h5 class="card-header">예약시 주의사항</h5>
 				<div class="card-body">
-					<div class="form-group">공간확보</div>
+					<c:forEach items="${warn}" var="warn">
+						<li>${warn}</li>
+
+					</c:forEach>
+
+
 				</div>
 			</div>
 
@@ -239,20 +227,26 @@ $().ready(function() {
 		<!-- Sidebar Widgets Column -->
 
 		<div class="col-md-4">
-			<!-- Side Widget -->
 
-			<div id="scroll" style="position: absolute; right: 0; top: 0;">
-				<table>
-					<tr>
-						<td>■■■■■■■■■■■</td>
-					</tr>
-					<tr>
-						<td>■■■■b1ix■■■■</td>
-					</tr>
-					<tr>
-						<td>■■■■■■■■■■■</td>
-					</tr>
-				</table>
+			<!-- Side Widget -->
+			<div class="card my-4" id="card">
+				<h5 class="card-header">세부공간 선택</h5>
+
+				<c:forEach items="${detailRoom}" var="detailRoom">
+					<div>
+
+						<input type="radio" id="${detailRoom.id}" name="select"
+							onclick="reserveClick(${detailRoom.id})">
+						${detailRoom.title} | ${detailRoom.pricePerTime} / 시간
+
+					</div>
+				</c:forEach>
+
+				<div style="text-align: center;">
+					<a href="#"> <span class="link">전화</span>
+					</a> <a id="reserve"> <span class="link">예약신청</span>
+					</a>
+				</div>
 			</div>
 
 

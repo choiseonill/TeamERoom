@@ -7,7 +7,10 @@
 
 	<mvc:annotation-driven/>
 	
+	
+	<mvc:resources mapping="/reserveRoom/static/**" location="/WEB-INF/static/"/>
 	<mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>
+	
 	
 	<bean id ="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

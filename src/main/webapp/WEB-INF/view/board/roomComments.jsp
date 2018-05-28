@@ -6,10 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <!-- Bootstrap core CSS -->
-<link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<c:url value="static/vendor/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
 
  <!-- Custom styles for this template -->
-<link href="static/css/modern-business.css" rel="stylesheet">
+<link href="<c:url value="static/css/modern-business.css"/>" rel="stylesheet">
 </head>
 <body>
 
