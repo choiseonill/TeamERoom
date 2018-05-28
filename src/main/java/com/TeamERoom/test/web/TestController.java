@@ -43,10 +43,22 @@ public class TestController {
 	}
 	
 	
-	@RequestMapping("/ss")
-	public String userR() {
-		return "admin/AdminReservationManagement";
+	@RequestMapping("/registRoom")
+	public String testRegistRoomPage() {
+		return "room/registRoom";
 	
+	}
+	
+	@RequestMapping("/like")
+	public String testLikePage() {
+		return "member/like";
+		
+	}
+	
+	@RequestMapping("/review")
+	public String testReviewPage() {
+		return "member/review";
+		
 	}
 	
 
