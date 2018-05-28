@@ -26,6 +26,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<head>	<jsp:include page="/WEB-INF/view/template/head.jsp" /></head>
 	<!-- write 영역  -->
 	<div class="container">
 		<h1 class="mt-4 mb-3">글쓰기</h1>
@@ -36,25 +37,24 @@
 						<th>제목:</th>
 						<td><input type="text" placeholder="제목을 입력하세요. " name="title"
 							id="title" class="form-control" value="${BoardVO.title}" /></td>
-					</tr>
-		<%-- 			<tr>
-						<th>카테고리:</th>
-						<td>
-						<input list="IsType" value="${BoardVO.type}" />
-						<datalist id="IsType">
-								<option value="1:1문의">
-								<option value="공지사항">
-								<option value="이벤트">
-								<option value="써본사람">
-						</datalist>
-						</td>
-					</tr> --%>
+						<tr>
+	                  <th>카테고리:</th>
+		                  <td>
+		                    <select type="int" id="type" name="type" list="list" style="width:20%;">
+	                        <option value="1">1:1문의</option>
+	                        <option value="2">공지사항</option>
+	                        <option value="3">써본사람</option>
+	                        <option value="4">이벤트</option>
+	                      </datalist>
+	                      </select>
+		                  </td>
+	               </tr>
 					<tr>
 						<th>내용:</th>
 						<td><textarea cols="10" rows="10" placeholder="내용을 입력하세요. "
 								name="body" id="body" class="form-control">${BoardVO.body}</textarea></td>
 					</tr>
-			<%-- 		<tr>
+			 		<%-- <tr>
 						<th>첨부파일:</th>
 						<td class="filebox preview-image"><input class="upload-name" />
 							<label for="file">업로드</label> <input type="file" id="file"
@@ -69,4 +69,5 @@
 		</table>
 		<!-- /write 영역  -->
 </body>
+
 </html>
