@@ -23,7 +23,7 @@
 				, #{body}
 				, SYSDATE
 				, 0
-				, 0
+				, #{type}
 				, 0
 				)
 	</insert>

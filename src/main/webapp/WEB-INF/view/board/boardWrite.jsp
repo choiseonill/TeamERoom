@@ -37,18 +37,18 @@
 						<td><input type="text" placeholder="제목을 입력하세요. " name="title"
 							id="title" class="form-control" value="${BoardVO.title}" /></td>
 					</tr>
-		<%-- 			<tr>
+		 			<tr>
 						<th>카테고리:</th>
 						<td>
-						<input list="IsType" value="${BoardVO.type}" />
-						<datalist id="IsType">
+							<input type="text" id="type" name="type" list="list">
+							<datalist id="list">
 								<option value="1:1문의">
 								<option value="공지사항">
-								<option value="이벤트">
 								<option value="써본사람">
-						</datalist>
+								<option value="이벤트">
+							</datalist>
 						</td>
-					</tr> --%>
+					</tr>
 					<tr>
 						<th>내용:</th>
 						<td><textarea cols="10" rows="10" placeholder="내용을 입력하세요. "
