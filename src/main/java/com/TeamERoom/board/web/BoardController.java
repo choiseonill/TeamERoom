@@ -30,6 +30,7 @@ public class BoardController {
 								 @Valid BoardVO boardVO) {
 			
 		boolean isSuccess = boardService.writeBoard(boardVO);
+		boardVO.save();
 		if ( isSuccess ) {
 			return new ModelAndView("redirect:/main");
 		}

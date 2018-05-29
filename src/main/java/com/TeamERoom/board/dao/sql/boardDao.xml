@@ -15,6 +15,7 @@
 				, VIEW_COUNT
 				, TYPE
 				, STATUS
+				, BOARD_FILE
 				)
 				VALUES
 				(
@@ -25,6 +26,7 @@
 				, 0
 				, #{type}
 				, 0
+				, #{fileName}
 				)
 	</insert>
   
