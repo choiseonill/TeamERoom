@@ -1,5 +1,7 @@
 package com.TeamERoom.board.vo;
 
+import com.TeamERoom.member.vo.MemberVO;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,4 +16,5 @@ public class BoardVO {
 	private String file;
 	private int status;
 	// TODO download util 추가
+	private MemberVO memberVO;
 }

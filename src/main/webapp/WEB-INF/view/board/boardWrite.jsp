@@ -7,7 +7,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"
 	type="text/javascript"></script>
 <script type="text/javascript">
@@ -26,7 +25,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<head>	<jsp:include page="/WEB-INF/view/template/head.jsp" /></head>
+	<head>	<jsp:include page="/WEB-INF/view/template/head.jsp"/></head>
 	<!-- write 영역  -->
 	<div class="container">
 		<h1 class="mt-4 mb-3">글쓰기</h1>

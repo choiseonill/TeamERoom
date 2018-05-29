@@ -5,6 +5,19 @@
   
   <mapper namespace="BoardDao"><!-- 인터페이스 이름 적어줌 -->
   
+  <resultMap type="BoardVO" id="BoardVOMap">
+    <id column="ID" property="ID"/>
+	<result column="TITLE" property="title"/>
+	<result column="BODY" property="body"/>
+	<result column="WRITE_DATE" property="writeDate"/>
+	<result column="VIEW_COUNT" property="viewCount"/>
+	<result column="TYPE" property="type"/>
+	<result column="STATUS" property="status"/>
+	<association property="memberVO" javaType="MemberVO">
+	 <id column="M_ID" property="id"/>
+	 <result column="EMAIL" property="email"/>
+  </association>	 
+  </resultMap>	
  	<insert id="insertBoard" parameterType="BoardVO">
 		INSERT	INTO BOARD
 				(
@@ -27,6 +40,14 @@
 				, 0
 				)
 	</insert>
-  
+	
+  	<select id="selectAll" resultMap="BoardVOMap">
+  		SELECT	 B.ID
+  				,B.TITLE
+  				,B.BODY
+  		FROM 	BOARD B
+  		ORDER 	BY B.ID DESC
+  	</select>
+  	
   </mapper>
   
