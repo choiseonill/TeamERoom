@@ -11,17 +11,16 @@
 
 
 
-<link href=<c:url value="static/vendor/bootstrap/css/bootstrap.min.css"/>
-	rel="stylesheet">
-<link href=<c:url value="static/css/business-frontpage.css"/> rel="stylesheet">
+<link href="<c:url value="/static/vendor/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
+<link href="<c:url value="/static/css/business-frontpage.css"/>" rel="stylesheet">
 
 
 <!-- Custom styles for this template -->
-<link href="<c:url value="static/css/modern-business.css"/>" rel="stylesheet">
+<link href="<c:url value="/static/css/modern-business.css"/>" rel="stylesheet">
 
 <!-- Bootstrap core JavaScript -->
-<script src="<c:url value="static/vendor/jquery/jquery.min.js"/>"></script>
-<script src="<c:url value="static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>" ></script>
+<script src="<c:url value="/static/vendor/jquery/jquery.min.js"/>"></script>
+<script src="<c:url value="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>" ></script>
 
 <title>Insert title here</title>
 

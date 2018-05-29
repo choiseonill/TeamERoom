@@ -124,6 +124,9 @@ public class RoomController {
 
 		}
 		
+	
+		
+		
 		
 		
 		view.addObject("dRoom", dRoom);

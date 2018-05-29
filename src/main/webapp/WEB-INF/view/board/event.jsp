@@ -9,10 +9,10 @@
 <script src="<c:url value="static/vendor/jquery/jquery.min.js"/>"></script>
 <script src="<c:url value="static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
 <!-- Bootstrap core CSS -->
-<link href="<c:url value="static/vendor/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
+<link href="static/vendor/bootstrap/css/bootstrap.min.css"rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="<c:url value="static/css/modern-business.css"/>" rel="stylesheet">
+<link href="static/css/modern-business.css" rel="stylesheet">
 </head>
   <body>
 
