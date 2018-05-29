@@ -38,9 +38,9 @@
               </div>
             </div>
             </div>
+	  <c:forEach items="${boardList}" var="board">
       <div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
         <div class="card">
-		<c:forEach items="${boardList}" var="board">
           <div class="card-header" role="tab" id="headingOne">
             <h5 class="mb-0">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="" style="margin-right: 130px;">게시 일: 2018.02.02</a>
@@ -49,19 +49,8 @@
               <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="margin-right: 20px;">조회수 : 0</a>
             </h5>
           </div>
-          	<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+          	<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" style="display:none"; >
                <table class="table table-condensed">
-						<tr>
-							<td>제목 : ${board.title}</td>
-						</tr>
-						
-						<tr>
-							<td>작성일 : ${board.title}</td>
-						</tr>
-						<tr>
-							<td>글쓴이</td>
-						</tr>
-						
 						<tr>
 							<td colspan="2" height="130px">
 								<p>본문 내용 들어갈곳</p>
