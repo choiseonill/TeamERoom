@@ -48,7 +48,7 @@
 		<!-- Sidebar Holder -->
 		<nav id="sidebar">
 			<div id="dismiss">
-				<i class="glyphicon glyphicon-arrow-left"></i>
+				<i class="glyphicon glyphicon-arrow-left">X</i>
 			</div>
 
 			<div class="sidebar-header">

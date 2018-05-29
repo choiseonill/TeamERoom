@@ -63,7 +63,11 @@ public class TestController {
 	
 	}
 	
-
+	@RequestMapping("/roomRegist")
+	public String ttt() {
+		return "room/roomRegist";
+	
+	}
 	
 
 	

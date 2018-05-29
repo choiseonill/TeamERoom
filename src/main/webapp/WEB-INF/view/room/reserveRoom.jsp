@@ -77,7 +77,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-8">
-			<h5 class="card-header">${dRoom.title}</h5>
+			<h5 class="card-header">${dRoom.title} / ${room.roomTitle}</h5>
 			<div class="card-body">
 				<div class="form-group">
 					<span> <strong>돈</strong> <em>시간</em>
@@ -281,23 +281,23 @@
 					<div class="form-group">
 						<dl>
 							<dt>공간 상호</dt>
-							<dd>너디 블루</dd>
+							<dd>${host.bizName}</dd>
 						</dl>
 						<dl>
 							<dt>대표자명</dt>
-							<dd>난 아냐</dd>
+							<dd>${host.name}</dd>
 						</dl>
 						<dl>
 							<dt>소재지</dt>
-							<dd>서울은 다 내 집</dd>
+							<dd>${room.address}</dd>
 						</dl>
 						<dl>
 							<dt>사업자 번호</dt>
-							<dd>478-55-11545</dd>
+							<dd>${host.bizNumber}</dd>
 						</dl>
 						<dl>
 							<dt>연락처</dt>
-							<dd>010-0000-0000</dd>
+							<dd>${room.roomPhone}</dd>
 						</dl>
 					</div>
 				</div>
@@ -307,10 +307,10 @@
 				<div class="card-body">
 					<div class="form-group">
 						<ul>
-							<li>1</li>
-							<li>2</li>
-							<li>3</li>
-							<li>4</li>
+							
+							<c:forEach items="${info}" var="info">
+								<li>${info}</li>
+							</c:forEach>
 						</ul>
 					</div>
 				</div>
@@ -321,10 +321,9 @@
 				<div class="card-body">
 					<div class="form-group">
 						<ul>
-							<li>1</li>
-							<li>2</li>
-							<li>3</li>
-							<li>4</li>
+							<c:forEach items="${warn}" var="warn">
+								<li>${warn}</li>
+							</c:forEach>
 						</ul>
 					</div>
 				</div>

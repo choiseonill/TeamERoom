@@ -1,6 +1,7 @@
 package com.TeamERoom.room.web;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.TeamERoom.member.vo.MemberVO;
 import com.TeamERoom.room.service.RoomService;
 import com.TeamERoom.room.vo.DetailRoomVO;
 import com.TeamERoom.room.vo.RoomInfoVO;
@@ -97,8 +99,36 @@ public class RoomController {
 		Map<String, Object> detailOneMap = new HashMap<>();
 		detailOneMap = roomService.selectDetailRoom(id);
 		
-		DetailRoomVO dRoom = (DetailRoomVO) detailOneMap.get("droom");
+		List<DetailRoomVO> dOriginRoom = (List<DetailRoomVO>) detailOneMap.get("droom");
+
+		DetailRoomVO dRoom = dOriginRoom.get(0);
+		RoomVO room = (RoomVO) detailOneMap.get("room");
+		MemberVO host = (MemberVO) detailOneMap.get("host");
+		
+		List<RoomInfoVO> infoList = roomService.selectRoomInfo(room.getId());
+		
+		for (RoomInfoVO roomInfo : infoList) {
+
+			String[] splited = roomInfo.getBody().split(",");
+
+			if (roomInfo.getInfoType() == 0) {
+
+				view.addObject("warn", splited);
+
+			}
+			if (roomInfo.getInfoType() == 1) {
+
+				view.addObject("info", splited);
+
+			}
+
+		}
+		
+		
+		
 		view.addObject("dRoom", dRoom);
+		view.addObject("room", room);
+		view.addObject("host", host);
 		
 		return view;
 

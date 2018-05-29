@@ -11,6 +11,7 @@
 	
 	<bean id="roomService" class="com.TeamERoom.room.service.RoomServiceImpl">
 		<property name="roomDao" ref="roomDao"/>
+		<property name="memberDao" ref="memberDao"/>
 	</bean>
 
 

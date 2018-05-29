@@ -161,7 +161,7 @@
 	
 	</select>
 	
-	<select id="selectDetailRoom" parameterType="_int" resultType="DetailRoomVO">
+	<select id="selectDetailRoom" parameterType="map" resultType="DetailRoomVO">
 		
 		SELECT	DETAIL_ID 					id
 				, ROOM_ID 					roomId
@@ -175,26 +175,31 @@
 				, PRICE_PER_TIME 			pricePerTime
 				, PRICE_PER_TIME_WEEKEND	pricePerTimeWeekend
 		FROM	DETAIL_ROOM
-		WHERE	ROOM_ID = #{id}	
+		<if test="roomId != 0">
+			WHERE	ROOM_ID = #{roomId}	
+		</if>
+
+		<if test="detailId != 0">
+			WHERE	DETAIL_ID = #{detailId}
+		</if>
 	</select>
 
-	<select id="selectOneDetailRoom" parameterType="_int" resultType="DetailRoomVO">
-		SELECT	DETAIL_ID 					id
-				, ROOM_ID 					roomId
-				, DETAIL_TITLE 				title
-				, DETAIL_INFO 				info
-				, DETAIL_TYPE 				type
-				, DETAIL_IMAGE 				image
-				, MIN_TIME 					minTime
-				, MIN_PEOPLE 				minPeople
-				, MAX_PEOPLE 				maxPeople
-				, PRICE_PER_TIME 			pricePerTime
-				, PRICE_PER_TIME_WEEKEND	pricePerTimeWeekend
-		FROM	DETAIL_ROOM D, ROOM R
-		WHERE	DETAIL_ID = #{id}
-	</select>
-
-
+<!-- 	<select id="selectHostInfo" parameterType="_int" resultType="MemberVO">
+		SELECT		MEMBER_ID				id
+					, MEMBER_EMAIL			email
+					, MEMBER_STATUS			status
+					, MEMBER_NAME			name
+					, MEMBER_PHONE			phone
+					, PASSWORD				password
+					, SALT					salt
+					, BIZ_NAME				bizName
+					, BIZ_NUMBER			bizNumber
+					, MEMBER_IMAGE			img
+					, QUESTION				question
+					, ANSWER				answer
+		FROM		MEMBER
+		WHERE		MEMBER_ID = ${id}
+	</select> -->
 
 </mapper>
   

@@ -11,4 +11,9 @@ public interface MemberDao {
 	//회원 가입할때 email check
 	public int selectCountMemberEmail(String email);
 	
+	
+	public MemberVO selectHostInfo(int id);
+	
+	
+	
 }
