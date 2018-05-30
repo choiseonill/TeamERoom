@@ -46,7 +46,6 @@ public class BoardController {
 		// // /WEB-INF/view/community/list.jsp
 		// return new ModelAndView("redirect:/login");
 		// }
-
 		view.setViewName("board/event");
 
 		List<BoardVO> boardList = boardService.getAll();
