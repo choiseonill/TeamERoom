@@ -27,6 +27,13 @@ public class BoardServiceImpl implements BoardService {
 		}
 		return false;
 	}
+
+
+	@Override
+	public List<BoardVO> getAll() {
+		// TODO Auto-generated method stub
+		return boardDao.selectAll();
+	}
 	
 	@Override
 	public List<BoardVO> getAll() {

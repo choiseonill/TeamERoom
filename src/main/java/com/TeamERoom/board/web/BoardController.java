@@ -39,7 +39,6 @@ public class BoardController {
 		}
 		return new ModelAndView("redirect:/board/boardWrite");
 	}
-	
 	@RequestMapping("/board/event")
 	public ModelAndView viewListPage(HttpSession session) {
 	ModelAndView view = new ModelAndView();

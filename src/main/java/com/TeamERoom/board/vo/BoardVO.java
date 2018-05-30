@@ -16,6 +16,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class BoardVO {
+<<<<<<< HEAD
 	private int ID;
 	private String type;
 	private String title;
@@ -27,6 +28,19 @@ public class BoardVO {
 	private int viewCount;
 	public String save() {
 		if ( file != null && !file.isEmpty() ) {
+=======
+		private int ID;
+		private String type;
+		private String title;
+		private String body;
+		private String write_date;
+		private String fileName;
+		private MultipartFile file;
+		private int status;
+		public String save() {
+		
+			if ( file != null && !file.isEmpty() ) {
+>>>>>>> origin/mkmk
 			fileName = file.getOriginalFilename().toLowerCase();
 			String currentTime = new SimpleDateFormat("yyyyMMddHHmmss")
                     .format(System.currentTimeMillis());

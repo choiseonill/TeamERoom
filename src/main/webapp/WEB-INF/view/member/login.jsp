@@ -21,14 +21,12 @@
 		
 		
 		
-		
 	});
 </script>
 
 </head>
 
 	<jsp:include page="/WEB-INF/view/template/head.jsp" />
-	
 	<div>
 		<div class="container" style="margin: 200px; display: inline-block;">
 			<div class="Login" style="display: inline-block;">
@@ -38,7 +36,7 @@
 					<p id="profile-name" class="profile-name-card"></p>
 					
 					
-					<form:form modelAttribute="loginForm"  class="form-signin">
+					<form:form modelAttribute="loginForm" class="form-signin">
                   			<span id="reauth-email" class="reauth-email"></span> 
                   			<input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" > 
                   			<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" >

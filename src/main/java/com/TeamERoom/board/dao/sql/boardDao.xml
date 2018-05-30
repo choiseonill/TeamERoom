@@ -3,8 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="BoardDao"><!-- 인터페이스 이름 적어줌 -->
-  
+  <mapper namespace="BoardDao">
   
   <resultMap type="BoardVO" id="BoardVOMap">
     <id column="ID" property="ID"/>
@@ -17,7 +16,7 @@
 	<result column="STATUS" property="status"/>
 	
   </resultMap>	
-  
+
  	<insert id="insertBoard" parameterType="BoardVO">
 		INSERT	INTO BOARD
 				(
