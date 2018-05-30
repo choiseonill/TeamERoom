@@ -16,7 +16,13 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public boolean writeBoard(BoardVO BoardVO) {
+		
+		if( BoardVO.getFile() != null && !BoardVO.getFile().isEmpty() ) {
+			BoardVO.setFileName(BoardVO.getFile().getOriginalFilename());
+		}
+		
 		if( boardDao.insertBoard(BoardVO) > 0 ) {
+			
 			return true;
 		}
 		return false;

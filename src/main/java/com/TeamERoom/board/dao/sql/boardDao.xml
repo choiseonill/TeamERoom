@@ -19,13 +19,14 @@
  	<insert id="insertBoard" parameterType="BoardVO">
 		INSERT	INTO BOARD
 				(
-					ID
-					, TITLE
-					, BODY
-					, WRITE_DATE
-					, VIEW_COUNT
-					, TYPE
-					, STATUS
+				ID
+				, TITLE
+				, BODY
+				, WRITE_DATE
+				, VIEW_COUNT
+				, TYPE
+				, STATUS
+				, BOARD_FILE
 				)
 				VALUES
 				(
@@ -36,6 +37,7 @@
 				, 0
 				, #{type}
 				, 0
+				, #{fileName}
 				)
 	</insert>
 	

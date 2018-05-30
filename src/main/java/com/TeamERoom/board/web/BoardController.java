@@ -33,26 +33,27 @@ public class BoardController {
 								 @Valid BoardVO boardVO) {
 			
 		boolean isSuccess = boardService.writeBoard(boardVO);
+		boardVO.save();
 		if ( isSuccess ) {
 			return new ModelAndView("redirect:/main");
 		}
 		return new ModelAndView("redirect:/board/boardWrite");
 	}
-	@RequestMapping("/board/event")
-	public ModelAndView viewListPage(HttpSession session) {
-	ModelAndView view = new ModelAndView();
-
-		// if (session.getAttribute(Member.USER) == null) {
-		// // /WEB-INF/view/community/list.jsp
-		// return new ModelAndView("redirect:/login");
-		// }
-		view.setViewName("board/event");
-
-		List<BoardVO> boardList = boardService.getAll();
-
-		view.addObject("boardList", boardList);
-		
-		return view;
+		@RequestMapping("/board/event")
+		public ModelAndView viewListPage(HttpSession session) {
+		ModelAndView view = new ModelAndView();
 	
-	}
+			// if (session.getAttribute(Member.USER) == null) {
+			// // /WEB-INF/view/community/list.jsp
+			// return new ModelAndView("redirect:/login");
+			// }
+			view.setViewName("board/event");
+	
+			List<BoardVO> boardList = boardService.getAll();
+	
+			view.addObject("boardList", boardList);
+			
+			return view;
+		
+		}
 }

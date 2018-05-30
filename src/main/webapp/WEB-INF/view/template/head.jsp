@@ -14,6 +14,9 @@
 <script src="<c:url value="../static/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
 <script src="<c:url value="../static/vendor/jquery/jquery.min.js"/>"></script>
 <script src="<c:url value="../static/js/jquery-3.3.1.min.js"/>"></script>
+
+<script src="../static/js/jquery-3.3.1.min.js"></script>
+<script src="<c:url value="../static/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
 <script type="text/javascript">
