@@ -1,5 +1,7 @@
 package com.TeamERoom.board.service;
 
+import java.util.List;
+
 import com.TeamERoom.board.dao.BoardDao;
 import com.TeamERoom.board.vo.BoardVO;
 
@@ -26,6 +28,10 @@ public class BoardServiceImpl implements BoardService {
 		return false;
 	}
 	
+	@Override
+	public List<BoardVO> getAll() {
+		return boardDao.selectAll();
+	}
 	
 
 

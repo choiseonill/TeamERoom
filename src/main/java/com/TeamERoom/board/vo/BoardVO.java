@@ -24,6 +24,7 @@ public class BoardVO {
 	private String fileName;
 	private MultipartFile file;
 	private int status;
+	private int viewCount;
 	public String save() {
 		if ( file != null && !file.isEmpty() ) {
 			fileName = file.getOriginalFilename().toLowerCase();

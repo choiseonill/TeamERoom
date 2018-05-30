@@ -24,6 +24,7 @@ public class MemberVO {
 	private String bizNumber;
 	private String question;
 	private String answer;
+	private int viewCount;
 	
 	
 	// DB 저장 할때
