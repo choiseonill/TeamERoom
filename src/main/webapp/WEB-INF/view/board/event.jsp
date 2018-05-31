@@ -14,6 +14,12 @@
 			 $(".card-header").click( function(){
 			 	 $(this).toggleClass(".card-header").next('.body').slideToggle('fast')
 		     });
+			 $("#searchKeyword").keyup(function(event){
+					console.log(event);
+					if ( event == "enter"){
+						movePage('0');
+					}
+				});
 	     });
 		
 </script>
@@ -47,24 +53,26 @@
             </div>
             </div>
       <div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
+	      <form id="searchForm">
+			${pageExplorer.make()}
+		  </form>
         <div class="card">
-		  <c:forEach items="${boardList}" var="board">
-          <div class="card-header" role="tab" id="headingOne"></a>
+		  <c:forEach items="${pageExplorer.list}" var="board">
+          <div class="card-header" role="tab" id="headingOne">
             <h5 class="mb-0">
               <a style="margin-right: 130px;">게시 일 : ${board.write_date}</a>
-              <a  style="margin-right: 130px;">제목 : ${board.title}</a>
-              <a style="margin-right: 130px;">작성자 : ${board.ID }</a>
-              <a style="margin-right: 20px;">조회수 : ${board.viewCount }</a>
+              <a style="margin-right: 130px;">제목 : ${board.title}</a>
+              <a style="margin-right: 130px;">작성자 : ${board.ID}</a>
+              <a style="margin-right: 20px;">조회수 : ${board.viewCount}</a>
             </h5>
           </div>  
        <div id="body" class="body" role="tabpanel" aria-labelledby="headingOne"; >
                <table class="table table-condensed">
 						<tr>
 							<td colspan="2" height="130px">
-								${board.body }
+								${board.body}
 							</td>
 						</tr>
-					</tbody>
 				</table>
 				<table class="table table-condensed">
 					<thead>
@@ -83,7 +91,7 @@
 					</thead>
 				</table>
 				<!-- /게시판 부분 -->
-          </div>
+         </div>
          <div style="height:3px;"></br></div>
 		</c:forEach>
         </div>

@@ -6,6 +6,7 @@
   <mapper namespace="BoardDao">
   
   <resultMap type="BoardVO" id="BoardVOMap">
+  
     <id column="ID" property="ID"/>
 	<result column="TYPE" property="type"/>
 	<result column="TITLE" property="title"/>
@@ -15,6 +16,10 @@
 	<result column="VIEW_COUNT" property="viewCount"/>
 	<result column="STATUS" property="status"/>
 	
+	<association property="memberVO" javaType="MemberVO">
+  			<id column="M_ID" property="id"/>
+  			<result column="EMAIL" property="email"/>
+  	</association>
   </resultMap>	
  	<insert id="insertBoard" parameterType="BoardVO">
 		INSERT	INTO BOARD
@@ -40,10 +45,46 @@
 				, #{fileName}
 				)
 	</insert>
-	
-  	<select id="selectAll" resultMap="BoardVOMap">
-		  		SELECT	*
-  				FROM  	BOARD B
+	<select id ="selectCountAll" resultType="_int" parameterType="BoardSearchVO">
+			SELECT	COUNT(B.ID)
+			  FROM 	BOARD B
+	  		WHERE	WRITE_DATE <![CDATA[ <= ]]> SYSDATE
+	  		AND		WRITE_DATE >= ADD_MONTHS(SYSDATE, -1)
+  	</select>
+  		
+  		
+  	<select id="selectAll" resultMap="BoardVOMap" parameterType="BoardSearchVO">
+		SELECT	*
+  		FROM		(
+			  		SELECT	ROWNUM RNUM
+			  				, B.*
+			  		FROM		(
+				  		SELECT	 B.ID
+				  				,B.TITLE
+				  				,B.BODY
+				  				,TO_CHAR(B.WRITE_DATE, 'YYYY-MM-DD HH24-MI') WRITE_DATE
+				  				,B.TYPE
+				  				,B.STATUS
+								,B.BOARD_FILE
+				  				,B.VIEW_COUNT
+				  		FROM 	 BOARD  B
+						ORDER BY B.ID DESC
+							) B
+						WHERE	ROWNUM <![CDATA[<=]]> #{endNumber}
+					)
+				WHERE 	RNUM >= #{startNumber}
+  	</select>
+  	
+  	<select id="selectOne" parameterType="_int" resultMap="BoardVOMap">
+  			SELECT	B.ID
+	  				,B.TITLE
+	  				,B.BODY
+	  				,B.WRITE_DATE
+	  				,B.VIEW_COUNT
+	  				,B.TYPE
+	  				,B.STATUS
+					,B.BOARD_FILE
+	  		FROM 	BOARD B
   	</select>
   	
   </mapper>

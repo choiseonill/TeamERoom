@@ -9,6 +9,7 @@
 		
 		
 		<typeAlias type="com.TeamERoom.board.vo.BoardVO" alias="BoardVO" />
+		<typeAlias type="com.TeamERoom.board.vo.BoardSearchVO" alias="BoardSearchVO" />
 		<typeAlias type="com.TeamERoom.Image.vo.ImageVO" alias="ImageVO" />
 		<typeAlias type="com.TeamERoom.member.vo.MemberVO" alias="MemberVO" />
 		

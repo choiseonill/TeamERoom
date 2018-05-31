@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.TeamERoom.board.service.BoardService;
+import com.TeamERoom.board.vo.BoardSearchVO;
 import com.TeamERoom.board.vo.BoardVO;
+
+import io.github.seccoding.web.pager.explorer.PageExplorer;
 
 @Controller
 public class BoardController {
@@ -39,21 +42,31 @@ public class BoardController {
 		}
 		return new ModelAndView("redirect:/board/boardWrite");
 	}
+	
 		@RequestMapping("/board/event")
-		public ModelAndView viewListPage(HttpSession session) {
-		ModelAndView view = new ModelAndView();
-	
-			// if (session.getAttribute(Member.USER) == null) {
-			// // /WEB-INF/view/community/list.jsp
-			// return new ModelAndView("redirect:/login");
-			// }
+		public ModelAndView viewListPage(BoardSearchVO boardSearchVO,HttpSession session) {
+		
+		if ( boardSearchVO.getPageNo() < 0 ) {
+			System.out.println("1");
+			//Session 에 저장된 SerachVO를 가져옴
+			boardSearchVO = (BoardSearchVO) session.getAttribute("__SEARCH__");
+			System.out.println(boardSearchVO+"@@@@@@@@@@@@값");
+			//Session 에 저장된 SerachVO가 없을 경우, PageN = 0으로 초기화
+			if ( boardSearchVO == null ) {
+				System.out.println("2");
+				boardSearchVO = new BoardSearchVO();
+				boardSearchVO.setPageNo(0);
+			}
+		}
+			session.setAttribute("__SEARCH__", boardSearchVO);
+			ModelAndView view = new ModelAndView();
 			view.setViewName("board/event");
-	
-			List<BoardVO> boardList = boardService.getAll();
-	
-			view.addObject("boardList", boardList);
+			view.addObject("search", boardSearchVO);
+			
+			PageExplorer pageExplorer = boardService.getAll(boardSearchVO);
+			System.out.println(pageExplorer.getTotalCount());
+			view.addObject("pageExplorer", pageExplorer);
 			
 			return view;
-		
 		}
 }
