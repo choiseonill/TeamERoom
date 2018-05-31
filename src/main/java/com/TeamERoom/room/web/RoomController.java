@@ -1,7 +1,6 @@
 package com.TeamERoom.room.web;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +20,7 @@ import com.TeamERoom.room.service.RoomService;
 import com.TeamERoom.room.vo.DetailRoomVO;
 import com.TeamERoom.room.vo.RoomInfoVO;
 import com.TeamERoom.room.vo.RoomVO;
+import com.TeamERoom.util.CalendarUtil;
 import com.TeamERoom.util.DownloadUtil;
 
 import lombok.Setter;
@@ -124,11 +124,10 @@ public class RoomController {
 
 		}
 		
-	
+		CalendarUtil cal = new CalendarUtil();
 		
 		
-		
-		
+		view.addObject("calendar", cal.testCalendar());
 		view.addObject("dRoom", dRoom);
 		view.addObject("room", room);
 		view.addObject("host", host);

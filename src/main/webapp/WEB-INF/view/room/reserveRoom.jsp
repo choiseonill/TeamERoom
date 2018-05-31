@@ -1,30 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Bootstrap core CSS -->
 
 
 
-<link href="<c:url value="/static/vendor/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
-<link href="<c:url value="/static/css/business-frontpage.css"/>" rel="stylesheet">
+<link
+	href="<c:url value="/static/vendor/bootstrap/css/bootstrap.min.css"/>"
+	rel="stylesheet">
+<link href="<c:url value="/static/css/business-frontpage.css"/>"
+	rel="stylesheet">
 
 
 <!-- Custom styles for this template -->
-<link href="<c:url value="/static/css/modern-business.css"/>" rel="stylesheet">
+<link href="<c:url value="/static/css/modern-business.css"/>"
+	rel="stylesheet">
 
 <!-- Bootstrap core JavaScript -->
 <script src="<c:url value="/static/vendor/jquery/jquery.min.js"/>"></script>
-<script src="<c:url value="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>" ></script>
+<script
+	src="<c:url value="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
 
 <title>Insert title here</title>
 
-<script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"
+	type="text/javascript"></script>
 <script type="text/javascript">
 	$().ready(function() {
 		var scrollTop = $(window).scrollTop();
@@ -49,9 +57,62 @@
 				}, 500);
 			}
 		});
-	});
-</script>
+	
+	
+		$("#nextBtn").click(function() {
+			if($("#month").html() == ${calendar.get(1)}){
+				$("#year").html(${calendar.get(5)});	
+				$("#month").html(${calendar.get(6)});
+				$("#firstMonth").css("display", "none");	
+				$("#nxtMonth").css("display", "block");				
+			}
 
+			else if($("#month").html() == ${calendar.get(6)}){
+				alert(" 예약은 오늘 날짜로 부터 한달 후 까지만 가능합니다. ")
+			}
+		});
+	  
+		$("#beforeBtn").click(function() {
+			
+			if($("#month").html() == ${calendar.get(6)}){				
+				$("#year").html(${calendar.get(0)});	
+				$("#month").html(${calendar.get(1)});
+				$("#nxtMonth").css("display", "none");
+				$("#firstMonth").css("display", "block");
+				
+			}
+			else if($("#month").html() == ${calendar.get(1)}){
+				alert(" 예약은 오늘 날짜로 부터 한달 후 까지만 가능합니다. ")
+			}
+		});
+	});
+	
+	  
+	
+	
+	  
+	  
+	
+	 
+	
+</script>
+<style>
+.days {
+	width: 95px;
+	height: 50px;
+	background-color: #3ddad7;
+	margin: 1px;
+	display: inline-block;
+}
+
+#firstMonth {
+	display: block;
+}
+
+#nxtMonth {
+	display: none;
+}
+</style>
 
 
 
@@ -61,13 +122,13 @@
 
 <!-- Header with Background Image -->
 <header class="business-header">
-<div class="container">
-	<div class="row">
-		<div class="col-lg-12">
-			<h1 class="display-3 text-center text-white mt-4">main img</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="display-3 text-center text-white mt-4">main img</h1>
+			</div>
 		</div>
 	</div>
-</div>
 </header>
 
 
@@ -76,15 +137,14 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-8">
-			<h5 class="card-header">${dRoom.title} / ${room.roomTitle}</h5>
+			<h5 class="card-header">${dRoom.title}/${room.roomTitle}</h5>
 			<div class="card-body">
 				<div class="form-group">
 					<span> <strong>돈</strong> <em>시간</em>
 				</div>
 				<div>
 					<h4>하우스카페 너디블루 그지같네</h4>
-					<span> 
-					</span>
+					<span> </span>
 					<p>내용 설명</p>
 				</div>
 				<ul>
@@ -101,6 +161,15 @@
 						<colgroup>
 							<col style="width: auto;" span="7">
 						</colgroup>
+						<div>
+
+							<input type="button" id="beforeBtn" name="beforeBtn" value="<"/>
+
+							<span id="yearNmonth" style="margin-left: 40%;"> <span
+								id="year">${calendar.get(0)}</span>. <span id="month">${calendar.get(1)}</span>.
+							</span> <input style="margin-left: 43%;" type="button" id="nextBtn"
+								name="nextBtn" value=">" />
+						</div>
 						<thead>
 							<tr>
 								<th>SUN</th>
@@ -112,51 +181,92 @@
 								<th>SAT</th>
 							</tr>
 						</thead>
-						<tbody>
+
+						<tbody id="firstMonth">
+
+							<%-- 달력 보여주기 --%>
+
+							<%-- 7일 마다  잘라주기 위한 변수 --%>
+							<c:set var="j" value="7" />
+
 							<tr>
-								<td>1</td>
-								<td>2</td>
-								<td>3</td>
-								<td>4</td>
-								<td>5</td>
-								<td>6</td>
-								<td>7</td>
+								<div>
+									<%-- 그주의 토요일(달력상 마지막 날이 토요일이기때문에 그 부분에서 다름 줄로 넘긴다.) 구하는 공식 --%>
+									<c:set var="firstSat" value="${7-calendar.get(4)}" />
+									<c:set var="week" value="${firstSat%7}" />
+
+									<tr>
+										<c:forEach begin="1" end="${calendar.get(4)}">
+											<td><div class="days">x</div></td>
+										</c:forEach>
+
+										<c:forEach begin="1" end="${calendar.get(3)}" var="i">
+											<c:choose>
+
+												<%-- 토요일은 파란색 --%>
+												<c:when test="${i%j == week }">
+													<td><div style="color: #0100FF" class="days"
+															id="day${i}">${i}</div></td>
+									</tr>
+									<tr>
+										</c:when>
+
+										<%-- 일요일은 빨간색 --%>
+										<c:when test="${i%j == week+1 }">
+											<td><div style="color: #FF0000" class="days"
+													id="day${i}">${i}</div></td>
+										</c:when>
+
+										<c:otherwise>
+											<td><div class="days" id="day${i}">${i}</div></td>
+											<c:if test="${i==calendar.get(3)}">
+									</tr>
+									</c:if>
+									</c:otherwise>
+									</c:choose>
+									</c:forEach>
+								</div>
 							</tr>
+						</tbody>
+
+						<tbody id="nxtMonth">
 							<tr>
-								<td>8</td>
-								<td>9</td>
-								<td>10</td>
-								<td>11</td>
-								<td>12</td>
-								<td>13</td>
-								<td>14</td>
-							</tr>
-							<tr>
-								<td>15</td>
-								<td>16</td>
-								<td>17</td>
-								<td>18</td>
-								<td>19</td>
-								<td>20</td>
-								<td>21</td>
-							</tr>
-							<tr>
-								<td>22</td>
-								<td>23</td>
-								<td>24</td>
-								<td>25</td>
-								<td>26</td>
-								<td>27</td>
-								<td>28</td>
-							</tr>
-							<tr>
-								<td>29</td>
-								<td>30</td>
-								<td>31</td>
-								<td>32</td>
-								<td>33</td>
-								<td>34</td>
-								<td>35</td>
+								<div>
+									<%-- 그주의 토요일(달력상 마지막 날이 토요일이기때문에 그 부분에서 다름 줄로 넘긴다.) 구하는 공식 --%>
+									<c:set var="secondSat" value="${7-calendar.get(9)}" />
+									<c:set var="week2" value="${secondSat%7}" />
+
+									<tr>
+										<c:forEach begin="1" end="${calendar.get(9)}">
+											<td><div class="days">x</div></td>
+										</c:forEach>
+
+										<c:forEach begin="1" end="${calendar.get(8)}" var="q">
+											<c:choose>
+
+												<%-- 토요일은 파란색 --%>
+												<c:when test="${q%j == week2 }">
+													<td><div style="color: #0100FF" class="days"
+															id="day${q}">${q}</div></td>
+									</tr>
+									<tr>
+										</c:when>
+
+										<%-- 일요일은 빨간색 --%>
+										<c:when test="${q%j == week2+1 }">
+											<td><div style="color: #FF0000" class="days"
+													id="day${q}">${q}</div></td>
+										</c:when>
+
+										<c:otherwise>
+											<td><div class="days" id="day${q}">${q}</div></td>
+											<c:if test="${q==calendar.get(8)}">
+									</tr>
+									</c:if>
+									</c:otherwise>
+									</c:choose>
+									</c:forEach>
+								</div>
 							</tr>
 						</tbody>
 					</table>
@@ -202,13 +312,20 @@
 								style="margin-right: 15px; width: 40px; float: left; text-decoration: none;">15</li>
 							<li
 								style="margin-right: 15px; width: 40px; float: left; text-decoration: none;">16</li>
-							<li style="margin-right: 15px; width: 40px; float: left; text-decoration: none;">17</li>
-							<li style="margin-right: 15px; width: 40px; float: left; text-decoration: none;">18</li>
-							<li style="margin-right: 15px; width: 40px; float: left; text-decoration: none;">19</li>
-							<li style="margin-right: 15px; width: 40px; float: left; text-decoration: none;">20</li>
-							<li style="margin-right: 15px; width: 40px; float: left; text-decoration: none;">21</li>
-							<li style="margin-right: 15px; width: 40px; float: left; text-decoration: none;">22</li>
-							<li style="margin-right: 15px; width: 40px; float: left; text-decoration: none;">23</li>
+							<li
+								style="margin-right: 15px; width: 40px; float: left; text-decoration: none;">17</li>
+							<li
+								style="margin-right: 15px; width: 40px; float: left; text-decoration: none;">18</li>
+							<li
+								style="margin-right: 15px; width: 40px; float: left; text-decoration: none;">19</li>
+							<li
+								style="margin-right: 15px; width: 40px; float: left; text-decoration: none;">20</li>
+							<li
+								style="margin-right: 15px; width: 40px; float: left; text-decoration: none;">21</li>
+							<li
+								style="margin-right: 15px; width: 40px; float: left; text-decoration: none;">22</li>
+							<li
+								style="margin-right: 15px; width: 40px; float: left; text-decoration: none;">23</li>
 						</ul>
 					</div>
 				</div>
@@ -245,8 +362,8 @@
 							</dt>
 							<dd>
 								<div>
-									<input type="text" name="name" value="${sessionScope.__USER__.name}"
-										required="required">
+									<input type="text" name="name"
+										value="${sessionScope.__USER__.name}" required="required">
 								</div>
 							</dd>
 						</dl>
@@ -256,7 +373,8 @@
 							</dt>
 							<dd>
 								<div>
-									<input type="text" name="phoneNumber" value="${sessionScope.__USER__.phone}" required="required">
+									<input type="text" name="phoneNumber"
+										value="${sessionScope.__USER__.phone}" required="required">
 								</div>
 							</dd>
 						</dl>
@@ -266,7 +384,8 @@
 							</dt>
 							<dd>
 								<div>
-									<input type="text" name="email" value="${sessionScope.__USER__.email}" required="required">
+									<input type="text" name="email"
+										value="${sessionScope.__USER__.email}" required="required">
 								</div>
 							</dd>
 						</dl>
@@ -306,7 +425,7 @@
 				<div class="card-body">
 					<div class="form-group">
 						<ul>
-							
+
 							<c:forEach items="${info}" var="info">
 								<li>${info}</li>
 							</c:forEach>
@@ -336,61 +455,7 @@
 			</div>
 
 
-			<!-- Comments Form -->
-			<div class="card my-4">
-				<h5 class="card-header">이용 후기</h5>
-				<div class="card-body">
-					<div class="form-group">
 
-						<!-- Comment with nested comments -->
-						<div class="media mb-4">
-							<img class="d-flex mr-3 rounded-circle"
-								src="http://placehold.it/50x50" alt="">
-							<div class="media-body">
-								<h5 class="mt-0">Commenter Name</h5>
-								Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-								scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-								vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-								nisi vulputate fringilla. Donec lacinia congue felis in
-								faucibus.
-
-								<div class="media mt-4">
-									<img class="d-flex mr-3 rounded-circle"
-										src="http://placehold.it/50x50" alt="">
-									<div class="media-body">
-										<h5 class="mt-0">Commenter Name</h5>
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-										scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-										vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-										nisi vulputate fringilla. Donec lacinia congue felis in
-										faucibus.
-									</div>
-								</div>
-
-								<div class="media mt-4">
-									<img class="d-flex mr-3 rounded-circle"
-										src="http://placehold.it/50x50" alt="">
-									<div class="media-body">
-										<h5 class="mt-0">Commenter Name</h5>
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-										scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-										vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-										nisi vulputate fringilla. Donec lacinia congue felis in
-										faucibus.
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-					<form>
-						<div class="form-group">
-							<textarea class="form-control" rows="3"></textarea>
-						</div>
-						<button type="submit" class="btn btn-primary">Submit</button>
-					</form>
-				</div>
-			</div>
 		</div>
 		<!-- Sidebar Widgets Column -->
 		<div class="col-md-4">
@@ -407,59 +472,10 @@
 	</div>
 	<!-- /.row -->
 
-	<!-- Portfolio Section -->
-	<h2>같은 호스팅 룸</h2>
 
-	<div class="row">
-		<div class="col-lg-4 col-sm-6 portfolio-item">
-			<div class="card h-100">
-				<a href="#"><img class="card-img-top"
-					src="http://placehold.it/700x400" alt=""></a>
-				<div class="card-body">
-					<h4 class="card-title">
-						<a href="<c:url value="/roomdetail"/>">Project One</a>
-					</h4>
-					<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-						adipisicing elit. Amet numquam aspernatur eum quasi sapiente
-						nesciunt? Voluptatibus sit, repellat sequi itaque deserunt,
-						dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-4 col-sm-6 portfolio-item">
-			<div class="card h-100">
-				<a href="#"><img class="card-img-top"
-					src="http://placehold.it/700x400" alt=""></a>
-				<div class="card-body">
-					<h4 class="card-title">
-						<a href="#">Project Two</a>
-					</h4>
-					<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-						adipiscing elit. Nam viverra euismod odio, gravida pellentesque
-						urna varius vitae.</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-4 col-sm-6 portfolio-item">
-			<div class="card h-100">
-				<a href="#"><img class="card-img-top"
-					src="http://placehold.it/700x400" alt=""></a>
-				<div class="card-body">
-					<h4 class="card-title">
-						<a href="#">Project Three</a>
-					</h4>
-					<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-						adipisicing elit. Quos quisquam, error quod sed cumque, odio
-						distinctio velit nostrum temporibus necessitatibus et facere atque
-						iure perspiciatis mollitia recusandae vero vel quam!</p>
-				</div>
-			</div>
-		</div>
-	</div>
 	<!-- /.row -->
 </div>
 <!-- /.container -->
-
 
 <!-- Footer -->
 <jsp:include page="/WEB-INF/view/template/footer.jsp" />
