@@ -15,43 +15,59 @@
 	<result column="BOARD_FILE" property="fileName"/>
 	<result column="VIEW_COUNT" property="viewCount"/>
 	<result column="STATUS" property="status"/>
-	
 	<association property="memberVO" javaType="MemberVO">
-  			<id column="M_ID" property="id"/>
-  			<result column="EMAIL" property="email"/>
-  	</association>
+	<id column="MEMBER_ID" property="id"/>
+    <result column="MEMBER_EMAIL" property="email"/>
+    <result column="MEMBER_STATUS" property="status"/>
+    <result column="MEMBER_NAME" property="name"/>
+    <result column="MEMBER_PHONE" property="phone"/>
+    <result column="PASSWORD" property="password"/>
+    <result column="SALT" property="salt"/>
+    <result column="BIZ_NAME" property="bizName"/>
+    <result column="BIZ_NUMBER" property="bizNumber"/>
+    <result column="MEMBER_IMAGE" property="img"/>
+    <result column="QUESTION" property="question"/>
+    <result column="ANSWER" property="answer"/>
+    </association>    
   </resultMap>	
+  
  	<insert id="insertBoard" parameterType="BoardVO">
 		INSERT	INTO BOARD
 				(
-				ID
-				, TITLE
-				, BODY
-				, WRITE_DATE
-				, VIEW_COUNT
-				, TYPE
-				, STATUS
-				, BOARD_FILE
+					ID
+					, TITLE
+					, BODY
+					, WRITE_DATE
+					, VIEW_COUNT
+					, TYPE
+					, STATUS
+					, BOARD_FILE
 				)
 				VALUES
 				(
-				BOARD_SEQ.NEXTVAL
-				, #{title}
-				, #{body}
-				, SYSDATE
-				, 0
-				, #{type}
-				, 0
-				, #{fileName}
+					BOARD_SEQ.NEXTVAL
+					, #{title}
+					, #{body}
+					, SYSDATE
+					, 0
+					, #{type}
+					, 0
+					, #{fileName}
 				)
 	</insert>
 	<select id ="selectCountAll" resultType="_int" parameterType="BoardSearchVO">
 			SELECT	COUNT(B.ID)
-			  FROM 	BOARD B
-	  		WHERE	WRITE_DATE <![CDATA[ <= ]]> SYSDATE
-	  		AND		WRITE_DATE >= ADD_MONTHS(SYSDATE, -1)
+			FROM 	BOARD B
+	  	<!-- 	WHERE	WRITE_DATE <![CDATA[ <= ]]> SYSDATE
+	  		AND		WRITE_DATE >= ADD_MONTHS(SYSDATE, -1) -->
+	  		WHERE   WRITE_DATE <![CDATA[ <= ]]> SYSDATE
+	  	<!-- 	AND		WRITE_DATE >= ADD_MONTHS(SYSDATE, -1) -->
+	  	<choose>
+			<when test="searchType == 1">
+				AND		B.TITLE LIKE '%' || #{searchKeyword} || '%'
+			</when>
+		</choose>	
   	</select>
-  		
   		
   	<select id="selectAll" resultMap="BoardVOMap" parameterType="BoardSearchVO">
 		SELECT	*
@@ -68,6 +84,15 @@
 								,B.BOARD_FILE
 				  				,B.VIEW_COUNT
 				  		FROM 	 BOARD  B
+						
+						WHERE	WRITE_DATE <![CDATA[ <= ]]> SYSDATE
+	  					AND		WRITE_DATE >= ADD_MONTHS(SYSDATE, -1) 
+						<choose>
+								<when test="searchType == 1">
+						AND			B.TITLE LIKE '%' || #{searchKeyword} || '%'
+								</when>
+						</choose>	
+				  		
 						ORDER BY B.ID DESC
 							) B
 						WHERE	ROWNUM <![CDATA[<=]]> #{endNumber}
@@ -86,6 +111,17 @@
 					,B.BOARD_FILE
 	  		FROM 	BOARD B
   	</select>
+  	
+  	<delete id="deleteBoard" parameterType="_int">
+  		DELETE
+  		FROM	BOARD B
+  		WHERE   B.ID = #{ID}
+  	</delete>
+  	
+  	<update id="increamentViewCount" parameterType="_int">
+  		UPDATE	BOARD
+  		SET		VIEW_COUNT	=	VIEW_COUNT + 1
+  	</update>
   	
   </mapper>
   

@@ -53,6 +53,22 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		return boardDao.selectOne(id);
 	}
+
+
+	@Override
+	public boolean deleteBoard(int id) {
+		
+		if(boardDao.deleteBoard(id) >0){
+			return true;
+		}
+			return false;
+	}
+
+	@Override
+	public boolean increamentVC(int id) {
+
+		return boardDao.increamentViewCount(id) > 0;
+	}
 	
 	
 

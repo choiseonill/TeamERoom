@@ -1,22 +1,19 @@
 package io.github.seccoding.web.pager;
 
-
 public class PagerFactory {
 
 	public static Pager getPager(boolean isDbOracle) {
-		if ( isDbOracle ) {
+		if (isDbOracle) {
 			return new OraclePager();
-		}
-		else {
+		} else {
 			return new OtherPager();
 		}
 	}
-	
+
 	public static Pager getPager(boolean isDbOracle, int printArticle, int printPage) {
-		if ( isDbOracle ) {
+		if (isDbOracle) {
 			return new OraclePager(printArticle, printPage);
-		}
-		else {
+		} else {
 			return new OtherPager(printArticle, printPage);
 		}
 	}
@@ -46,5 +43,5 @@ public class PagerFactory {
 		pager.setTotalArticleCount(totalCount);
 		return pager;
 	}
-	
+
 }

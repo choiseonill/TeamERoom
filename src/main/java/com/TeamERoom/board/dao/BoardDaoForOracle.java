@@ -15,20 +15,33 @@ public class BoardDaoForOracle extends SqlSessionDaoSupport implements BoardDao 
 	}
 
 	@Override
-	public List<BoardVO> selectAll(BoardSearchVO boardSerchVO) {
-		return getSqlSession().selectList("BoardDao.selectAll", boardSerchVO);
+	public List<BoardVO> selectAll(BoardSearchVO boardSearchVO) {
+		
+		return getSqlSession().selectList("BoardDao.selectAll", boardSearchVO);
 	}
 
 	@Override
-	public int selectCountAll(BoardSearchVO boardSerchVO) {
+	public int selectCountAll(BoardSearchVO boardSearchVO) {
 		// TODO Auto-generated method stub
-		return getSqlSession().selectOne("BoardDao.selectCountAll", boardSerchVO);
+		return getSqlSession().selectOne("BoardDao.selectCountAll", boardSearchVO);
 	}
 
 	@Override
 	public BoardVO selectOne(int id) {
 		// TODO Auto-generated method stub
 		return getSqlSession().selectOne("BoardDao.selectOne", id);
+	}
+
+	@Override
+	public int deleteBoard(int id) {
+		// TODO Auto-generated method stub
+		return getSqlSession().delete("BoardDao.deleteBoard", id);
+	}
+
+	@Override
+	public int increamentViewCount(int id) {
+		// TODO Auto-generated method stub
+		return getSqlSession().update("BoardDao.increamentViewCount", id);
 	}
 
 

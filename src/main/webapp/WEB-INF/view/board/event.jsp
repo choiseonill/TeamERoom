@@ -6,26 +6,33 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"
-		type="text/javascript"></script>
+<script type="text/javascript"
+		src="<c:url value="../static/js/jquery-3.3.1.min.js"/>"></script>
 <script type="text/javascript">
-	$().ready( function(){
-			 $(".body").hide();
-			 $(".card-header").click( function(){
-			 	 $(this).toggleClass(".card-header").next('.body').slideToggle('fast')
-		     });
+	$().ready( function(){	
+			 /* 엔터로 검색실행 */
 			 $("#searchKeyword").keyup(function(event){
-					console.log(event);
-					if ( event == "enter"){
-						movePage('0');
-					}
-				});
-	     });
+				console.log(event);
+				if (event == "enter" || event.which == 13  ){
+					 movePage('0');
+				}
+			 });
+			 /* 클릭시 검색실행 */
+			 $("#searchBtn").click( function(){
+				 movePage('0');
+			  });
+			/* 게시판 클릭시 슬라이드다운 */
+			 $(".body").hide();
+			 $(".card-header").click(function(){
+			 	 $(this).toggleClass(".card-header").next('.body').slideToggle('fast')
+		    });
+			 
+	 });
 		
 </script>
 </head>
   <body>
-	<head><jsp:include page="/WEB-INF/view/template/head.jsp" /></head>
+	 <head><jsp:include page="/WEB-INF/view/template/head.jsp" /></head> 
 
     <!-- Page Content -->
     <div class="container">
@@ -37,54 +44,67 @@
          <div class="card mb-4">
             <div class="card-body">
               <div class="input-group">
-              <span style="margin-right: 10px;">
-	              <select class="form-control" id="sel1">
-	        		<option>예약자명</option>
-	        		<option>예약자명</option>
-	        		<option>예약자명</option>
-	        		<option>예약자명</option>
-	      		  </select>
-              </span>
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn" style="margin-left: 10px;">
-                  <button class="btn btn-secondary" type="button">Go!</button>
-                </span>
-              </div>
-            </div>
+	              
+	             <form id="searchForm" onsubmit="movePage('0')" style="width:100%;">
+	              	   <div style="display:none;"> ${pageExplorer.make()}</div>
+				        <select id="searchType" name="searchType" style="display:inline-block; width:10%;">
+							<option value="1" ${search.searchType eq 1 ? 'selected' : '' }>글제목</option>
+							<option value="2" ${search.searchType eq 2 ? 'selected' : '' }>제목 + 글제목</option>
+							<option value="3" ${search.searchType eq 3 ? 'selected' : '' }>작성자 Email </option>
+						</select>
+						 <div style="display:inline-block; width:60%;">
+							<input type="text" id="searchKeyword" name="searchKeyword" value="${search.searchKeyword}" class="form-control" placeholder="Search for..."/>
+						</div>
+						<div style="display:inline-block; width:20%;">
+		                	 <a class="btn btn-primary" style="display:inline-block; color:#FFFFFF" id="searchBtn"  >검색</a>
+		                	 <a href="<c:url value="/board/reset"/>" class="btn btn-primary" style="display:inline-block;">검색 초기화</a>
+			            </div>
+   		          </form> 
+   		       </div>
+                	<span class="input-group-btn" style="margin-left: 10px;">
+                  <!-- <button class="btn btn-secondary" type="button" style="display:inline-block";>검색!</button> -->
+            	    </span>
+               </div> 
             </div>
       <div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
-	      <form id="searchForm">
-			${pageExplorer.make()}
-		  </form>
-        <div class="card">
+		   <div>
+				<span>
+					${pageExplorer.make()}
+			        <a href="/board/boardWrite" class="btn btn-primary" style="text-align:right; margin-left:85%; margin-bottom:1%;">&nbsp;&nbsp;글쓰기&nbsp;&nbsp;</a>
+				</span>
+			</div>
+         <div class="card">
 		  <c:forEach items="${pageExplorer.list}" var="board">
-          <div class="card-header" role="tab" id="headingOne">
-            <h5 class="mb-0">
-              <a style="margin-right: 130px;">게시 일 : ${board.write_date}</a>
-              <a style="margin-right: 130px;">제목 : ${board.title}</a>
-              <a style="margin-right: 130px;">작성자 : ${board.ID}</a>
-              <a style="margin-right: 20px;">조회수 : ${board.viewCount}</a>
-            </h5>
-          </div>  
+	          <div class="card-header" role="tab" id="headingOne">
+	            <h5 class="mb-0">
+	            	<tr>
+		            	<div value="${board.ID}">
+		            		<!-- 전체갯수-(페이지번호 -1 ) * 한페이지에 표시할 갯수 ) -->
+							<div style="display:inline-block; margin-left:1%; width:20%;"><th>${board.ID}</th></div>
+							<div style="display:inline-block; margin-left:3%; width:15%;"><th>${board.title}</th></div>
+							<div style="display:inline-block; margin-left:23%; width:25%;"><th> ${board.write_date}</th></div>
+							<div style="display:inline-block; margin-left:1%; width:10%;" id="viewCount" <a href="<c:url value="/board/increament/${board.ID}"/>">
+								<th>${board.viewCount}</th></div>
+						</div>	
+					</tr>
+	            </h5>
+	          </div>
+          
        <div id="body" class="body" role="tabpanel" aria-labelledby="headingOne"; >
                <table class="table table-condensed">
-						<tr>
-							<td colspan="2" height="130px">
-								${board.body}
-							</td>
-						</tr>
+					<tr>
+						<td colspan="2" height="130px">
+							${board.body}
+						</td>
+					</tr>
 				</table>
 				<table class="table table-condensed">
 					<thead>
 						<tr>
 							<td class="card-footer">
-								<span style='float: right'>
-							        <a href="/board/boardWrite" class="btn btn-primary" style="float: right;">&nbsp;&nbsp;글쓰기&nbsp;&nbsp;</a>
-								</span>
-								<span style='float: left' >
+								<span style='float: right' >
 									<a href="#" class="btn btn-primary">&nbsp;&nbsp;수정&nbsp;&nbsp;</a>
-									<a href="#" class="btn btn-primary">&nbsp;&nbsp;삭제&nbsp;&nbsp;</a>
-									<a href="#" class="btn btn-primary">&nbsp;&nbsp;저장&nbsp;&nbsp;</a>
+									<a class="btn btn-primary" href="<c:url value="/board/delete/${board.ID}"/>">&nbsp;&nbsp;삭제&nbsp;&nbsp;</a>
 								</span>
 							</td>
 						</tr>
@@ -101,15 +121,9 @@
     </div>
     
     <!-- /.container -->
-
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
-      </div>
-      <!-- /.container -->
-    </footer>
-
+	
   </body>
-
+	<div>
+	 <jsp:include page="/WEB-INF/view/template/footer.jsp"/> 
+	</div>
 </html>

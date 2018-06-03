@@ -14,4 +14,9 @@ public interface BoardService {
 	public PageExplorer getAll(BoardSearchVO boardSearchVO);
 	
 	public BoardVO selectOne(int id);
+	
+	public boolean increamentVC(int id);
+	
+	public boolean deleteBoard(int id);
+	
 }
