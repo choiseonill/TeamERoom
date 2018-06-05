@@ -27,6 +27,13 @@ public class BookDaoImpl extends SqlSessionDaoSupport implements BookDao{
 		return null;
 	}
 
+	
+	
+	@Override
+	public List<BookingVO> selectBookVO(int id ) {
+		return getSqlSession().selectList("BookDao.selectBookVO", id);
+	}
+
 
 
 

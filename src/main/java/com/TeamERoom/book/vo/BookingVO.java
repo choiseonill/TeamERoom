@@ -18,8 +18,7 @@ public class BookingVO {
 	private String bookEmail;
 	private String bookRequest;
 	private String bookDate;
-	private int bookStartTime;
-	private int bookEndTime;
+	private int bookTimes;
 	private int bookPeople;
 	private int bookStatus;
 	

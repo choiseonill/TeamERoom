@@ -15,7 +15,6 @@
   	<result column="REQUEST" property="bookRequest"/>
   	<result column="BOOK_DATE" property="bookDate"/>
   	<result column="BOOK_START_TIME" property="bookStartTime"/>
-  	<result column="BOOK_END_TIME" property="bookEndTime"/>
   	<result column="BOOK_PEOPLE" property="bookPeople"/>
   	<result column="BOOK_STATUS" property="bookStatus"/>
   	
@@ -63,6 +62,25 @@
   	</association>
   
   </resultMap>	
+ 	
+ 	<select id="selectBookVO" parameterType="_int" resultType="BookingVO">
+		SELECT	BOOK_ID  				id
+				, DETAIL_ID				detailId
+				, MEMBER_ID				mId
+				, BOOK_NAME				bookName
+				, BOOK_PHONE			bookPhone
+				, BOOK_EMAIL			bookEmail
+				, REQUEST				bookRequest
+				, TO_CHAR(BOOK_DATE,'yyyy-mm-dd')				bookDate
+				, BOOK_TIME				bookTimes
+				, BOOK_PEOPLE			bookPeople
+				, BOOK_STATUS			bookStatus
+		FROM	BOOKING
+		WHERE	DETAIL_ID = #{id}
+		AND     BOOK_STATUS = '1'
+	</select>
+	
+	
  	
   	
   </mapper>

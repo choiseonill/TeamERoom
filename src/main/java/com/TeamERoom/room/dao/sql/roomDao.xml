@@ -183,6 +183,7 @@
 			WHERE	DETAIL_ID = #{detailId}
 		</if>
 	</select>
+	
 
 </mapper>
   

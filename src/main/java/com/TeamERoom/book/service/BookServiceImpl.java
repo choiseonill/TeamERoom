@@ -1,6 +1,9 @@
 package com.TeamERoom.book.service;
 
+import java.util.List;
+
 import com.TeamERoom.book.dao.BookDao;
+import com.TeamERoom.book.vo.BookingVO;
 
 import lombok.Setter;
 
@@ -15,5 +18,7 @@ public class BookServiceImpl implements BookService{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+
 	
 }

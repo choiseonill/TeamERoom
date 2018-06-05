@@ -36,7 +36,7 @@
   </appender> 
   
 
-  <root level="warn">log level 
+  <root level="trace">log level 
     <appender-ref ref="STDOUT" />
     <appender-ref ref="FILE" />
     <appender-ref ref="ROLLING_FILE" />

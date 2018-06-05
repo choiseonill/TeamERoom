@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.TeamERoom.book.vo.BookingVO;
 import com.TeamERoom.member.vo.MemberVO;
 import com.TeamERoom.room.service.RoomService;
 import com.TeamERoom.room.vo.DetailRoomVO;
@@ -92,19 +93,19 @@ public class RoomController {
 
 	@RequestMapping("/reserveRoom")
 	public ModelAndView regist(@RequestParam(defaultValue = "3", name = "id") int id) {
-		System.out.println("path + " + id);
 		ModelAndView view = new ModelAndView();
 		view.setViewName("room/reserveRoom");
+		System.out.println("1");
 		
 		Map<String, Object> detailOneMap = new HashMap<>();
-		detailOneMap = roomService.selectDetailRoom(id);
+		detailOneMap = roomService.selectDetailRoom( 11 );//detailId
+		List<DetailRoomVO> dOriginRoom = (List<DetailRoomVO>)detailOneMap.get("droom");
 		
-		List<DetailRoomVO> dOriginRoom = (List<DetailRoomVO>) detailOneMap.get("droom");
-
 		DetailRoomVO dRoom = dOriginRoom.get(0);
 		RoomVO room = (RoomVO) detailOneMap.get("room");
 		MemberVO host = (MemberVO) detailOneMap.get("host");
-		
+		List<BookingVO> book = (List<BookingVO>) detailOneMap.get("book");
+		System.out.println("2");
 		List<RoomInfoVO> infoList = roomService.selectRoomInfo(room.getId());
 		
 		for (RoomInfoVO roomInfo : infoList) {
@@ -131,6 +132,7 @@ public class RoomController {
 		view.addObject("dRoom", dRoom);
 		view.addObject("room", room);
 		view.addObject("host", host);
+		view.addObject("book", book);
 		
 		return view;
 

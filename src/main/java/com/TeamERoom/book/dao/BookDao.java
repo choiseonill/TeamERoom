@@ -15,6 +15,7 @@ public interface BookDao {
 	public List<BookingVO> booking(BookingVO bookingVO);
 	public List<BookingOptionVO> bookingOption(BookingOptionVO bookingOptionVO);
 	
-	
+	public List<BookingVO> selectBookVO(int id );
+
 	
 }

@@ -502,10 +502,10 @@ input.valid {
 
             <input type="file" id="profilePhoto" class="form-control" title="프로필 사진" name="file" />
 
-
             <button id="registBtn" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">
                 Sign in
             </button>
+            
          </form:form>
         </div><!-- /card-container -->
     </div><!-- /container -->

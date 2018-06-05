@@ -25,12 +25,6 @@ public class CalendarUtil {
 		DateTime dt2 = new DateTime(year, month, 1, 0, 0);
 		int dayOfWeek = dt2.getDayOfWeek();
 		
-		
-		String s = dt2.dayOfWeek().getAsText();
-		System.out.println(s);
-		
-		
-		
 		//오늘 기준 +30
 		DateTime dtt = dt.plusMonths(1);
 		
@@ -42,29 +36,25 @@ public class CalendarUtil {
 		DateTime dtt2 = new DateTime(afterYear, afterMonth, 1, 0, 0);
 		int dayOfWeek2 = dtt2.getDayOfWeek();
 		
-		String k = dtt2.dayOfWeek().getAsText();
-		System.out.println(k);
 		
+		calendar.add(year);      	//0
+		calendar.add(month);     	//1
+		calendar.add(day);       	//2
+		calendar.add(lastDay);   	//3
+		calendar.add(dayOfWeek);  	//4
 		
-		
-		calendar.add(year);
-		calendar.add(month);
-		calendar.add(day);
-		calendar.add(lastDay);
-		calendar.add(dayOfWeek);
-		
-		calendar.add(afterYear);
-		calendar.add(afterMonth);
-		calendar.add(afterDay);
-		calendar.add(afterLastDay);
-		calendar.add(dayOfWeek2);
+		calendar.add(afterYear);  	//5
+		calendar.add(afterMonth); 	//6
+		calendar.add(afterDay);   	//7
+		calendar.add(afterLastDay); //8
+		calendar.add(dayOfWeek2);  	//9
 		
 		//요일 일-1 월-2 화-3 ~~ 토-7 이다
 		
 		
-		for(int i=0; i<calendar.size(); i++) {
+		/*for(int i=0; i<calendar.size(); i++) {
 			System.out.println(calendar.get(i));
-		}
+		}*/
 		
 		return calendar;
 		
