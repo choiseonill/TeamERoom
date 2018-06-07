@@ -53,6 +53,7 @@ public class RoomServiceImpl implements RoomService {
 		DetailRoomVO originDRoom = dRoom.get(0);// 어차피 하나라서??
 
 		int roomId = originDRoom.getRoomId();
+		
 		RoomVO originRoom = roomDao.selectRoom(roomId);
 		int hostId = originRoom.getMId();
 		MemberVO host = memberDao.selectHostInfo(hostId);
@@ -76,76 +77,32 @@ public class RoomServiceImpl implements RoomService {
 		List<BookingVO> book = bookDao.selectBookVO(id);
 		// 이번달 인 애들
 
-		// int count=0;
-		// Map<String, Integer> bookGroup = new HashMap<>();
-
-		/*List<Map<String, List<Integer>>> bookList = new ArrayList<>();
-
-		bookList = book.stream()
-					   .collect(Collectors.groupingBy(data -> data.getBookDate() ) )
-					   .entrySet()
-					   .stream()
-					   
-				       .map( (bookData) -> {
-				    	   		
-				    	   		Map<String, List<Integer>> bookGroup = new HashMap<>();
-				    	   		
-				    	   		List<Integer> count = new ArrayList<>();
-				    	   		count.add(bookData.getValue().size());
-				    	   		
-				    	   		List<Integer> timeList = new ArrayList<>();
-				    	   		
-				    	   		for(int i =0; i<bookData.getValue().size(); i++) {
-				    	   			System.out.println("tt");
-				    	   			timeList.add(bookData.getValue().get(i).getBookTimes());
-				    	   		}
-				    	   		
-								bookGroup.put("bookDate", timeList);
-								bookGroup.put("count", count);
-
-				    	   		return bookGroup;
-				    	   		
-				       }).collect(Collectors.toList());*/
-
-		// bookList.stream().mapToInt( bookMap -> bookMap.get("count"));
-
-		List<Map<String, Integer>> bookList = new ArrayList<>();
 		
-		bookList = book.stream()
+		
+		Map<String, Integer> dateMap =  new HashMap<String, Integer>();
+		book.stream()
 				   .collect(Collectors.groupingBy(data -> data.getBookDate() ) )
 				   .entrySet()
 				   .stream()
 				   .map( test -> {
-					   Map<String, Integer> asdf =  new HashMap<String, Integer>();
+					   //Map<String, Integer> dateMap =  new HashMap<String, Integer>();
 					   String date = test.getKey();
 					   int count = test.getValue().size();
 					   System.out.println(date + "date");
+					   System.out.println("date" + date);
+					   System.out.println("count"+ count);
+					   dateMap.put(date, count);
 					   
-					   asdf.put(date, count);
-					   
-					   return asdf;
-					   
-					   
+					   return 0;
 				   } )
 				   .collect(Collectors.toList());
 		
+		System.out.println("=================================");
+		System.out.println(dateMap.get("2018-06-07"));
+		System.out.println(dateMap.get("2018-06-06"));
+		System.out.println(dateMap.get("2018-06-05"));
+		System.out.println("=================================");
 		
-		//bookList.get(0).keySet().size();
-		
-		System.out.println(bookList.get(0).keySet().iterator() + "keyset");
-	
-		bookList.forEach();
-		
-		
-		System.out.println(bookList.get(0).get("2018-06-05"));
-		System.out.println(bookList.get(1).get("2018-06-06"));
-		System.out.println(bookList.get(2).get("2018-06-07"));
-		
-		/*System.out.println(bookList.size() + "size~~~~~~~~~~~~~`");
-
-		for(int i=0; i<bookList.get(0).get("bookDate").size(); i++) {
-			System.out.println(bookList.get(0).get("bookDate").get(i) +" 인자들");
-		}*/
 		
 		System.out.println(book.size() + "book 크기");
 
@@ -193,10 +150,10 @@ public class RoomServiceImpl implements RoomService {
 		 * 
 		 * }
 		 */
-
-		detailOneMap.put("droom", dRoom);
-		detailOneMap.put("room", originRoom);
-		detailOneMap.put("host", host);
+		detailOneMap.put( "dateMap", dateMap );
+		detailOneMap.put( "droom", dRoom );
+		detailOneMap.put( "room", originRoom );
+		detailOneMap.put( "host", host );
 		// detailOneMap.put("book", book);
 		return detailOneMap;
 	}

@@ -28,8 +28,6 @@
 <script type="text/javascript">
 	$().ready(function() {
 		
-	      
-	      
 	      var xPosition = 0;
 	      
 	      var enableDrag = false; 
@@ -37,13 +35,34 @@
 	      var marginLeftStart = 0;
 	      //var position = 0;
 	      
-	      var that;
-	      var startTime = null;
-	      var endTime = null;
-	      var setTime = null;
-	      var isTrue = false;
+	    var that;
+	    var startTime = null;
+	    var endTime = null;
+	    var setTime = null;
+	    var isTrue = false;
 	      
-	      var scrollTop = $(window).scrollTop();
+	    var scrollTop = $(window).scrollTop();
+	      
+	      
+	    var date= $("#firstMonth").children("tr:nth-child(1)").children("td").first();
+	     
+	    for( i=1; i<=5; i++ ){
+	    	date = $("#firstMonth").children("tr:nth-child("+i+")").children("td").first();
+	    	for( j=0; j<7; j++  ){
+	    		
+	    		var test = date.children().html();
+		    	date = date.next();
+	    		
+	    	}
+	    	
+	    }
+	    	 
+	     	
+	    	
+	    	
+	    	
+	    	
+	    
 	      
 	      
 	      $(".hourList").click(function() {
@@ -283,7 +302,7 @@
 				var bookDate = bookYear + "," + bookMonth + "," + bookDay;
 				var bookList = $("#bookDate").val()+ "/" + bookDate;
 				$("#bookDate").val(bookList);
-				alert(bookList);
+				//alert(bookList);
 			}
 			
 			if(classs.indexOf('nxt') >=0) {
@@ -292,7 +311,7 @@
 				var nbookDate = abookYear + "," + abookMonth + "," + bookDay;
 				var nbookList = $("#bookDate").val()+ "/" + nbookDate;
 				$("#bookDate").val(nbookList);
-				alert(nbookList);
+				//alert(nbookList);
 			}
 			
 		});
@@ -461,12 +480,13 @@ thead {
 									
 									<%-- 오늘 날짜(바탕색 다름) --%>
 									<c:when test="${i eq calendar.get(2) }">
-										<td><a class ="today first days" id="day${i}" value="${i}">${i}</a></td>
+										<td><a class ="today first days" id="day${i}" value="${i}" 
+												data-date="${calendar.get(0)}-${calendar.get(1)}">${i}</a></td>
 									</c:when>
 
 									<%-- 토요일은 글자 파란색 --%>
 									<c:when test="${i%j == week }">
-										<td><a style="color: #0100FF" class="days first" id="day${i}">${i}</a></td>
+										<td><a style="color: #0100FF" class="days first" id="day${i}" >${i}</a></td>
 										</tr> <tr>
 									</c:when>
 	

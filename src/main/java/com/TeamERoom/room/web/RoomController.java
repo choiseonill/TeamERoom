@@ -95,17 +95,17 @@ public class RoomController {
 	public ModelAndView regist(@RequestParam(defaultValue = "3", name = "id") int id) {
 		ModelAndView view = new ModelAndView();
 		view.setViewName("room/reserveRoom");
-		System.out.println("1");
 		
 		Map<String, Object> detailOneMap = new HashMap<>();
+		
 		detailOneMap = roomService.selectDetailRoom( 11 );//detailId
 		List<DetailRoomVO> dOriginRoom = (List<DetailRoomVO>)detailOneMap.get("droom");
 		
 		DetailRoomVO dRoom = dOriginRoom.get(0);
+		
 		RoomVO room = (RoomVO) detailOneMap.get("room");
 		MemberVO host = (MemberVO) detailOneMap.get("host");
 		List<BookingVO> book = (List<BookingVO>) detailOneMap.get("book");
-		System.out.println("2");
 		List<RoomInfoVO> infoList = roomService.selectRoomInfo(room.getId());
 		
 		for (RoomInfoVO roomInfo : infoList) {
@@ -120,14 +120,16 @@ public class RoomController {
 			if (roomInfo.getInfoType() == 1) {
 
 				view.addObject("info", splited);
-
 			}
-
 		}
 		
 		CalendarUtil cal = new CalendarUtil();
 		
+		Map<String, Integer> dateMap = (Map<String, Integer>)detailOneMap.get("dateMap");
 		
+		
+		
+		view.addObject( "dateMap", dateMap );
 		view.addObject("calendar", cal.testCalendar());
 		view.addObject("dRoom", dRoom);
 		view.addObject("room", room);
