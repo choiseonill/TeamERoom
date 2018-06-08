@@ -136,6 +136,9 @@ public class RoomController {
 		view.addObject("host", host);
 		view.addObject("book", book);
 		
+		
+		System.out.println(book.size()+"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+		System.out.println(book.get(0).getBookDate());
 		return view;
 
 	}

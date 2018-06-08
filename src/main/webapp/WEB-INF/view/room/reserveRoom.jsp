@@ -11,20 +11,26 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Bootstrap core CSS -->
-<link href="<c:url value="/static/vendor/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
-<link href="<c:url value="/static/css/business-frontpage.css"/>" rel="stylesheet">
+<link
+	href="<c:url value="/static/vendor/bootstrap/css/bootstrap.min.css"/>"
+	rel="stylesheet">
+<link href="<c:url value="/static/css/business-frontpage.css"/>"
+	rel="stylesheet">
 
 
 <!-- Custom styles for this template -->
-<link href="<c:url value="/static/css/modern-business.css"/>" rel="stylesheet">
+<link href="<c:url value="/static/css/modern-business.css"/>"
+	rel="stylesheet">
 
 <!-- Bootstrap core JavaScript -->
 <script src="<c:url value="/static/vendor/jquery/jquery.min.js"/>"></script>
-<script src="<c:url value="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
+<script
+	src="<c:url value="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
 
 <title>Insert title here</title>
 
-<script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"
+	type="text/javascript"></script>
 <script type="text/javascript">
 	$().ready(function() {
 		
@@ -72,7 +78,6 @@
 	    		dateMap = dateMap.replace("}", "");
 	    		dateMap = dateMap.split(", ");
 	    		var openTime = "${room.roomEndTime - room.roomStartTime }"
-	    		console.log(openTime + "~~!!!!!");
 	    		opentime = 2;
 	    		for ( k=0; k<dateMap.length; k++ ) {
 	    		
@@ -80,8 +85,7 @@
 	    			var reserveTime = dateMap[k].charAt(dateMap[k].length-1);
 	    			
 	    			if( dateMap[k].includes(dateKey) == true && opentime == reserveTime){
-	    				console.log("~~~~");
-	    				date.children().css("background-color", "gray");
+	    				date.children().css("background-color", "#CCCCCC");
 	    			}
 	    			
 	    		}
@@ -94,20 +98,44 @@
 
 	   var isChecked = false;
 	   var selectedDate = 0;
-	    
+	   var selectThat;
 	    
 	    $(".days").click(function(){
 	    	
+	    	console.log( $(this).css("background-color") );
+	    	
+	    	/* if( $(this).css("background-color") == "#CCCCCC" ) {
+	    		
+	    		
+	    	} */
+	    	
+	    	
+	    	if ( $(this).css("background-color") == "rgb(204, 204, 204)" ) {
+	    		return false;
+	    	}
+	    	
+	    	if ( isChecked == true ) {
+	    		
+	    		selectThat.css("background-color", "#3ddad7");//원래 색깔로
+	    		
+	    		for ( i=0; i<24; i++ ) {
+	    			
+	    			var timeId = "#h"+i;
+	    			$(timeId).css("background-color", "white");
+	    			
+	    		}
+	    		
+	    		
+	    	}
 	    	
 	    	isChecked = true;
+	    	selectThat = $(this);
 	    	
-	    	console.log($(this).html()+"~!!");
-	    	$(this).css("background-color", "red");
+	    	$(this).css("background-color", "#FF0033");
+	    	
 	    	selectedDate = $(this).html();
 	    	var year = "${calendar.get(0)}";
 	    	var month = "${calendar.get(1)}";
-	    	
-	    	
     		
     		if(month.length ==1){
     			month = "0" + month;
@@ -116,8 +144,23 @@
     		if(selectedDate.length ==1){
     			selectedDate = "0" + selectedDate;
     		}
-	    	
+
+    		
+    		
 	    	selectedDate = year+"-"+month+"-"+selectedDate;
+	    	
+	    	
+	    	//날짜에 따라 이미예약된 시간 블럭처리 하기
+	    	<c:forEach var="bookList" items="${book}">
+	    	
+	    		var clickDate = "${bookList.bookDate}";
+	    		if(clickDate ==selectedDate){
+	    			var bookingTime = "#h"+"${bookList.bookTimes}";
+	    			$(bookingTime).css("background-color", "#FF0033");
+	    		}
+			</c:forEach>
+	    	
+	    	
 	    	console.log( selectedDate );
 	    	
 	    	
@@ -126,6 +169,10 @@
 	    
 	    
 	      $(".hourList").click(function() {
+	    	  
+	    	  if ( $(this).css("background-color") == "rgb(255, 0, 51)" ) {
+	    		  return false;
+	    	  }
 	         
 	         var fitstThat = $(".timeList").children().first("li");
 	         
@@ -319,9 +366,9 @@
 	
 	
 		$("#nextBtn").click(function() {
-			if($("#month").html() == ${calendar.get(1)}){
-				$("#year").html(${calendar.get(5)});	
-				$("#month").html(${calendar.get(6)});
+			if($("#month").html() == ${ calendar.get(1)} ){
+				$("#year").html( ${calendar.get(5)} );	
+				$("#month").html( ${calendar.get(6)} );
 				$("#firstMonth").css("display", "none");	
 				$("#nxtMonth").css("display", "inline-block");				
 			}
@@ -397,11 +444,12 @@
 	margin: 1px;
 	display: inline-block;
 }
+
 thead {
 	display: inline-block;
 	text-align: center;
-	
 }
+
 #firstMonth {
 	display: inline-block;
 }
@@ -411,35 +459,35 @@ thead {
 }
 
 .timeList {
-   padding-left: 15px; 
-   border: 1px solid;
-   border-left : none; 
-   width: 2056px; 
-   height: 55px; 
-   list-style: none; 
-   font-size: 30px; 
-   margin-left: 0px; 
-    cursor: pointer;
-    transition: 0.3s all ease;
+	padding-left: 15px;
+	border: 1px solid;
+	border-left: none;
+	width: 2056px;
+	height: 55px;
+	list-style: none;
+	font-size: 30px;
+	margin-left: 0px;
+	cursor: pointer;
+	transition: 0.3s all ease;
 }
 
 .hourList {
-   margin-right: 15px; 
-   width: 40px; 
-   float: left; 
-   text-decoration: none;
-   display: inline-block;
-   box-sizing: border-box;
-   border: 1px solid black; 
-   margin: 0px;
-   text-align: center;
+	margin-right: 15px;
+	width: 40px;
+	float: left;
+	text-decoration: none;
+	display: inline-block;
+	box-sizing: border-box;
+	border: 1px solid black;
+	margin: 0px;
+	text-align: center;
 }
 
-.invalidBox{
+.invalidBox {
 	background-color: #CCCCCC;
 }
 
-.today{
+.today {
 	background-color: #6799FF;
 	width: 95px;
 	height: 50px;
@@ -447,10 +495,12 @@ thead {
 	display: inline-block;
 }
 
-
-.dayOfWeek{
-	width:97px !important;
+.dayOfWeek {
+	width: 97px !important;
 }
+
+
+
 
 </style>
 
@@ -481,6 +531,7 @@ thead {
 			<div class="card-body">
 				<div class="form-group">
 					<span> <strong>돈</strong> <em>시간</em>
+					</span>
 				</div>
 				<div>
 					<h4>하우스카페 너디블루 그지같네</h4>
@@ -496,16 +547,16 @@ thead {
 			</div>
 			<div>
 				<h5 class="card-header">날짜 선택</h5>
-				
+
 				<div>
-						<input type="button" id="beforeBtn" name="beforeBtn" value="<"/>
-						<%-- 달력 상단에 년 월 --%>
-						<span id="yearNmonth" style="margin-left: 40%;"> 
-							<span id="year">${calendar.get(0)}</span>. <span id="month">${calendar.get(1)}</span>.
-						</span> 
-						<input style="margin-left: 43%;" type="button" id="nextBtn" name="nextBtn" value=">" />
+					<input type="button" id="beforeBtn" name="beforeBtn" value="<"/>
+					<%-- 달력 상단에 년 월 --%>
+					<span id="yearNmonth" style="margin-left: 40%;"> <span
+						id="year">${calendar.get(0)}</span>. <span id="month">${calendar.get(1)}</span>.
+					</span> <input style="margin-left: 43%;" type="button" id="nextBtn"
+						name="nextBtn" value=">" />
 				</div>
-						
+
 				<div class="card-body">
 					<table>
 						<thead>
@@ -521,59 +572,60 @@ thead {
 						</thead>
 
 						<%-- 달력 보여주기 --%>
-						<tbody id="firstMonth" >
+						<tbody id="firstMonth">
 							<%-- 7일 마다  잘라주기 위한 변수 --%>
 							<c:set var="j" value="7" />
-							
+
 							<%-- 그주의 토요일(달력상 마지막 날이 토요일이기때문에 그 부분에서 다름 줄로 넘긴다.) 구하는 공식 --%>
 							<c:set var="firstSat" value="${7-calendar.get(4)}" />
 							<c:set var="week" value="${firstSat%7}" />
-  
-							<tr>
-							<c:if test="${calendar.get(4)<7}">
-								<c:forEach begin="1" end="${calendar.get(4)}">
-										<td><div class="days">x</div></td>
-								</c:forEach>
-							</c:if>
-							
-							<c:forEach begin="1" end="${calendar.get(3)}" var="i">
-								<c:choose>
-									
-									<%-- 오늘 날짜(바탕색 다름) --%>
-									<c:when test="${i eq calendar.get(2) }">
-										<td><a class ="today first days" id="day${i}" value="${i}" 
-												data-date="${calendar.get(0)}">${i}</a></td>
-									</c:when>
 
-									<%-- 토요일은 글자 파란색 --%>
-									<c:when test="${i%j == week }">
-										<td><a style="color: #0100FF" class="days first" id="day${i}" >${i}</a></td>
-										</tr> <tr>
-									</c:when>
-	
+							<tr>
+								<c:if test="${calendar.get(4)<7}">
+									<c:forEach begin="1" end="${calendar.get(4)}">
+										<td><div class="days">x</div></td>
+									</c:forEach>
+								</c:if>
+
+								<c:forEach begin="1" end="${calendar.get(3)}" var="i">
+									<c:choose>
+
+										<%-- 오늘 날짜(바탕색 다름) --%>
+										<c:when test="${i eq calendar.get(2) }">
+											<td><a class="today first days" id="day${i}"
+												value="${i}" data-date="${calendar.get(0)}">${i}</a></td>
+										</c:when>
+
+											<%-- 토요일은 글자 파란색 --%>
+											<c:when test="${i%j == week }">
+												<td><a style="color: #0100FF" class="days first" id="day${i}">${i}</a></td>
+												</tr><tr>
+											</c:when>
+
 									<%-- 일요일은 글자  빨간색 --%>
 									<c:when test="${i%j == week+1 }">
-										<td><a style="color: #FF0000" class="days first" id="day${i}">${i}</a></td>
+										<td><a style="color: #FF0000" class="days first"
+											id="day${i}">${i}</a></td>
 									</c:when>
-	
+
 									<c:otherwise>
-										<td><a class ="days first" id="day${i}">${i}</a></td>
-										
-										<c:if test="${i==calendar.get(3)}">
-											</tr>
+										<td><a class="days first" id="day${i}">${i}</a></td>
+	
+											<c:if test="${i==calendar.get(3)}">
+										</tr>
 										</c:if>
-										
+	
 									</c:otherwise>
-								</c:choose>
+							</c:choose>
 							</c:forEach>
 						</tbody>
 
 						<tbody id="nxtMonth">
-								<%-- 그주의 토요일(달력상 마지막 날이 토요일이기때문에 그 부분에서 다름 줄로 넘긴다.) 구하는 공식--%>
-								<c:set var="secondSat" value="${7-calendar.get(9)}" />
-								<c:set var="week2" value="${secondSat%7}" />
+							<%-- 그주의 토요일(달력상 마지막 날이 토요일이기때문에 그 부분에서 다름 줄로 넘긴다.) 구하는 공식--%>
+							<c:set var="secondSat" value="${7-calendar.get(9)}" />
+							<c:set var="week2" value="${secondSat%7}" />
 
-								<tr>
+							<tr>
 								<c:forEach begin="1" end="${calendar.get(9)}">
 									<c:if test="${calendar.get(9) < 7}">
 										<td><div class="days">x</div></td>
@@ -583,26 +635,29 @@ thead {
 								<c:forEach begin="1" end="${calendar.get(8)}" var="q">
 									<c:choose>
 
-									<%--토요일은 파란색--%>
-									<c:when test="${q%j == week2 }">
-										<td><a style="color: #0100FF" class="days nxt" id="day${q}">${q}</a></td>
-										</tr><tr>
-									</c:when>
+										<%--토요일은 파란색--%>
+										<c:when test="${q%j == week2 }">
+											<td><a style="color: #0100FF" class="days nxt"
+												id="day${q}">${q}</a></td>
+							</tr>
+							<tr>
+								</c:when>
 
-									<%--일요일은 빨간색--%>
-									<c:when test="${q%j == week2+1 }">
-										<td><a style="color: #FF0000" class="days nxt" id="day${q}">${q}</a></td>
-									</c:when>
-						
-									<c:otherwise>
-										<td><a class="days nxt" id="day${q}">${q}</a></td>
-										<c:if test="${q==calendar.get(8)}">
-											</tr>
-										</c:if>
-									</c:otherwise>
-									
-									
-								</c:choose>
+								<%--일요일은 빨간색--%>
+								<c:when test="${q%j == week2+1 }">
+									<td><a style="color: #FF0000" class="days nxt"
+										id="day${q}">${q}</a></td>
+								</c:when>
+
+								<c:otherwise>
+									<td><a class="days nxt" id="day${q}">${q}</a></td>
+									<c:if test="${q==calendar.get(8)}">
+							</tr>
+							</c:if>
+							</c:otherwise>
+
+
+							</c:choose>
 							</c:forEach>
 						</tbody>
 					</table>
@@ -613,101 +668,98 @@ thead {
 				<div id="timeBox" class="card-body " style="overflow: hidden;">
 					<div>
 						<ul class="timeList">
-		                     <li class="hourList" data-id="0" data-check="0">0</li>
-		                     <li class="hourList" data-id="1" data-check="0">1</li>
-		                     <li class="hourList" data-id="2" data-check="0">2</li>
-		                     <li class="hourList" data-id="3" data-check="0">3</li>
-		                     <li class="hourList" data-id="4" data-check="0">4</li>
-		                     <li class="hourList" data-id="5" data-check="0">5</li>
-		                     <li class="hourList" data-id="6" data-check="0">6</li>
-		                     <li class="hourList" data-id="7" data-check="0">7</li>
-		                     <li class="hourList" data-id="8" data-check="0">8</li>
-		                     <li class="hourList" data-id="9" data-check="0">9</li>
-		                     <li class="hourList" data-id="10" data-check="0">10</li>
-		                     <li class="hourList" data-id="11" data-check="0">11</li>
-		                     <li class="hourList" data-id="12" data-check="0">12</li>
-		                     <li class="hourList" data-id="13" data-check="0">13</li>
-		                     <li class="hourList" data-id="14" data-check="0">14</li>
-		                     <li class="hourList" data-id="15" data-check="0">15</li>
-		                     <li class="hourList" data-id="16" data-check="0">16</li>
-		                     <li class="hourList" data-id="17" data-check="0">17</li>
-		                     <li class="hourList" data-id="18" data-check="0">18</li>
-		                     <li class="hourList" data-id="19" data-check="0">19</li>
-		                     <li class="hourList" data-id="20" data-check="0">20</li>
-		                     <li class="hourList" data-id="21" data-check="0">21</li>
-		                     <li class="hourList" data-id="22" data-check="0">22</li>
-		                     <li class="hourList" data-id="23" data-check="0">23</li>
+							<li class="hourList" id="h0"  data-id="0" data-check="0">0</li>
+							<li class="hourList" id="h1" data-id="1" data-check="0">1</li>
+							<li class="hourList" id="h2" data-id="2" data-check="0">2</li>
+							<li class="hourList" id="h3" data-id="3" data-check="0">3</li>
+							<li class="hourList" id="h4" data-id="4" data-check="0">4</li>
+							<li class="hourList" id="h5" data-id="5" data-check="0">5</li>
+							<li class="hourList" id="h6" data-id="6" data-check="0">6</li>
+							<li class="hourList" id="h7" data-id="7" data-check="0">7</li>
+							<li class="hourList" id="h8" data-id="8" data-check="0">8</li>
+							<li class="hourList" id="h9" data-id="9" data-check="0">9</li>
+							<li class="hourList" id="h10" data-id="10" data-check="0">10</li>
+							<li class="hourList" id="h11" data-id="11" data-check="0">11</li>
+							<li class="hourList" id="h12" data-id="12" data-check="0">12</li>
+							<li class="hourList" id="h13" data-id="13" data-check="0">13</li>
+							<li class="hourList" id="h14" data-id="14" data-check="0">14</li>
+							<li class="hourList" id="h15" data-id="15" data-check="0">15</li>
+							<li class="hourList" id="h16" data-id="16" data-check="0">16</li>
+							<li class="hourList" id="h17" data-id="17" data-check="0">17</li>
+							<li class="hourList" id="h18" data-id="18" data-check="0">18</li>
+							<li class="hourList" id="h19" data-id="19" data-check="0">19</li>
+							<li class="hourList" id="h20" data-id="20" data-check="0">20</li>
+							<li class="hourList" id="h21" data-id="21" data-check="0">21</li>
+							<li class="hourList" id="h22" data-id="22" data-check="0">22</li>
+							<li class="hourList" id="h23" data-id="23" data-check="0">23</li>
 						</ul>
-
-
 					</div>
 				</div>
 			</div>
-			
-<form:form modelAttribute="bookingForm">			
-			<div>
-				<h5 class="card-header">인원수 선택</h5>
-				<div class="card-body">
-					<div class="input-group">
-					
-						<div class="bookPeoples">
-							<input type="button"  id="mButton" value="-"/>
-						
-							<input type="text" id="bookPeople"  name="bookPeople" value="0"/>
-						
-							<input type="button" id="pButton" value="+"/>
+
+			<form:form modelAttribute="bookingForm">
+				<div>
+					<h5 class="card-header">인원수 선택</h5>
+					<div class="card-body">
+						<div class="input-group">
+
+							<div class="bookPeoples">
+								<input type="button" id="mButton" value="-" /> <input
+									type="text" id="bookPeople" name="bookPeople" value="0" /> <input
+									type="button" id="pButton" value="+" />
+							</div>
+
 						</div>
-						
 					</div>
 				</div>
-			</div>
 
-			<!-- Comments Form -->
-			<div class="card my-4">
-				<h5 class="card-header">예약자 정보</h5>
-				<div class="card-body">
-					<div class="form-group">
-						<dl>
-							<dt>
-								<label for="name">예약자</label>
-							</dt>
-							<dd>
-								<div>
-									<input type="text" name="name" value="${sessionScope.__USER__.name}" >
-								</div>
-							</dd>
-						</dl>
-						<dl>
-							<dt>
-								<label for="name">연락처</label>
-							</dt>
-							<dd>
-								<div>
-									<input type="text" name="phoneNumber" value="${sessionScope.__USER__.phone}" >
-								</div>
-							</dd>
-						</dl>
-						<dl>
-							<dt>
-								<label for="name">이메일</label>
-							</dt>
-							<dd>
-								<div>
-									<input type="text" name="email" value="${sessionScope.__USER__.email}" >
-								</div>
-							</dd>
-						</dl>
-					</div>
-						<input type="hidden" id="bookDate" name="bookDate" value="${bookDate}"/>
-						
-						<input type="hidden" id="bookPeople" name="bookPeople" value="1"/>
-						
+				<!-- Comments Form -->
+				<div class="card my-4">
+					<h5 class="card-header">예약자 정보</h5>
+					<div class="card-body">
+						<div class="form-group">
+							<dl>
+								<dt>
+									<label for="name">예약자</label>
+								</dt>
+								<dd>
+									<div>
+										<input type="text" name="name"
+											value="${sessionScope.__USER__.name}">
+									</div>
+								</dd>
+							</dl>
+							<dl>
+								<dt>
+									<label for="name">연락처</label>
+								</dt>
+								<dd>
+									<div>
+										<input type="text" name="phoneNumber"
+											value="${sessionScope.__USER__.phone}">
+									</div>
+								</dd>
+							</dl>
+							<dl>
+								<dt>
+									<label for="name">이메일</label>
+								</dt>
+								<dd>
+									<div>
+										<input type="text" name="email"
+											value="${sessionScope.__USER__.email}">
+									</div>
+								</dd>
+							</dl>
+						</div>
+						<input type="hidden" id="bookDate" name="bookDate" value="${bookDate}" /> 
+						<input type="hidden" id="bookPeople" name="bookPeople" value="1" /> 
 						<input type="hidden" id="bookTimes" name="bookTimes" value="${bookTimes}" />
-						
-					<p>예약자 정보 어쩌구 저쩌구 확인해주세요 ㅇㅅㅇ</p>
+
+						<p>예약자 정보 어쩌구 저쩌구 확인해주세요 ㅇㅅㅇ</p>
+					</div>
 				</div>
-			</div>
-</form:form>
+			</form:form>
 			<div class="card my-4">
 				<h5 class="card-header">호스트 정보</h5>
 				<div class="card-body">
@@ -736,7 +788,10 @@ thead {
 				</div>
 			</div>
 			
-
+		
+			
+  
+  
 			<div class="card my-4">
 				<h5 class="card-header">시설안내</h5>
 				<div class="card-body">
@@ -780,14 +835,16 @@ thead {
 			<div class="card my-4" id="card">
 				<h5 class="card-header">세부공간 선택</h5>
 				<div class="card-body">
-					<hr/>
-					<div style="display:inline-block; font-size:18pt; color:#0100FF; font-weight:bold; margin-left:5%">￦</div>
-					<div id="price" style="display:inline-block; font-size:18pt; color:#0100FF; font-weight: bold; margin-left:75%">0</div>
-					
-					<div id="bookingBtn" style="font-size:20pt; width:100%; height:50x; background-color:#3ddad7; text-align: center; margin=0">
-						예약 하기
-					</div>	
-								
+					<hr />
+					<div
+						style="display: inline-block; font-size: 18pt; color: #0100FF; font-weight: bold; margin-left: 5%">￦</div>
+					<div id="price"
+						style="display: inline-block; font-size: 18pt; color: #0100FF; font-weight: bold; margin-left: 75%">0</div>
+
+					<div id="bookingBtn"
+						style="font-size: 20pt; width: 100%; height: 50x; background-color: #3ddad7; text-align: center;">
+						예약 하기</div>
+
 				</div>
 			</div>
 

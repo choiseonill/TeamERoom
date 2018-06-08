@@ -154,7 +154,7 @@ public class RoomServiceImpl implements RoomService {
 		detailOneMap.put( "droom", dRoom );
 		detailOneMap.put( "room", originRoom );
 		detailOneMap.put( "host", host );
-		// detailOneMap.put("book", book);
+		detailOneMap.put("book", book);
 		return detailOneMap;
 	}
 
