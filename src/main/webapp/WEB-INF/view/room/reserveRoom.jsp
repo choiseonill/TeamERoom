@@ -65,32 +65,64 @@
 	    			firstMonth = "0" + firstMonth;
 	    		}
 	    		
-	    		test = ${calendar.get(0)}+"-"+firstMonth+"-"+test;  
+	    		dateKey = ${calendar.get(0)}+"-"+firstMonth+"-"+test;  
 	    		
-	    		<c:set var="test11" value="test" />
+	    		var dateMap = "${dateMap}";
+	    		dateMap = dateMap.replace("{", "");
+	    		dateMap = dateMap.replace("}", "");
+	    		dateMap = dateMap.split(", ");
+	    		var openTime = "${room.roomEndTime - room.roomStartTime }"
+	    		console.log(openTime + "~~!!!!!");
+	    		opentime = 2;
+	    		for ( k=0; k<dateMap.length; k++ ) {
 	    		
-	    		<%
-    				String test1 = (String)pageContext.getAttribute("test11");
-	    			pageContext.setAttribute("testq", test1);
-	    		%>
-	    		//console.log(${testq}+"~~~~~~~~~~~~~~~~~~~~~~~!!!!");
-				var test3 = ${testq};
-				
-				/* if( ${testq}  "2018-06-06" ){
-					console.log("zz");
-				} */
-				  
-				var test12 = "${dateMap}";
-				
-				console.log();
-	    		    
-	    		//console.log(${dateMap.get(  testq   )}   );
+	    			//console.log(dateMap[k].charAt(dateMap[k].length-1) == 2);
+	    			var reserveTime = dateMap[k].charAt(dateMap[k].length-1);
+	    			
+	    			if( dateMap[k].includes(dateKey) == true && opentime == reserveTime){
+	    				console.log("~~~~");
+	    				date.children().css("background-color", "gray");
+	    			}
+	    			
+	    		}
+	    		
 		    	date = date.next();
 	    		
 	    	}
 	    	
 	    }
 
+	   var isChecked = false;
+	   var selectedDate = 0;
+	    
+	    
+	    $(".days").click(function(){
+	    	
+	    	
+	    	isChecked = true;
+	    	
+	    	console.log($(this).html()+"~!!");
+	    	$(this).css("background-color", "red");
+	    	selectedDate = $(this).html();
+	    	var year = "${calendar.get(0)}";
+	    	var month = "${calendar.get(1)}";
+	    	
+	    	
+    		
+    		if(month.length ==1){
+    			month = "0" + month;
+    		}
+    		
+    		if(selectedDate.length ==1){
+    			selectedDate = "0" + selectedDate;
+    		}
+	    	
+	    	selectedDate = year+"-"+month+"-"+selectedDate;
+	    	console.log( selectedDate );
+	    	
+	    	
+	    });
+	    
 	    
 	    
 	      $(".hourList").click(function() {
@@ -368,6 +400,7 @@
 thead {
 	display: inline-block;
 	text-align: center;
+	
 }
 #firstMonth {
 	display: inline-block;
@@ -509,7 +542,7 @@ thead {
 									<%-- 오늘 날짜(바탕색 다름) --%>
 									<c:when test="${i eq calendar.get(2) }">
 										<td><a class ="today first days" id="day${i}" value="${i}" 
-												data-date="${calendar.get(0)}-${calendar.get(1)}">${i}</a></td>
+												data-date="${calendar.get(0)}">${i}</a></td>
 									</c:when>
 
 									<%-- 토요일은 글자 파란색 --%>
