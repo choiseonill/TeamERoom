@@ -28,12 +28,12 @@
 <script type="text/javascript">
 	$().ready(function() {
 		
-	      var xPosition = 0;
+	    var xPosition = 0;
 	      
-	      var enableDrag = false; 
-	      var dragStartX = 0; 
-	      var marginLeftStart = 0;
-	      //var position = 0;
+	    var enableDrag = false; 
+	    var dragStartX = 0; 
+	    var marginLeftStart = 0;
+	    //var position = 0;
 	      
 	    var that;
 	    var startTime = null;
@@ -43,28 +43,56 @@
 	      
 	    var scrollTop = $(window).scrollTop();
 	      
-	      
+	    
+	    
+	    
 	    var date= $("#firstMonth").children("tr:nth-child(1)").children("td").first();
-	     
+	    
+	    var firstMonth = "${calendar.get(1)}";
+	    
 	    for( i=1; i<=5; i++ ){
+	    	
 	    	date = $("#firstMonth").children("tr:nth-child("+i+")").children("td").first();
 	    	for( j=0; j<7; j++  ){
 	    		
 	    		var test = date.children().html();
+	    		
+	    		if(test.length == 1){
+	    			test = "0"+test;
+	    		}
+	    		
+	    		if(firstMonth.length ==1){
+	    			firstMonth = "0" + firstMonth;
+	    		}
+	    		
+	    		test = ${calendar.get(0)}+"-"+firstMonth+"-"+test;  
+	    		
+	    		<c:set var="test11" value="test" />
+	    		
+	    		<%
+    				String test1 = (String)pageContext.getAttribute("test11");
+	    			pageContext.setAttribute("testq", test1);
+	    		%>
+	    		//console.log(${testq}+"~~~~~~~~~~~~~~~~~~~~~~~!!!!");
+				var test3 = ${testq};
+				
+				/* if( ${testq}  "2018-06-06" ){
+					console.log("zz");
+				} */
+				  
+				var test12 = "${dateMap}";
+				
+				console.log();
+	    		    
+	    		//console.log(${dateMap.get(  testq   )}   );
 		    	date = date.next();
 	    		
 	    	}
 	    	
 	    }
-	    	 
-	     	
-	    	
-	    	
-	    	
-	    	
+
 	    
-	      
-	      
+	    
 	      $(".hourList").click(function() {
 	         
 	         var fitstThat = $(".timeList").children().first("li");
@@ -266,21 +294,21 @@
 				$("#nxtMonth").css("display", "inline-block");				
 			}
 
-			else if($("#month").html() == ${calendar.get(6)}){
+			else if($("#month").html() == ${ calendar.get(6) } ){
 				alert(" 예약은 오늘 날짜로 부터 한달 후 까지만 가능합니다. ")
 			}
 		});
 	  
 		$("#beforeBtn").click(function() {
 			
-			if($("#month").html() == ${calendar.get(6)}){				
+			if($("#month").html() == ${ calendar.get(6) } ){				
 				$("#year").html(${calendar.get(0)});	
 				$("#month").html(${calendar.get(1)});
 				$("#nxtMonth").css("display", "none");
 				$("#firstMonth").css("display", "inline-block");
 				
 			}
-			else if($("#month").html() == ${calendar.get(1)}){
+			else if($("#month").html() == ${ calendar.get(1) } ){
 				alert(" 예약은 오늘 날짜로 부터 한달 후 까지만 가능합니다. ")
 			}
 		});
