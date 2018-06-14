@@ -17,6 +17,7 @@
   	<result column="BOOK_START_TIME" property="bookStartTime"/>
   	<result column="BOOK_PEOPLE" property="bookPeople"/>
   	<result column="BOOK_STATUS" property="bookStatus"/>
+  	<result column="BOOK_PRICE" property="bookPrice"/>
   	
   	<association property="memberVO" javaType="MemberVO">
   	

@@ -21,6 +21,7 @@ public class BookingVO {
 	private int bookTimes;
 	private int bookPeople;
 	private int bookStatus;
+	private int bookPrice;
 	
 	private MemberVO memberVO;
 	private BookingOptionVO bookingOptionVO;

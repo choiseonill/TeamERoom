@@ -20,5 +20,11 @@ public class BookServiceImpl implements BookService{
 	}
 
 
+	@Override
+	public boolean createBooking(BookingVO bookingVO) {
+		return bookDao.insertBookVO(bookingVO)>0;
+	}
+
+
 	
 }

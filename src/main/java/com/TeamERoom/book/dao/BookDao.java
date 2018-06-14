@@ -17,5 +17,9 @@ public interface BookDao {
 	
 	public List<BookingVO> selectBookVO(int id );
 
+	//예약 디비 저장
+	public int insertBookVO(BookingVO bookingVO);
+	
+	
 	
 }

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -7,30 +6,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Bootstrap core CSS -->
-<link
-	href="<c:url value="/static/vendor/bootstrap/css/bootstrap.min.css"/>"
-	rel="stylesheet">
-<link href="<c:url value="/static/css/business-frontpage.css"/>"
-	rel="stylesheet">
-
+<link href="<c:url value="/static/vendor/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
+<link href="<c:url value="/static/css/business-frontpage.css"/>" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="<c:url value="/static/css/modern-business.css"/>"
-	rel="stylesheet">
+<link href="<c:url value="/static/css/modern-business.css"/>" rel="stylesheet">
 
 <!-- Bootstrap core JavaScript -->
 <script src="<c:url value="/static/vendor/jquery/jquery.min.js"/>"></script>
-<script
-	src="<c:url value="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
+<script src="<c:url value="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
 
-<title>Insert title here</title>
+<title>방 예약</title>
 
-<script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"
-	type="text/javascript"></script>
+<script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>" type="text/javascript"></script>
 <script type="text/javascript">
 	$().ready(function() {
 		
@@ -48,40 +39,99 @@
 	    var isTrue = false;
 	      
 	    var scrollTop = $(window).scrollTop();
-	      
+	    
+	    ////// 달력 지난날 회색처리 /////
+	    var today = ${calendar.get(2)};
+	    
+	    for(i =1; i< today; i++){
+	    	var past = "#day"+i;
+	    	$(past).css("background-color", "#CCCCCC");
+	    }
+	    ////////////////////////
+	    
+	    
+	    
+	    ///////인원수 버튼 //////
+	    var people = $("#bookPeople").val();
+	    
+	    $("#mButton").click(function() {
+	    	if($("#bookPeople").val() > 1){
+	    		people--; 
+	    		$("#bookPeople").val(people);
+	    	}
+	    	else{
+	    		return false;
+	    	}
+	    	
+	    });
+	     
+	    $("#pButton").click(function() {
+	    	if($("#bookPeople").val() < ${dRoom.maxPeople}){
+	    		people++;
+	    		$("#bookPeople").val(people);
+	    	}
+	    	else{
+	    		return false;
+	    	}
+	    })
+	    ////////////
+	    
+	    /////예약 버튼////
+	    $("#bookingBtn").click(function() {
+	    	
+	    	var bookingForm = $("#bookingForm");
+	    	bookingForm.attr({
+	    		
+	    		"action" : "<c:url value="/booking"/>",
+	    		"method" : "post"
+	    		
+	    	}).submit();
+	    	
+	    	
+	    });
+	    
+	    ////////////////
+
 	    
 	    
 	    
 	    var date= $("#firstMonth").children("tr:nth-child(1)").children("td").first();
-	    
 	    var firstMonth = "${calendar.get(1)}";
 	    
-	    for( i=1; i<=5; i++ ){
+  	     for( i=1; i<=5; i++ ){
 	    	
 	    	date = $("#firstMonth").children("tr:nth-child("+i+")").children("td").first();
+	    	
 	    	for( j=0; j<7; j++  ){
 	    		
+	    		//날짜 가져오기
 	    		var test = date.children().html();
 	    		
+	    		// 1~9일 앞에 0 붙여서 01 02 03 이런식으로 만들기
 	    		if(test.length == 1){
 	    			test = "0"+test;
 	    		}
 	    		
+	    		// 1~9월 앞에 0 붙여서 01 02 03 이런식으로 만들기
 	    		if(firstMonth.length ==1){
 	    			firstMonth = "0" + firstMonth;
 	    		}
 	    		
+	    		//2018-06-08 이런식으로 날짜 만들기
 	    		dateKey = ${calendar.get(0)}+"-"+firstMonth+"-"+test;  
 	    		
 	    		var dateMap = "${dateMap}";
 	    		dateMap = dateMap.replace("{", "");
 	    		dateMap = dateMap.replace("}", "");
 	    		dateMap = dateMap.split(", ");
-	    		var openTime = "${room.roomEndTime - room.roomStartTime }"
-	    		opentime = 2;
-	    		for ( k=0; k<dateMap.length; k++ ) {
 	    		
-	    			//console.log(dateMap[k].charAt(dateMap[k].length-1) == 2);
+	    		//예약시간 총갯수 카운트 하기
+	    		var openTime = "${room.roomEndTime - room.roomStartTime }"
+	    		
+	    		//임의로 값줌
+	    		opentime = 4;
+	    		
+	    		for ( k=0; k<dateMap.length; k++ ) {
 	    			var reserveTime = dateMap[k].charAt(dateMap[k].length-1);
 	    			
 	    			if( dateMap[k].includes(dateKey) == true && opentime == reserveTime){
@@ -102,14 +152,11 @@
 	    
 	    $(".days").click(function(){
 	    	
-	    	console.log( $(this).css("background-color") );
-	    	
-	    	/* if( $(this).css("background-color") == "#CCCCCC" ) {
-	    		
-	    		
-	    	} */
+            startTime = null;
+            endTime = null;
 	    	
 	    	
+	    
 	    	if ( $(this).css("background-color") == "rgb(204, 204, 204)" ) {
 	    		return false;
 	    	}
@@ -152,81 +199,107 @@
 	    	
 	    	//날짜에 따라 이미예약된 시간 블럭처리 하기
 	    	<c:forEach var="bookList" items="${book}">
-	    	
 	    		var clickDate = "${bookList.bookDate}";
 	    		if(clickDate ==selectedDate){
 	    			var bookingTime = "#h"+"${bookList.bookTimes}";
 	    			$(bookingTime).css("background-color", "#FF0033");
+	    			
+	    			//부킹 되어있는 애들 데이터 값 0 에서 ->1 로 바꿔서 바탕색 안바뀌게
+	    			$(bookingTime).data("check", 1);
 	    		}
 			</c:forEach>
 	    	
 	    	
-	    	console.log( selectedDate );
 	    	
 	    	
 	    });
 	    
 	    
-	    
+	    /////////////////////금액 계산//////////////////////////////
+	    function priceCal(timeCount){
+	    	
+		    var price=${dRoom.pricePerTime} * timeCount;
+		    
+		    $("#price").html(price);
+		    $("#bookPrice").val(price);
+	    }
+	    /////////////////////////////////////////////////////
+	    	
+	    	
 	      $(".hourList").click(function() {
+	    	  var timeCount=0;
 	    	  
+	    	  //시간테이블 빨간색일때 못누르게
 	    	  if ( $(this).css("background-color") == "rgb(255, 0, 51)" ) {
 	    		  return false;
 	    	  }
-	         
+	    	  
 	         var fitstThat = $(".timeList").children().first("li");
 	         
+	         //시간 체크 박싱 되어있는 상태에서 다른 시간 눌러서 박싱 된것 풀때  바탕색을 흰색으로 바꿔주는 작업
 	         if ( isTrue ) {
-	            
 	            for ( i = 0; i <= 23; i++ ) {
-	               
-	               if ( $(fitstThat).data("check") == 0 ) {
-	                  
-	                  $(fitstThat).css("background", "white");   
-	               
-	               }
-	               //console.log($(fitstThat).data("id"));
-	               fitstThat = $(fitstThat).next();
-	               
-	            }
+	               		if ( $(fitstThat).data("check") == 0 || $(fitstThat).css("background-color") == "rgb(0, 0, 255)") {
+		                 	$(fitstThat).css("background", "white");   
+		               	}
+	               		
+	               		fitstThat = $(fitstThat).next();
+	           		}
 	            
 	            isTrue = false;
 	            startTime = null;
 	            endTime = null;
 	            
-	         }
+	         	}
 	         
 	         if ( startTime != null && endTime == null ) {
-	         
 	            endTime = $(this);
 	            //$(endTime).css("background", "blue");
 	            
 	         }
+	         
 	         if ( startTime == null ) {
-	            
 	            startTime = $(this);
 	            $(startTime).css("background", "blue");
+	            priceCal(1);
 	         }
 	         
 	         var start = $(startTime).data("id");
 	         var end = $(endTime).data("id");
-	         
 	         var that = $(startTime);
 	         
+	         
 	         if ( startTime != null && endTime != null ) {
-	            //console.log("start"+ start);
-	            //console.log("end"+end);
-	            
-	            for ( i = start; i <= end; i++ ) {
-	               
-	               $(that).css("background", "blue");
-	               
-	               //console.log( $(that).data("id") );
-	               that = $(that).next();
-	            }
-	            
-	            isTrue = true;
-	            
+	        	 
+	         		isTrue = true;
+		            startTime = null;
+		            endTime = null;
+		            
+		            for ( i = start; i <= end; i++ ) {
+		            	console.log("+");
+		               $(that).css("background", "blue");
+		               
+		               that = $(that).next();
+		               timeCount++;
+		               
+		               //TODO
+		               if(that.css("background-color") == "rgb(255, 0, 51)" ){
+		            	   console.log("timec   " + timeCount);
+				           priceCal(timeCount);
+		            	   
+		            	   isTrue = true;
+		            	   startTime = null;
+				           endTime = null;
+		            	   return false;
+		            	   
+		               }
+		               
+		               
+		               
+		            }
+		           
+	            	console.log("timec   " + timeCount);
+		            priceCal(timeCount);
 	         }
 	         
 	      });
@@ -367,7 +440,7 @@
 	
 		$("#nextBtn").click(function() {
 			if($("#month").html() == ${ calendar.get(1)} ){
-				$("#year").html( ${calendar.get(5)} );	
+				$("#year").html( ${calendar.get(5) } );	
 				$("#month").html( ${calendar.get(6)} );
 				$("#firstMonth").css("display", "none");	
 				$("#nxtMonth").css("display", "inline-block");				
@@ -430,10 +503,8 @@
 				"action" : "<c:url value="/book"/>"
 			}).submit();
 		});
-		
 	
-	
-	});
+});
 	
 </script>
 <style>
@@ -499,6 +570,25 @@ thead {
 	width: 97px !important;
 }
 
+.invalidTime{
+	background-color: #ffffff;
+}
+
+#bookingBtn {
+	font-size: 20pt; 
+	width: 100%; 
+	height: 50x; 
+	background-color: #3ddad7; 
+	text-align: center;
+}
+
+#price {
+	display: inline-block; 
+	font-size: 18pt; 
+	color: #0100FF; 
+	font-weight: bold; 
+	margin-left: 60%;
+}
 
 
 
@@ -551,10 +641,10 @@ thead {
 				<div>
 					<input type="button" id="beforeBtn" name="beforeBtn" value="<"/>
 					<%-- 달력 상단에 년 월 --%>
-					<span id="yearNmonth" style="margin-left: 40%;"> <span
-						id="year">${calendar.get(0)}</span>. <span id="month">${calendar.get(1)}</span>.
-					</span> <input style="margin-left: 43%;" type="button" id="nextBtn"
-						name="nextBtn" value=">" />
+					<span id="yearNmonth" style="margin-left: 40%;"> 
+						<span id="year">${calendar.get(0)}</span>. <span id="month">${calendar.get(1)}</span>.
+					</span> 
+					<input style="margin-left: 43%;" type="button" id="nextBtn" name="nextBtn" value=">" />
 				</div>
 
 				<div class="card-body">
@@ -571,7 +661,7 @@ thead {
 							</tr>
 						</thead>
 
-						<%-- 달력 보여주기 --%>
+						<%-- 달력 보여주기(첫번쨰 달) --%>
 						<tbody id="firstMonth">
 							<%-- 7일 마다  잘라주기 위한 변수 --%>
 							<c:set var="j" value="7" />
@@ -583,43 +673,37 @@ thead {
 							<tr>
 								<c:if test="${calendar.get(4)<7}">
 									<c:forEach begin="1" end="${calendar.get(4)}">
-										<td><div class="days">x</div></td>
+										<td><div style="background-color: #CCCCCC" class="days">x</div></td>
 									</c:forEach>
 								</c:if>
 
 								<c:forEach begin="1" end="${calendar.get(3)}" var="i">
 									<c:choose>
-
-										<%-- 오늘 날짜(바탕색 다름) --%>
-										<c:when test="${i eq calendar.get(2) }">
-											<td><a class="today first days" id="day${i}"
-												value="${i}" data-date="${calendar.get(0)}">${i}</a></td>
+									
+										<%--토요일은 파란색--%>
+										<c:when test="${i%j == week }">
+											<td><a style="color: #0054FF;" class="days first" id="day${i}">${i}</a></td>
+											</tr><tr>
 										</c:when>
-
-											<%-- 토요일은 글자 파란색 --%>
-											<c:when test="${i%j == week }">
-												<td><a style="color: #0100FF" class="days first" id="day${i}">${i}</a></td>
-												</tr><tr>
-											</c:when>
-
-									<%-- 일요일은 글자  빨간색 --%>
-									<c:when test="${i%j == week+1 }">
-										<td><a style="color: #FF0000" class="days first"
-											id="day${i}">${i}</a></td>
-									</c:when>
-
-									<c:otherwise>
-										<td><a class="days first" id="day${i}">${i}</a></td>
-	
+										
+										<%--일요일은 빨간색--%>
+										<c:when test="${i%j == week+1 }">
+											<td><a style="color: #FF0000" class="days first" id="day${i}">${i}</a></td>
+										</c:when>
+										
+										
+										<c:otherwise>
+											<td><a class="days first" id="day${i}">${i}</a></td>
 											<c:if test="${i==calendar.get(3)}">
-										</tr>
-										</c:if>
-	
-									</c:otherwise>
-							</c:choose>
-							</c:forEach>
+												</tr>
+											</c:if>
+										</c:otherwise>
+
+									</c:choose>
+								</c:forEach>
 						</tbody>
 
+						<%-- 달력 보여주기(두번쨰 달) --%>
 						<tbody id="nxtMonth">
 							<%-- 그주의 토요일(달력상 마지막 날이 토요일이기때문에 그 부분에서 다름 줄로 넘긴다.) 구하는 공식--%>
 							<c:set var="secondSat" value="${7-calendar.get(9)}" />
@@ -637,28 +721,24 @@ thead {
 
 										<%--토요일은 파란색--%>
 										<c:when test="${q%j == week2 }">
-											<td><a style="color: #0100FF" class="days nxt"
-												id="day${q}">${q}</a></td>
-							</tr>
-							<tr>
-								</c:when>
+											<td><a style="color: #0100FF" class="days nxt" id="day${q}">${q}</a></td>
+											</tr><tr>
+										</c:when>
 
-								<%--일요일은 빨간색--%>
-								<c:when test="${q%j == week2+1 }">
-									<td><a style="color: #FF0000" class="days nxt"
-										id="day${q}">${q}</a></td>
-								</c:when>
+										<%--일요일은 빨간색--%>
+										<c:when test="${q%j == week2+1 }">
+											<td><a style="color: #FF0000" class="days nxt" id="day${q}">${q}</a></td>
+										</c:when>
 
-								<c:otherwise>
-									<td><a class="days nxt" id="day${q}">${q}</a></td>
-									<c:if test="${q==calendar.get(8)}">
-							</tr>
-							</c:if>
-							</c:otherwise>
+										<c:otherwise>
+											<td><a class="days nxt" id="day${q}">${q}</a></td>
+											<c:if test="${q==calendar.get(8)}">
+												</tr>
+											</c:if>
+										</c:otherwise>
 
-
-							</c:choose>
-							</c:forEach>
+									</c:choose>
+								</c:forEach>
 						</tbody>
 					</table>
 				</div>
@@ -668,7 +748,7 @@ thead {
 				<div id="timeBox" class="card-body " style="overflow: hidden;">
 					<div>
 						<ul class="timeList">
-							<li class="hourList" id="h0"  data-id="0" data-check="0">0</li>
+							<li class="hourList" id="h0" data-id="0" data-check="0">0</li>
 							<li class="hourList" id="h1" data-id="1" data-check="0">1</li>
 							<li class="hourList" id="h2" data-id="2" data-check="0">2</li>
 							<li class="hourList" id="h3" data-id="3" data-check="0">3</li>
@@ -704,9 +784,9 @@ thead {
 						<div class="input-group">
 
 							<div class="bookPeoples">
-								<input type="button" id="mButton" value="-" /> <input
-									type="text" id="bookPeople" name="bookPeople" value="0" /> <input
-									type="button" id="pButton" value="+" />
+								<input type="button" id="mButton" value="-" /> 
+								<input type="text" id="bookPeople" name="bookPeople" value='1' /> 
+								<input type="button" id="pButton" value="+" />
 							</div>
 
 						</div>
@@ -725,7 +805,7 @@ thead {
 								<dd>
 									<div>
 										<input type="text" name="name"
-											value="${sessionScope.__USER__.name}">
+											value="${sessionScope.__USER__.name}"/>
 									</div>
 								</dd>
 							</dl>
@@ -736,7 +816,7 @@ thead {
 								<dd>
 									<div>
 										<input type="text" name="phoneNumber"
-											value="${sessionScope.__USER__.phone}">
+											value="${sessionScope.__USER__.phone}"/>
 									</div>
 								</dd>
 							</dl>
@@ -746,16 +826,14 @@ thead {
 								</dt>
 								<dd>
 									<div>
-										<input type="text" name="email"
-											value="${sessionScope.__USER__.email}">
+										<input type="text" name="email" value="${sessionScope.__USER__.email}"/>
 									</div>
 								</dd>
 							</dl>
 						</div>
-						<input type="hidden" id="bookDate" name="bookDate" value="${bookDate}" /> 
-						<input type="hidden" id="bookPeople" name="bookPeople" value="1" /> 
-						<input type="hidden" id="bookTimes" name="bookTimes" value="${bookTimes}" />
-
+							<input type="hidden" id="bookDate" name="bookDate" value="${bookDate}" /> 
+							<input type="hidden" id="bookTimes" name="bookTimes" value="${bookTimes}" />
+							<input type="hidden" id="bookPrice" name="bookPrice" value="0" />
 						<p>예약자 정보 어쩌구 저쩌구 확인해주세요 ㅇㅅㅇ</p>
 					</div>
 				</div>
@@ -787,11 +865,11 @@ thead {
 					</div>
 				</div>
 			</div>
-			
-		
-			
-  
-  
+
+
+
+
+
 			<div class="card my-4">
 				<h5 class="card-header">시설안내</h5>
 				<div class="card-body">
@@ -836,14 +914,9 @@ thead {
 				<h5 class="card-header">세부공간 선택</h5>
 				<div class="card-body">
 					<hr />
-					<div
-						style="display: inline-block; font-size: 18pt; color: #0100FF; font-weight: bold; margin-left: 5%">￦</div>
-					<div id="price"
-						style="display: inline-block; font-size: 18pt; color: #0100FF; font-weight: bold; margin-left: 75%">0</div>
-
-					<div id="bookingBtn"
-						style="font-size: 20pt; width: 100%; height: 50x; background-color: #3ddad7; text-align: center;">
-						예약 하기</div>
+					<div style="display: inline-block; font-size: 18pt; color: #0100FF; font-weight: bold; margin-left: 5%">￦</div>
+					<div id="price">0</div>
+					<div id="bookingBtn">예약 하기</div>
 
 				</div>
 			</div>

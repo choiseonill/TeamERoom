@@ -21,12 +21,25 @@ public class BookController {
 	public ModelAndView booking(@ModelAttribute("bookingForm") BookingVO bookingVO ) {
 		ModelAndView view = new ModelAndView();
 		
-		System.out.println(bookingVO.getBookDate());
 		view.setViewName("redirect:/main");
 		
 		return view;
 		
 	}
+	
+	
+	
+	@RequestMapping(value="/booking", method=RequestMethod.POST )
+	public String testBook(@ModelAttribute("bookingForm") BookingVO bookingVO ) {
+		System.out.println("dzdzdz");
+		
+		if(bookService.createBooking(bookingVO)) {
+			return "redirec:/main";
+		};
+		
+		return ""; 
+		
+	} 
 	
 	
 	

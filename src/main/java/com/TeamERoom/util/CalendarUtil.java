@@ -39,7 +39,7 @@ public class CalendarUtil {
 		
 		calendar.add(year);      	//0
 		calendar.add(month);     	//1
-		calendar.add(day);       	//2
+		calendar.add(day);       	//2  오늘날짜
 		calendar.add(lastDay);   	//3
 		calendar.add(dayOfWeek);  	//4
 		

@@ -34,6 +34,11 @@ public class BookDaoImpl extends SqlSessionDaoSupport implements BookDao{
 		return getSqlSession().selectList("BookDao.selectBookVO", id);
 	}
 
+	@Override
+	public int insertBookVO(BookingVO bookingVO) {
+		return getSqlSession().insert("BookDao.insertBookVO", bookingVO);
+	}
+
 
 
 
