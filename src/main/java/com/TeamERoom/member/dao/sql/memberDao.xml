@@ -5,9 +5,6 @@
   
   <mapper namespace="MemberDao"><!-- 인터페이스 이름 적어줌 -->
   
-  
-  
-  
   <insert id="insertMember" parameterType="MemberVO">
   	
   	INSERT INTO MEMBER (

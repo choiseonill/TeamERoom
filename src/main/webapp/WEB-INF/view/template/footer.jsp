@@ -5,7 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<<<<<<< HEAD
 <link href="<c:url value="static/css/footer.css" />"   rel="stylesheet">
+=======
+<link href="../static/css/footer.css" rel="stylesheet">
+>>>>>>> origin/mkmk
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
         <!-- Footer -->

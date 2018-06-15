@@ -6,7 +6,15 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="<c:url value="../static/js/jquery-3.3.1.min.js"/>"></script>
+<script src="<c:url value="../static/vendor/jquery/jquery.min.js"/>"></script>
+<script src="../static/js/jquery-3.3.1.min.js"></script>
+<script src="<c:url value="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
+<script src="<c:url value="../static/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="../static/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
+<<<<<<< HEAD
 <link href="<c:url value="static/vendor/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
 <link rel="stylesheet" href="<c:url value="static/css/style3.css" />">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
@@ -16,6 +24,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+=======
+<link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../static/css/style3.css">
+<link rel="stylesheet" 
+	href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+>>>>>>> origin/mkmk
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#sidebar").mCustomScrollbar({
@@ -95,6 +110,7 @@
 					<a href="<c:url value="/roomdetail"/>">roomdetail</a>
 				</button>
 
+<<<<<<< HEAD
 			</ul>
    
 
@@ -102,10 +118,12 @@
 
 
 
+=======
+>>>>>>> origin/mkmk
 		</nav>
 
 		<!-- Page Content Holder -->
-		<div id="content">
+		<div style="height:15%;">
 
 			<nav
 				class="navbar fixed-top navbar-expand-lg navbar-dark bg-darks1 fixed-top">

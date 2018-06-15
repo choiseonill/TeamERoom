@@ -264,7 +264,7 @@
 				<!-- /게시판 부분 -->
 				
           </div>
-            <div>
+        <div>
         <a href="#" class="btn btn-primary" style="float: right; margin-top: 10px; margin-bottom: 10px;">&nbsp;&nbsp;글쓰기&nbsp;&nbsp;</a>
         </div>
       </div>

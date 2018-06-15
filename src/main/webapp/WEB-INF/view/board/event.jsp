@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<<<<<<< HEAD
 <title>이벤트</title>
 
 <script src="<c:url value="static/vendor/jquery/jquery.min.js"/>"></script>
@@ -13,65 +16,48 @@
 
 <!-- Custom styles for this template -->
 <link href="static/css/modern-business.css" rel="stylesheet">
+=======
+<script type="text/javascript"
+		src="<c:url value="../static/js/jquery-3.3.1.min.js"/>"></script>
+<script type="text/javascript">
+	$().ready( function(){	
+			 /* 엔터로 검색실행 *////
+			 $("#searchKeyword").keyup(function(event){
+				console.log(event);
+				if (event == "enter" || event.which == 13  ){
+					 movePage('0');
+				}
+			 });
+			 /* 클릭시 검색실행 */
+			 $("#searchBtn").click( function(){
+				 movePage('0');
+			  });
+			/* 게시판 클릭시 슬라이드다운 */
+			 $(".body").hide();
+			 $(".card-header").click(function(){
+				 var that = $(this);
+			 	 $(this).toggleClass(".card-header").next('.body').slideToggle('fast');
+			 	 var boardId = $(this).find('.boardId').text();
+			 	 var viewCount = $(this).find('#viewCount').text();
+					
+			 	 $.get( "<c:url value="/api/incrementVC/"/>"+ boardId ,{
+			 	 },function(res){
+			 	
+			 		 console.log(that.find('#viewCount').text());
+			 		 that.find('#viewCount').html( res );
+			 		   
+			 	 });
+			 	 
+			 	 
+		    });
+			 
+	 });
+		
+</script>
+>>>>>>> origin/mkmk
 </head>
   <body>
-
-    <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="services.html">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Portfolio
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-3-col.html">3 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Blog
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
-                <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
-                <a class="dropdown-item" href="blog-post.html">Blog Post</a>
-              </div>
-            </li>
-            <li class="nav-item active dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Other Pages
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                <a class="dropdown-item" href="full-width.html">Full Width Page</a>
-                <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
-                <a class="dropdown-item active" href="faq.html">FAQ</a>
-                <a class="dropdown-item" href="404.html">404</a>
-                <a class="dropdown-item" href="pricing.html">Pricing Table</a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+	 <head><jsp:include page="/WEB-INF/view/template/head.jsp" /></head> 
 
     <!-- Page Content -->
     <div class="container">
@@ -83,61 +69,58 @@
          <div class="card mb-4">
             <div class="card-body">
               <div class="input-group">
-              <span style="margin-right: 10px;">
-	              <select class="form-control" id="sel1">
-	        		<option>예약자명</option>
-	        		<option>예약자명</option>
-	        		<option>예약자명</option>
-	        		<option>예약자명</option>
-	      		  </select>
-              </span>
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn" style="margin-left: 10px;">
-                  <button class="btn btn-secondary" type="button">Go!</button>
-                </span>
-              </div>
+	              
+	             <form id="searchForm" onsubmit="movePage('0')" style="width:100%;">
+	              	   <div style="display:none;"> ${pageExplorer.make()}</div>
+				        <select id="searchType" name="searchType" style="display:inline-block; width:10%;">
+							<option value="1" ${search.searchType eq 1 ? 'selected' : '' }>글제목</option>
+							<option value="2" ${search.searchType eq 2 ? 'selected' : '' }>제목 + 글제목</option>
+							<option value="3" ${search.searchType eq 3 ? 'selected' : '' }>작성자 Email </option>
+						</select>
+						 <div style="display:inline-block; width:60%;">
+							<input type="text" id="searchKeyword" name="searchKeyword" value="${search.searchKeyword}" class="form-control" placeholder="Search for..."/>
+						</div>
+						<div style="display:inline-block; width:20%;">
+		                	 <a class="btn btn-primary" style="display:inline-block; color:#FFFFFF" id="searchBtn"  >검색</a>
+		                	 <a href="<c:url value="/board/reset"/>" class="btn btn-primary" style="display:inline-block;">검색 초기화</a>
+			            </div>
+   		          </form> 
+   		       </div>
+                	<span class="input-group-btn" style="margin-left: 10px;">
+                  <!-- <button class="btn btn-secondary" type="button" style="display:inline-block";>검색!</button> -->
+            	    </span>
+               </div> 
             </div>
-            </div>
-	  
       <div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="card">
-          <div class="card-header" role="tab" id="headingOne">
-            <h5 class="mb-0">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="margin-right: 130px;">게시 일: 2018.02.02</a>
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="margin-right: 130px;">제목 : 용관이네방</a>
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="margin-right: 130px;">작성자 : 이용관</a>
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="margin-right: 20px;">조회수 : 0</a>
-            </h5>
-          </div>
-
-          <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+		   <div>
+				<span>
+					${pageExplorer.make()}
+			        <a href="/board/boardWrite" class="btn btn-primary" style="text-align:right; margin-left:85%; margin-bottom:1%;">&nbsp;&nbsp;글쓰기&nbsp;&nbsp;</a>
+				</span>
+			</div>
+         <div class="card">
+		  <c:forEach items="${pageExplorer.list}" var="board">
+	          <div class="card-header" role="tab" id="headingOne">
+	            <h5 class="mb-0">
+	            	<tr>
+		            	<div data-id="${board.ID}">
+		            		<!-- 전체갯수-(페이지번호 -1 ) * 한페이지에 표시할 갯수 ) -->
+							<div class="boardId" style="display:inline-block; margin-left:1%; width:20%;" ><th>${board.ID}</th></div>
+							<div style="display:inline-block; margin-left:3%; width:15%;" maxlength="1"><th>${board.title}</th></div>
+							<div style="display:inline-block; margin-left:23%; width:25%;" id="write_date" ><th> ${board.write_date}</th></div>
+							<div style="display:inline-block; margin-left:1%; width:10%;" id="viewCount"><th>${board.viewCount}</th></div>
+						</div>	
+					</tr>
+	            </h5>
+	          </div>
+          
+       <div id="body" class="body" role="tabpanel" aria-labelledby="headingOne"; >
                <table class="table table-condensed">
-					<thead>
-						<tr>
-							<td>제목</td>
-							<td>${communitydetail.writeDate}
-							
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>작성일</td>
-							<td>${communitydetail.writeDate}
-							<span style='float: right'>조회수 : 123</span></td>
-						</tr>
-						<tr>
-							<td>글쓴이</td>
-								<td>${communitydetail.memberVO.nickname}
-							</td>
-						</tr>
-						
-				
-						<tr>
-							<td colspan="2" height="130px">
-								<p>본문 내용 들어갈곳</p>
-							</td>
-						</tr>
-					</tbody>
+					<tr>
+						<td colspan="2" height="130px">
+							${board.body}
+						</td>
+					</tr>
 				</table>
 				<table class="table table-condensed">
 					<thead>
@@ -145,146 +128,25 @@
 							<td class="card-footer">
 								<span style='float: right' >
 									<a href="#" class="btn btn-primary">&nbsp;&nbsp;수정&nbsp;&nbsp;</a>
-									<a href="#" class="btn btn-primary">&nbsp;&nbsp;삭제&nbsp;&nbsp;</a>
-									<a href="#" class="btn btn-primary">&nbsp;&nbsp;저장&nbsp;&nbsp;</a>
+									<a class="btn btn-primary" href="<c:url value="/board/delete/${board.ID}"/>">&nbsp;&nbsp;삭제&nbsp;&nbsp;</a>
 								</span>
 							</td>
 						</tr>
 					</thead>
 				</table>
 				<!-- /게시판 부분 -->
-          </div>
+         </div>
+         <div style="height:3px;"></br></div>
+		</c:forEach>
         </div>
-        <div class="card">
-          <div class="card-header" role="tab" id="headingTwo">
-            <h5 class="mb-0">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="#collapseTwo" style="margin-right: 130px;">게시 일: 2018.02.02</a>
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="#collapseTwo" style="margin-right: 130px;">제목: 용관이네방</a>
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="#collapseTwo" style="margin-right: 130px;">작성자: 이용관</a>
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="#collapseTwo" style="margin-right: 20px;">조회수: 0</a>
-            </h5>
-          </div>
-          <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-                <table class="table table-condensed">
-					<thead>
-						<tr>
-							<td>제목</td>
-							<td>${communitydetail.writeDate}
-							
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>작성일</td>
-							<td>${communitydetail.writeDate}
-							<span style='float: right'>조회수 : 123</span></td>
-						</tr>
-						<tr>
-							<td>글쓴이</td>
-								<td>${communitydetail.memberVO.nickname}
-							</td>
-						</tr>
-						
-				
-						<tr>
-							<td colspan="2" height="130px">
-								<p>본문 내용 들어갈곳</p>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<table class="table table-condensed">
-					<thead>
-						<tr>
-							<td class="card-footer">
-								<span style='float: right' >
-									<a href="#" class="btn btn-primary">&nbsp;&nbsp;수정&nbsp;&nbsp;</a>
-									<a href="#" class="btn btn-primary">&nbsp;&nbsp;삭제&nbsp;&nbsp;</a>
-									<a href="#" class="btn btn-primary">&nbsp;&nbsp;저장&nbsp;&nbsp;</a>
-								</span>
-							</td>
-						</tr>
-					</thead>
-				</table>
-				<!-- /게시판 부분 -->
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header" role="tab" id="headingThree">
-            <h5 class="mb-0">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree" style="margin-right: 130px;">게시 일: 2018.02.02</a>
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree" style="margin-right: 130px;">제목: 용관이네방</a>
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree" style="margin-right: 130px;">작성자: 이용관</a>
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree" style="margin-right: 20px;">조회수: 0</a>
-            </h5>
-          </div>
-          <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-           <table class="table table-condensed">
-					<thead>
-						<tr>
-							<td>제목</td>
-							<td>${communitydetail.writeDate}
-							
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>작성일</td>
-							<td>${communitydetail.writeDate}
-							<span style='float: right'>조회수 : 123</span></td>
-						</tr>
-						<tr>
-							<td>글쓴이</td>
-								<td>${communitydetail.memberVO.nickname}
-							</td>
-						</tr>
-						
-				
-						<tr>
-							<td colspan="2" height="130px">
-								<p>본문 내용 들어갈곳</p>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<table class="table table-condensed">
-					<thead>
-						<tr>
-							<td class="card-footer">
-								<span style='float: right' >
-									<a href="#" class="btn btn-primary">&nbsp;&nbsp;수정&nbsp;&nbsp;</a>
-									<a href="#" class="btn btn-primary">&nbsp;&nbsp;삭제&nbsp;&nbsp;</a>
-									<a href="#" class="btn btn-primary">&nbsp;&nbsp;저장&nbsp;&nbsp;</a>
-								</span>
-							</td>
-						</tr>
-					</thead>
-					
-				</table>
-				<!-- /게시판 부분 -->
-				
-          </div>
-            <div>
-        <a href="#" class="btn btn-primary" style="float: right; margin-top: 10px; margin-bottom: 10px;">&nbsp;&nbsp;글쓰기&nbsp;&nbsp;</a>
-        </div>
-      </div>
+       </div>
       </div>
     </div>
     
     <!-- /.container -->
-
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
-      </div>
-      <!-- /.container -->
-    </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+	
   </body>
-
+	<div>
+	 <jsp:include page="/WEB-INF/view/template/footer.jsp"/> 
+	</div>
 </html>

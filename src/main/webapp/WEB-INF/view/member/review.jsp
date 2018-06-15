@@ -18,44 +18,7 @@
 <script src="<c:url value="static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
 
 </head>
-<body>
-
-
-    <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="<c:url value="/main" />">Team E Room</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">추천장소</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<c:url value="/roomComments"/>">써 본 사람</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">공간등록하기</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                검색
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                <a class="dropdown-item" href="full-width.html">Full Width Page</a>
-                <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
-                <a class="dropdown-item" href="faq.html">FAQ</a>
-                <a class="dropdown-item" href="404.html">404</a>
-                <a class="dropdown-item" href="pricing.html">Pricing Table</a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
+<jsp:include page="/WEB-INF/view/template/head.jsp" />
     <!-- Page Content -->
     <div class="container">
 
@@ -124,20 +87,8 @@
         </div>
       </div>
       <!-- /.row -->
-
     </div>
     <!-- /.container -->
-
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
-      </div>
-      <!-- /.container -->
-    </footer>
-
-
-
-
+<jsp:include page="/WEB-INF/view/template/footer.jsp" />
 </body>
 </html>
