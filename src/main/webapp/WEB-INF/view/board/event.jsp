@@ -10,7 +10,7 @@
 		src="<c:url value="../static/js/jquery-3.3.1.min.js"/>"></script>
 <script type="text/javascript">
 	$().ready( function(){	
-			 /* 엔터로 검색실행 */
+			 /* 엔터로 검색실행 *////
 			 $("#searchKeyword").keyup(function(event){
 				console.log(event);
 				if (event == "enter" || event.which == 13  ){
