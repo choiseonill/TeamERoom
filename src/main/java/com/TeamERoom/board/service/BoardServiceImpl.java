@@ -23,9 +23,8 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public boolean writeBoard(BoardVO BoardVO) {
-		
 		if( BoardVO.getFile() != null && !BoardVO.getFile().isEmpty() ) {
-			BoardVO.setFileName(BoardVO.getFile().getOriginalFilename());
+			BoardVO.setFileName(BoardVO.getFileName());
 		}
 		if( boardDao.insertBoard(BoardVO) > 0 ) {
 			
@@ -34,8 +33,9 @@ public class BoardServiceImpl implements BoardService {
 		return false;
 	}
 
-
+	
 	@Override
+<<<<<<< HEAD
 	public PageExplorer getAll(BoardSearchVO boardSearchVO) {
 		
 		Pager pager = PagerFactory.getPager(Pager.ORACLE, boardSearchVO.getPageNo()+"", boardDao.selectCountAll(boardSearchVO));
@@ -52,6 +52,10 @@ public class BoardServiceImpl implements BoardService {
 	public BoardVO selectOne(int id) {
 		// TODO Auto-generated method stub
 		return boardDao.selectOne(id);
+=======
+	public List<BoardVO> getAll() {
+		return boardDao.selectAll();
+>>>>>>> origin/진항
 	}
 
 
@@ -70,7 +74,6 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.incrementViewCount(id);
 	}
 
-	
 	
 
 

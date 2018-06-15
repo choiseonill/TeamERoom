@@ -8,6 +8,7 @@ import com.TeamERoom.board.vo.BoardVO;
 public interface BoardDao {
 	
 	public int insertBoard(BoardVO boardVO);
+<<<<<<< HEAD
 	
 	public int deleteBoard(int id);
 	
@@ -18,4 +19,9 @@ public interface BoardDao {
 	public int selectCountAll(BoardSearchVO boardSearchVO);
 	
 	public int incrementViewCount(int id);
+=======
+
+	public List<BoardVO> selectAll();
+
+>>>>>>> origin/진항
 }

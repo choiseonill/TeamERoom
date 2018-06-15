@@ -23,10 +23,6 @@ public class TestController {
 	}
 	
 	
-	@RequestMapping("/main")
-	public String testmainPage() {
-		return "/main";
-	}
 	
 <<<<<<< HEAD
 	@RequestMapping("/roomComments")

@@ -30,7 +30,11 @@
     <result column="ANSWER" property="answer"/>
     </association>    
   </resultMap>	
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> origin/진항
  	<insert id="insertBoard" parameterType="BoardVO">
 		INSERT	INTO BOARD
 				(

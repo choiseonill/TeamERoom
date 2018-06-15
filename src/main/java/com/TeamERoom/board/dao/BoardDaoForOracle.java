@@ -13,12 +13,13 @@ public class BoardDaoForOracle extends SqlSessionDaoSupport implements BoardDao 
 	public int insertBoard(BoardVO boardVO) {
 		return getSqlSession().insert("BoardDao.insertBoard", boardVO);
 	}
-
+	
 	@Override
 	public List<BoardVO> selectAll(BoardSearchVO boardSearchVO) {
 		
 		return getSqlSession().selectList("BoardDao.selectAll", boardSearchVO);
 	}
+<<<<<<< HEAD
 
 	@Override
 	public int selectCountAll(BoardSearchVO boardSearchVO) {
@@ -46,4 +47,6 @@ public class BoardDaoForOracle extends SqlSessionDaoSupport implements BoardDao 
 	}
 
 
+=======
+>>>>>>> origin/진항
 }
