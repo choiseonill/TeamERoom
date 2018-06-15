@@ -1,4 +1,4 @@
-package com.TeamERoom.member.service;
+ package com.TeamERoom.member.service;
 
 import com.TeamERoom.member.dao.MemberDao;
 import com.TeamERoom.member.vo.MemberVO;
