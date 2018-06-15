@@ -1,29 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 Manifest-Version: 1.0
 Built-By: Administrator
 Build-Jdk: 1.8.0_171
 Created-By: Maven Integration for Eclipse
 
-=======
-Manifest-Version: 1.0
-Built-By: Moonki
-Build-Jdk: 1.8.0_73
-Created-By: Maven Integration for Eclipse
-
->>>>>>> origin/mkmk
-=======
-Manifest-Version: 1.0
-Built-By: Admin
-Build-Jdk: 1.8.0_171
-Created-By: Maven Integration for Eclipse
-
->>>>>>> origin/진항
-=======
-Manifest-Version: 1.0
-Built-By: hyeseung
-Build-Jdk: 1.8.0_171
-Created-By: Maven Integration for Eclipse
-
->>>>>>> origin/hyeseung
