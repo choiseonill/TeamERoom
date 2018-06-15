@@ -76,7 +76,7 @@ public class MemberController {
 		MemberVO member = (MemberVO) session.getAttribute("__USER__");
 		String pImage = member.getImg();
 
-		DownloadUtil download = new DownloadUtil("C:\\Users\\YongGwan\\Desktop\\TeamERoom\\profile\\" + pImage);
+		DownloadUtil download = new DownloadUtil("D:\\image\\"  + pImage);
 
 		try {
 			download.download(request, response, pImage);

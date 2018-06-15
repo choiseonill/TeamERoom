@@ -45,7 +45,7 @@ public class MemberVO {
 
 			img = file.getOriginalFilename();
 
-			File newSImg = new File("C:\\Users\\YongGwan\\Desktop\\TeamERoom\\profile\\" + file.getOriginalFilename());
+			File newSImg = new File("D:\\image\\" + file.getOriginalFilename());
 
 			try {
 				file.transferTo(newSImg);

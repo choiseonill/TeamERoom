@@ -81,7 +81,7 @@ public class RoomController {
 	@RequestMapping("/getRoomImg/{img:.+}")
 	public void download(@PathVariable String img, HttpServletRequest request, HttpServletResponse response,
 			HttpSession session) {
-		DownloadUtil download = new DownloadUtil("C:\\Users\\YongGwan\\Desktop\\TeamERoom\\roomImg\\" + img);
+		DownloadUtil download = new DownloadUtil("D:\\image\\"  + img);
 
 		try {
 			download.download(request, response, img);
