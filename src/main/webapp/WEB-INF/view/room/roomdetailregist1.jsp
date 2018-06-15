@@ -10,49 +10,10 @@
 <title>세부공간등록페이지
 </title>
 <!-- Bootstrap core CSS -->
+
+
 <link href="static/css/modern-business.css" rel="stylesheet">
 <link href="static/css/checkbox.css" rel="stylesheet">
-
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-
-<!--최대,최소 예약 시간 인원 등 숫자 설정 -->
-<script>
-
-$(function(){
-
-    $('.spinner .btn:first-of-type').on('click', function() {
-      var btn = $(this);
-      var input = btn.closest('.spinner').find('input');
-      if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {    
-        input.val(parseInt(input.val(), 10) + 1);
-      } else {
-        btn.next("disabled", true);
-      }
-    });
-    $('.spinner .btn:last-of-type').on('click', function() {
-      var btn = $(this);
-      var input = btn.closest('.spinner').find('input');
-      if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {    
-        input.val(parseInt(input.val(), 10) - 1);
-      } else {
-        btn.prev("disabled", true);
-      }
-    });
-    
-    
-    $("#button").click(function(){
-    	
-       var test= $(".container").clone().appendTo("copy");
-        console.log(test);
-    });  
-    
-
-})
-
-
-</script>
-
 
 <style>
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
@@ -95,7 +56,63 @@ $(function(){
   left: 4px;
 }
 
+.add_section {
+    position: relative;
+    padding-top: 12px;
+    border-bottom: 1px solid #d8d8d8;
+    margin: 0 16px 11px;
+}
+
+.add_section .icon {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    width: 26px;
+    height: 26px;
+    background: url(../images/common/icon_plmi.png) no-repeat;
+}
+
 </style>
+
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
+
+<!--최대,최소 예약 시간 인원 등 숫자 설정 -->
+<script>
+
+$(function(){
+
+    $('.spinner .btn:first-of-type').on('click', function() {
+      var btn = $(this);
+      var input = btn.closest('.spinner').find('input');
+      if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {    
+        input.val(parseInt(input.val(), 10) + 1);
+      } else {
+        btn.next("disabled", true);
+      }
+    });
+    $('.spinner btn:last-of-type').on('click', function() {
+      var btn = $(this);
+      var input = btn.closest('.spinner').find('input');
+      if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {    
+        input.val(parseInt(input.val(), 10) - 1);
+      } else {
+        btn.prev("disabled", true);
+      }
+    });
+    
+    
+    $("#button").click(function(){
+    	
+       var test= $(".card").first().clone().appendTo($(".card").last().prev());
+        console.log(test);
+    });  
+    
+
+})
+
+/* /* /* /* /* /* 	hidde을 first로 잡고 해보기 */ 
+</script>
 
 </head>
 
@@ -106,7 +123,7 @@ $(function(){
 	 
 	 
 		<div class="container">
-		<h2 class="mt-4 mb-3">세부공간</h2>
+		<h2 class="mt-4 mb-3">세부공간등록</h2>
       <ol class="breadcrumb">
         <li class="breadcrumb-item active">등록하고 하시는 장소의 예약유형을 설정해 주세요.</li>
       </ol>
@@ -358,10 +375,12 @@ $(function(){
 			  
             </div>
           </div>
+          
         </div>
         
         
         
+        <div class="container">
         <div class="card">
           <div class="card-header" role="tab" id="headingTwo">
             <h5 class="mb-0">
@@ -374,10 +393,18 @@ $(function(){
             </div>
           </div>
         </div>
-        
-      </div>
+        </div>
+        </div>
+      
+		<div class ="container">
 		
-	    <div id="copy">
+		<div class="add_section" id="copy">
+                    <p> 더 추가해야 할 공간이 있으면 추가 해주세요.</p>
+                    <a href="javascript:addRow();" class="icon"></a>
+     
 	   <button id="button">+</button>   
+		
+        </div>
 		</div>
+		
 	<jsp:include page="/WEB-INF/view/template/footer.jsp"/>
