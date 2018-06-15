@@ -65,10 +65,11 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public boolean increamentVC(int id) {
+	public int incrementVC(int id) {
 
-		return boardDao.increamentViewCount(id) > 0;
+		return boardDao.incrementViewCount(id);
 	}
+
 	
 	
 

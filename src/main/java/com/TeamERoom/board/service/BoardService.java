@@ -15,7 +15,7 @@ public interface BoardService {
 	
 	public BoardVO selectOne(int id);
 	
-	public boolean increamentVC(int id);
+	public int incrementVC(int id);
 	
 	public boolean deleteBoard(int id);
 	

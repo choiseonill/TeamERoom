@@ -110,6 +110,7 @@
 	  				,B.STATUS
 					,B.BOARD_FILE
 	  		FROM 	BOARD B
+	  		WHERE	B.ID = #{ID}
   	</select>
   	
   	<delete id="deleteBoard" parameterType="_int">
@@ -118,9 +119,10 @@
   		WHERE   B.ID = #{ID}
   	</delete>
   	
-  	<update id="increamentViewCount" parameterType="_int">
+  	<update id="incrementViewCount" parameterType="_int">
   		UPDATE	BOARD
   		SET		VIEW_COUNT	=	VIEW_COUNT + 1
+  		WHERE   ID = #{ID}
   	</update>
   	
   </mapper>

@@ -17,5 +17,5 @@ public interface BoardDao {
 	
 	public int selectCountAll(BoardSearchVO boardSearchVO);
 	
-	public int increamentViewCount(int id);
+	public int incrementViewCount(int id);
 }

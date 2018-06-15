@@ -21,6 +21,7 @@ import com.TeamERoom.board.vo.BoardVO;
 import com.TeamERoom.member.vo.MemberVO;
 
 import io.github.seccoding.web.pager.explorer.PageExplorer;
+import jdk.nashorn.internal.ir.RuntimeNode.Request;
 
 @Controller
 public class BoardController {
@@ -53,6 +54,7 @@ public class BoardController {
 			session.removeAttribute("__SEARCH__");
 			return "redirect:/board/event";
 		}
+		
 		@RequestMapping("/board/event")
 		public ModelAndView viewListPage(BoardSearchVO boardSearchVO, HttpSession session) {
 		
@@ -90,11 +92,15 @@ public class BoardController {
 			return "redirect:/board/event";
 		}
 		
-		@RequestMapping("/board/increament/{id}")
-		public String increamentViewCount(HttpSession session, @PathVariable int id) {
-		
-			boardService.increamentVC(id);
+		@RequestMapping(value="/api/incrementVC/{id}", method = RequestMethod.GET)
+		@ResponseBody
+		public int incrementViewCount(@PathVariable int id, HttpSession session) {
 			
-			return "redirect:/board/event";
+			 System.out.println("id 들어왔니 : "+id);
+			 boardService.incrementVC(id);
+			 BoardVO board = boardService.selectOne(id);
+			 int viewCount = board.getViewCount(); 
+			 System.out.println("view Count" + viewCount);
+			return viewCount;
 		}
 }

@@ -39,9 +39,10 @@ public class BoardDaoForOracle extends SqlSessionDaoSupport implements BoardDao 
 	}
 
 	@Override
-	public int increamentViewCount(int id) {
+	public int incrementViewCount(int id) {
 		// TODO Auto-generated method stub
-		return getSqlSession().update("BoardDao.increamentViewCount", id);
+		System.out.println("여기까지옴!! ");
+		return getSqlSession().update("BoardDao.incrementViewCount", id);
 	}
 
 

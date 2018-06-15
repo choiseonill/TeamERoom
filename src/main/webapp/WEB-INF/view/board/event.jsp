@@ -24,7 +24,20 @@
 			/* 게시판 클릭시 슬라이드다운 */
 			 $(".body").hide();
 			 $(".card-header").click(function(){
-			 	 $(this).toggleClass(".card-header").next('.body').slideToggle('fast')
+				 var that = $(this);
+			 	 $(this).toggleClass(".card-header").next('.body').slideToggle('fast');
+			 	 var boardId = $(this).find('.boardId').text();
+			 	 var viewCount = $(this).find('#viewCount').text();
+					
+			 	 $.get( "<c:url value="/api/incrementVC/"/>"+ boardId ,{
+			 	 },function(res){
+			 	
+			 		 console.log(that.find('#viewCount').text());
+			 		 that.find('#viewCount').html( res );
+			 		   
+			 	 });
+			 	 
+			 	 
 		    });
 			 
 	 });
@@ -78,13 +91,12 @@
 	          <div class="card-header" role="tab" id="headingOne">
 	            <h5 class="mb-0">
 	            	<tr>
-		            	<div value="${board.ID}">
+		            	<div data-id="${board.ID}">
 		            		<!-- 전체갯수-(페이지번호 -1 ) * 한페이지에 표시할 갯수 ) -->
-							<div style="display:inline-block; margin-left:1%; width:20%;"><th>${board.ID}</th></div>
-							<div style="display:inline-block; margin-left:3%; width:15%;"><th>${board.title}</th></div>
-							<div style="display:inline-block; margin-left:23%; width:25%;"><th> ${board.write_date}</th></div>
-							<div style="display:inline-block; margin-left:1%; width:10%;" id="viewCount" <a href="<c:url value="/board/increament/${board.ID}"/>">
-								<th>${board.viewCount}</th></div>
+							<div class="boardId" style="display:inline-block; margin-left:1%; width:20%;" ><th>${board.ID}</th></div>
+							<div style="display:inline-block; margin-left:3%; width:15%;" maxlength="1"><th>${board.title}</th></div>
+							<div style="display:inline-block; margin-left:23%; width:25%;" id="write_date" ><th> ${board.write_date}</th></div>
+							<div style="display:inline-block; margin-left:1%; width:10%;" id="viewCount"><th>${board.viewCount}</th></div>
 						</div>	
 					</tr>
 	            </h5>
@@ -115,8 +127,7 @@
          <div style="height:3px;"></br></div>
 		</c:forEach>
         </div>
-       
-      </div>
+       </div>
       </div>
     </div>
     
