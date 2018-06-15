@@ -16,9 +16,8 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public boolean writeBoard(BoardVO BoardVO) {
-		
 		if( BoardVO.getFile() != null && !BoardVO.getFile().isEmpty() ) {
-			BoardVO.setFileName(BoardVO.getFile().getOriginalFilename());
+			BoardVO.setFileName(BoardVO.getFileName());
 		}
 		
 		if( boardDao.insertBoard(BoardVO) > 0 ) {
@@ -28,12 +27,6 @@ public class BoardServiceImpl implements BoardService {
 		return false;
 	}
 
-
-	@Override
-	public List<BoardVO> getAll() {
-		// TODO Auto-generated method stub
-		return boardDao.selectAll();
-	}
 	
 	@Override
 	public List<BoardVO> getAll() {

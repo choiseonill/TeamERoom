@@ -12,8 +12,16 @@
 	type="text/javascript"></script>
 <script type="text/javascript">
 	$().ready(function() {
+		
+		
+		
 		$("#writeBtn").click(function() {
+			
+			var title = $("#title");
 			var writeForm = $("#writeForm");
+			
+			if(title = "")
+			
 			writeForm.attr({
 				"method" : "post",
 				"action" : "<c:url value="/board/boardWrite"/>"
@@ -26,7 +34,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 <head>
 <jsp:include page="/WEB-INF/view/template/head.jsp" /></head>
 <!-- write 영역  -->
@@ -39,6 +46,7 @@
 					<th>제목:</th>
 					<td><input type="text" placeholder="제목을 입력하세요. " name="title"
 						id="title" class="form-control" value="${BoardVO.title}" /></td>
+					<td><form:errors path="title" /></td>
 				<tr>
 					<th>카테고리:</th>
 					<td><select type="int" id="type" name="type" list="list"
@@ -48,12 +56,16 @@
 							<option value="3">써본사람</option>
 							<option value="4">이벤트</option>
 							</datalist>
-					</select></td>
+					</select>
+					<input type="hidden" id="test" name="testString" value="!!">
+					</td>
 				</tr>
 				<tr>
 					<th>내용:</th>
 					<td><textarea cols="10" rows="10" placeholder="내용을 입력하세요. "
-							name="body" id="editor" class="form-control">${BoardVO.body}</textarea></td>
+							name="body" id="editor" class="form-control">${BoardVO.body}</textarea>
+					</td>
+					<td><form:errors path="body" /></td>
 				</tr>
 				<script>
         			ClassicEditor
