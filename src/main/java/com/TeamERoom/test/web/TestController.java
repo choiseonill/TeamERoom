@@ -106,7 +106,22 @@ public class TestController {
 		
 	}
 	
-
+	@RequestMapping("/roomdetailregist")
+	public String rdr() {
+		return "room/roomdetailregist";
+	
+	}
+	
+	@RequestMapping("/roomdetailregist1")
+	public String rdrr() {
+		return "room/roomdetailregist1";
+	
+	}
+	
+	@RequestMapping("/roomdetailregist2")
+	public String rdrrr() {
+		return "room/roomdetailregist2";
+	}
 	
 	
 }
